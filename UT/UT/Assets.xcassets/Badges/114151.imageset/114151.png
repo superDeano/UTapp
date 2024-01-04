@@ -1,0 +1,4208 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" wf-loading>
+    <head>
+        
+    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">
+
+
+<style>
+    [unresolved] {
+        visibility: hidden !important;
+    }
+</style>
+
+
+<noscript>
+    <style>
+        [unresolved] {
+            visibility: visible !important;
+        }
+    </style>
+</noscript>
+
+<style>
+    body {
+        margin: 0;
+    }
+
+    .image img {
+        max-width: 100%;
+    }
+</style>
+
+
+<script>
+    
+    if (!CSS.supports('width', 'calc((var(--test))')) {
+        window.ShadyCSS = {
+            shimcssproperties: true
+        };
+    }
+
+    document.addEventListener('nds.typeKit.active', function() {
+        document.querySelector('html').removeAttribute('wf-loading');
+    });
+</script>
+
+<script src="//unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<script src="//w.soundcloud.com/player/api.js"></script>
+
+
+
+
+
+
+<script>
+    window.nds = window.nds || {};
+    window.nds.componentUrlPrefix = '//pl.ea.com/release/4.12.2/elements/ea-elements.min.js'.substring(0, '//pl.ea.com/release/4.12.2/elements/ea-elements.min.js'.lastIndexOf('/') + 1);
+</script>
+<script type="module" src="//pl.ea.com/release/4.12.2/elements/ea-elements.min.js"></script>
+<script nomodule defer src="//pl.ea.com/release/4.12.2/elements/ea-elements.min.js"></script>
+
+
+
+    
+        
+            
+                <style>   @font-face {     font-family: 'ElectronicArtsDisplay';     src: url(/assets/fonts/display/ElectronicArtsDisplay-Regular.woff2) format('woff');     font-weight: 400;     font-style: normal;   }   @font-face {     font-family: 'ElectronicArtsDisplay';     src: url(/assets/fonts/display/ElectronicArtsDisplay-Bold.woff2) format('woff');     font-weight: 600;     font-style: normal;   }   @font-face {     font-family: 'ElectronicArtsText';     src: url(/assets/fonts/text/ElectronicArtsText-Light.woff2) format('woff');     font-weight: 300;     font-style: normal;   }   @font-face {     font-family: 'ElectronicArtsText';     src: url(/assets/fonts/text/ElectronicArtsText-LightItalic.woff2) format('woff');     font-weight: 300;     font-style: italic;   }   @font-face {     font-family: 'ElectronicArtsText';     src: url(/assets/fonts/text/ElectronicArtsText-Regular.woff2) format('woff');     font-weight: 400;     font-style: normal;   }   @font-face {     font-family: 'ElectronicArtsText';     src: url(/assets/fonts/text/ElectronicArtsText-Italic.woff2) format('woff');     font-weight: 400;     font-style: italic;   }   @font-face {     font-family: 'ElectronicArtsText';     src: url(/assets/fonts/text/ElectronicArtsText-Bold.woff2) format('woff');     font-weight: 600;     font-style: normal;   }   @font-face {     font-family: 'ElectronicArtsText';     src: url(/assets/fonts/text/ElectronicArtsText-BoldItalic.woff2) format('woff');     font-weight: 600;     font-style: italic;   } </style>
+            
+                <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"rel="stylesheet">
+            
+        
+    
+
+
+
+    <title>FUT 21 WEB APP COMING SOON</title>
+    
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="FUT 21 WEB APP COMING SOON">
+<meta property="og:description" content="The FUT Web App and other FIFA Web features are down for maintenance while we prepare for FIFA 21. ">
+<meta property="og:url" content="https://www.ea.com/games/fifa/ultimate-team/fut-app-coming-soon">
+<meta property="og:site_name" content="Electronic Arts Inc.">
+
+<meta property="og:image" content="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/featured_images/fifa-21-grid-tile-generic-16x9.jpg.adapt.crop191x100.1200w.jpg">
+
+
+<meta name="description" content="The FUT Web App and other FIFA Web features are down for maintenance while we prepare for FIFA 21. ">
+<meta name="author" content="Electronic Arts">
+<meta property="article:modified_time" content="2020-09-23T00:03:11Z">
+<meta property="article:published_time" content="2020-09-23T00:03:11Z">
+
+
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ea">
+<meta name="twitter:title" content="FUT 21 WEB APP COMING SOON">
+<meta name="twitter:description" content="The FUT Web App and other FIFA Web features are down for maintenance while we prepare for FIFA 21. ">
+
+    <meta name="twitter:image" content="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/featured_images/fifa-21-grid-tile-generic-16x9.jpg.adapt.crop16x9.320w.jpg">
+
+<meta name="twitter:creator" content="@ea">
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+     
+"image": {
+    "@type": "ImageObject",
+    "url": "https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/featured_images/fifa-21-grid-tile-generic-16x9.jpg.adapt.crop191x100.1200w.jpg"
+},
+ 
+    "author": {
+      "@type": "Organization",
+      "name": "Electronic Arts",
+      "sameAs": "https://en.wikipedia.org/wiki/Electronic_Arts"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Electronic Arts",
+        "sameAs": "https://en.wikipedia.org/wiki/Electronic_Arts",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://media.contentapi.ea.com/content/dam/ea/EA_logo.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "inLanguage": "en",
+    "description": "The FUT Web App and other FIFA Web features are down for maintenance while we prepare for FIFA 21. ",
+    "datePublished": "2020-09-23T00:03:11Z",
+    "dateModified": "2020-09-23T00:03:11Z",
+    "headline": "FUT 21 WEB APP COMING SOON",
+    "url": "https://www.ea.com/games/fifa/ultimate-team/fut-app-coming-soon"
+}
+</script>
+
+
+
+    </head>
+    <body unresolved>
+        
+    
+
+
+<custom-style><style include="ea-shared-styles-base-common"></style></custom-style>
+<custom-style><style include="ea-shared-styles-base-headings"></style></custom-style>
+<custom-style><style include="ea-shared-styles-base-lists"></style></custom-style>
+<custom-style><style include="ea-shared-styles-base-links"></style></custom-style>
+<custom-style><style include="ea-shared-styles-base-images"></style></custom-style>
+<custom-style><style include="ea-shared-styles-typography-headings"></style></custom-style>
+<custom-style><style include="ea-shared-styles-typography-paragraphs"></style></custom-style>
+<custom-style><style include="ea-shared-styles-typography-labels"></style></custom-style>
+
+
+    
+        
+            <custom-style>
+                <style>
+                    html {
+                        
+                            --ea-theme-primary-font-family: open-sans ;
+                        
+                            --ea-theme-secondary-font-family: din-condensed;
+                        
+                            --ea-theme-tabs-tab-text-transform: none;
+                        
+                            --fifa21-brand-violet: #7E42F5;
+                        
+                            --fifa21-brand-mint: #8A4FFF ;
+                        
+                            --fifa21-brand-orange: #FF5114;
+                        
+                            --fifa21-brand-obsidan: #201E20;
+                        
+                            --fifa21-brand-FUT: #E518FB;
+                        
+                            --fifa21-brand-VOLTA: #13F0FE;
+                        
+                            --ea-theme-color: var(--fifa21-brand-mint);
+                        
+                            --ea-theme-dark-gradient: var(--fifa21-brand-mint);
+                        
+                            --ea-theme-light-gradient: var(--fifa21-brand-mint);
+                        
+                            --ea-theme-body-font-size-mobile: 15px;
+                        
+                            --ea-theme-body-line-height-mobile: 160%;
+                        
+                            --ea-theme-body-font-size-tablet-landscape: 16px;
+                        
+                            --ea-theme-body-line-height-tablet-landscape: 160%;
+                        
+                            --ea-theme-body-font-size-desktop: 19px;
+                        
+                            --ea-theme-body-line-height-desktop: 148%;
+                        
+                            --ea-theme-h4-font-size-tablet-landscape: 20px;
+                        
+                            --playstation-brand-color: #201E20;
+                        
+                            --xbox-brand-color: #FCFCFC;
+                        
+                            --nintendo-brand-color: #ffffff;
+                        
+                            --ea-theme-tabs-indicator-color: #764BEC;
+                        
+                            --ea-theme-player-ratings-player-name-font-size-desktop: 19px;
+                        
+                            --ea-theme-player-ratings-player-name-font-size-tablet-landscape: 15px;
+                        
+                            --ea-theme-player-ratings-player-name-font-size-mobile: 15px;
+                        
+                            --ea-theme-player-ratings-attribute-font-size-desktop: 20px;
+                        
+                            --ea-theme-player-ratings-attribute-font-size-tablet-landscape: 16px;
+                        
+                            --ea-theme-player-ratings-value-font-size-desktop: 16px;
+                        
+                            --ea-theme-player-ratings-value-font-size-mobile: 17px;
+                        
+                            --ea-text-case: uppercase;
+                        
+                            --ea-light-color: #FCFCFC;
+                        
+                            --ea-theme-l1-font-size-tablet-landscape: 20px;
+                        
+                            --ea-theme-l1-font-size-desktop: 24px;
+                        
+                            --ea-theme-d6-font-style: italic;
+                        
+                            --ea-theme-d5-font-style: italic;
+                        
+                            --ea-theme-d4-font-style: italic;
+                        
+                            --ea-theme-d3-font-style: italic;
+                        
+                            --ea-theme-d2-font-style: italic;
+                        
+                            --ea-theme-d1-font-style: italic;
+                        
+                            --ea-theme-stream-ui-paddle-default: #878787;
+                        
+                            --ea-theme-l2-font-weight: 500;
+                        
+                    }
+                </style>
+            </custom-style>
+        
+    
+
+
+<ea-elements-loader elements="ea-network-nav, ea-player, ea-type-kit">
+</ea-elements-loader>
+
+
+    <ea-network-nav
+        unresolved
+        userData="/user-data"
+        content="//nds-network-nav.ea.com/en-us/network-nav"
+        login-url="/login"
+        logout-url="/logout"
+            
+                
+                    
+                        hide-logo
+                    
+                
+            
+    ></ea-network-nav>
+
+
+
+
+    
+        
+            
+                
+<ea-elements-loader elements="ea-page-background">
+</ea-elements-loader>
+<ea-page-background layout="fixed" unresolved>
+    
+
+
+    <ea-elements-loader elements="ea-image">
+    </ea-elements-loader>
+    <ea-image
+        unresolved
+        slot="image"
+        tooltip=""
+        smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/common/fifa-page-bg-white.png.adapt.crop16x9.320w.png"
+        small="https://media.contentapi.ea.com/content/dam/ea/fifa/common/fifa-page-bg-white.png.adapt.crop16x9.767w.png"
+        medium="https://media.contentapi.ea.com/content/dam/ea/fifa/common/fifa-page-bg-white.png.adapt.crop16x9.1023w.png"
+        large="https://media.contentapi.ea.com/content/dam/ea/fifa/common/fifa-page-bg-white.png.adapt.crop16x9.1455w.png"
+        largest="https://media.contentapi.ea.com/content/dam/ea/fifa/common/fifa-page-bg-white.png.adapt.crop16x9.1920w.png"
+    >
+        <img
+            src="https://media.contentapi.ea.com/content/dam/ea/fifa/common/fifa-page-bg-white.png.adapt.crop16x9.320w.png"
+            alt=""
+            srcset="https://media.contentapi.ea.com/content/dam/ea/fifa/common/fifa-page-bg-white.png.adapt.crop16x9.320w.png 320w, https://media.contentapi.ea.com/content/dam/ea/fifa/common/fifa-page-bg-white.png.adapt.crop16x9.767w.png 768w, https://media.contentapi.ea.com/content/dam/ea/fifa/common/fifa-page-bg-white.png.adapt.crop16x9.1023w.png 1024w, https://media.contentapi.ea.com/content/dam/ea/fifa/common/fifa-page-bg-white.png.adapt.crop16x9.1455w.png 1320w, https://media.contentapi.ea.com/content/dam/ea/fifa/common/fifa-page-bg-white.png.adapt.crop16x9.1920w.png 1456w" />
+    </ea-image>
+
+
+
+</ea-page-background>
+
+            
+        
+    
+
+
+
+
+    
+        
+            
+                
+
+    
+<ea-elements-loader elements="ea-local-nav, ea-link">
+</ea-elements-loader>
+<ea-local-nav
+    
+        home-text = "EA SPORTS™ FIFA"
+        home-tooltip = "EA SPORTS™ FIFA"
+        home-link = "/en-us/games/fifa"
+    
+    
+        logo-image="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-19/global-assets/common/logos/fifa-white.svg"
+    
+    
+    
+        theme = "light"
+    
+    
+        shelf-type = "band"
+    
+    
+        open-drawer-text = "Menu"
+    
+    
+        open-drawer-tooltip = "Open Menu"
+    
+    
+        close-drawer-text = "Close"
+    
+    
+        close-drawer-tooltip = "Close Menu"
+    
+    
+    
+    
+        mini
+    
+    
+
+    
+        hide-hamburger-on-desktop
+    
+
+    
+        show-franchise-nav
+    
+
+    
+        show-breadcrumbs
+    
+
+    
+
+    
+
+    
+
+    
+    unresolved
+>
+    
+        
+            
+<ea-elements-loader elements="ea-game-box">
+</ea-elements-loader>
+<ea-container
+    
+        filter-key="All"
+    
+    
+        slot="franchise-game-box"
+    
+>
+    <ea-game-box
+        slot="game-box"
+        
+            background-image="https://media.contentapi.ea.com/content/dam/gin/images/2020/06/fifa21-keyart-horizontal-16x9.png.adapt.crop1x1.767w.png"
+            background-image-alt-text=""
+        
+        
+            logo-url="https://media.contentapi.ea.com/content/dam/gin/common/logos/fifa-21-primary-stacked-white.svg"
+        
+        
+            main-link-url="/en-us/games/fifa/fifa-21"
+        
+        
+            main-link-title="FIFA 21"
+        
+        
+        
+            type="simple"
+        
+        
+        show-back-alt="FIFA 21"
+        show-front-alt="FIFA 21"
+        title="FIFA 21"
+        sale-text=""
+        unresolved
+    >
+        
+        
+        
+
+        
+        <!-- Output Main Link as an anchor tag for SEO -->
+        <a
+            
+                href="/en-us/games/fifa/fifa-21"
+            
+            
+                title="FIFA 21"
+            
+            
+        >FIFA 21</a>
+    </ea-game-box>
+</ea-container>
+
+        
+            
+<ea-elements-loader elements="ea-game-box">
+</ea-elements-loader>
+<ea-container
+    
+        filter-key="All"
+    
+    
+        slot="franchise-game-box"
+    
+>
+    <ea-game-box
+        slot="game-box"
+        
+            background-image="https://media.contentapi.ea.com/content/dam/gin/images/2019/06/fifa20-gin-keyart.jpg.adapt.crop1x1.767w.jpg"
+            background-image-alt-text=""
+        
+        
+            logo-url="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/game-boxes/fifa-20-mono-logo.png"
+        
+        
+            main-link-url="/en-us/games/fifa/fifa-20"
+        
+        
+            main-link-title="FIFA 20"
+        
+        
+        
+            type="simple"
+        
+        
+        show-back-alt="FIFA 20"
+        show-front-alt="FIFA 20"
+        title="FIFA 20"
+        sale-text=""
+        unresolved
+    >
+        
+        
+        
+
+        
+        <!-- Output Main Link as an anchor tag for SEO -->
+        <a
+            
+                href="/en-us/games/fifa/fifa-20"
+            
+            
+                title="FIFA 20"
+            
+            
+        >FIFA 20</a>
+    </ea-game-box>
+</ea-container>
+
+        
+            
+<ea-elements-loader elements="ea-game-box">
+</ea-elements-loader>
+<ea-container
+    
+        filter-key="All"
+    
+    
+        slot="franchise-game-box"
+    
+>
+    <ea-game-box
+        slot="game-box"
+        
+            background-image="https://media.contentapi.ea.com/content/dam/gin/images/2018/06/fifa-19-keyart.jpg.adapt.crop1x1.767w.jpg"
+            background-image-alt-text=""
+        
+        
+            logo-url="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/game-boxes/fifa-19-mono-logo.png"
+        
+        
+            main-link-url="/en-us/games/fifa/fifa-19"
+        
+        
+            main-link-title="FIFA 19"
+        
+        
+        
+            type="simple"
+        
+        
+        show-back-alt="FIFA 19"
+        show-front-alt="FIFA 19"
+        title="FIFA 19"
+        sale-text=""
+        unresolved
+    >
+        
+        
+        
+
+        
+        <!-- Output Main Link as an anchor tag for SEO -->
+        <a
+            
+                href="/en-us/games/fifa/fifa-19"
+            
+            
+                title="FIFA 19"
+            
+            
+        >FIFA 19</a>
+    </ea-game-box>
+</ea-container>
+
+        
+    
+
+    
+
+    
+        <a title="EA SPORTS™ FIFA" href="/en-us/games/fifa">
+            EA SPORTS™ FIFA
+            
+                <img
+                    src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-19/global-assets/common/logos/fifa-white.svg"
+                    
+                />
+            
+        </a>
+    
+
+    
+        
+            
+<ea-elements-loader elements="ea-local-nav-shelf-sub-nav">
+</ea-elements-loader>
+<ea-local-nav-shelf-sub-nav
+    slot="local-nav-shelf-link"
+    toggle-text="Games"
+    theme="light"
+    type="simple"
+    unresolved
+>
+    
+<ea-elements-loader elements="ea-local-nav-shelf-sub-nav-section">
+</ea-elements-loader>
+<ea-local-nav-shelf-sub-nav-section
+    title-text=""
+    slot="sub-nav-section"
+    unresolved
+>
+    
+<ea-elements-loader elements="ea-local-nav-shelf-sub-nav-section-link">
+</ea-elements-loader>
+<ea-local-nav-shelf-sub-nav-section-link
+    slot="sub-nav-section-link"
+    link-text="FIFA 21"
+    link-href="/en-us/games/fifa/fifa-21"
+    link-target="_blank"
+    
+    unresolved
+>
+    <a href="/en-us/games/fifa/fifa-21">FIFA 21</a>
+</ea-local-nav-shelf-sub-nav-section-link>
+
+<ea-elements-loader elements="ea-local-nav-shelf-sub-nav-section-link">
+</ea-elements-loader>
+<ea-local-nav-shelf-sub-nav-section-link
+    slot="sub-nav-section-link"
+    link-text="FIFA 20"
+    link-href="/en-us/games/fifa/fifa-20"
+    link-target="_blank"
+    
+    unresolved
+>
+    <a href="/en-us/games/fifa/fifa-20">FIFA 20</a>
+</ea-local-nav-shelf-sub-nav-section-link>
+
+<ea-elements-loader elements="ea-local-nav-shelf-sub-nav-section-link">
+</ea-elements-loader>
+<ea-local-nav-shelf-sub-nav-section-link
+    slot="sub-nav-section-link"
+    link-text="FIFA 19"
+    link-href="/en-us/games/fifa/fifa-19"
+    link-target="_blank"
+    
+    unresolved
+>
+    <a href="/en-us/games/fifa/fifa-19">FIFA 19</a>
+</ea-local-nav-shelf-sub-nav-section-link>
+
+<ea-elements-loader elements="ea-local-nav-shelf-sub-nav-section-link">
+</ea-elements-loader>
+<ea-local-nav-shelf-sub-nav-section-link
+    slot="sub-nav-section-link"
+    link-text="FIFA Mobile"
+    link-href="/en-us/games/fifa/fifa-mobile"
+    link-target="_blank"
+    
+    unresolved
+>
+    <a href="/en-us/games/fifa/fifa-mobile">FIFA Mobile</a>
+</ea-local-nav-shelf-sub-nav-section-link>
+
+</ea-local-nav-shelf-sub-nav-section>
+
+</ea-local-nav-shelf-sub-nav>
+
+        
+    
+        
+            
+                <ea-link
+                    slot="local-nav-shelf-link"
+                    class="eapl-local-nav__shelf-link"
+                    text-color="dark"
+                    link-href="/en-us/games/fifa/fifa-20/compete"
+                    link-title="Global Series"
+                    link-text="Global Series"
+                    unresolved
+                >
+                    <a href="/en-us/games/fifa/fifa-20/compete">Global Series</a>
+                </ea-link>
+            
+        
+    
+        
+            
+<ea-elements-loader elements="ea-local-nav-shelf-sub-nav">
+</ea-elements-loader>
+<ea-local-nav-shelf-sub-nav
+    slot="local-nav-shelf-link"
+    toggle-text="News &amp; Updates"
+    theme="light"
+    type="simple"
+    unresolved
+>
+    
+<ea-elements-loader elements="ea-local-nav-shelf-sub-nav-section">
+</ea-elements-loader>
+<ea-local-nav-shelf-sub-nav-section
+    title-text=""
+    slot="sub-nav-section"
+    unresolved
+>
+    
+<ea-elements-loader elements="ea-local-nav-shelf-sub-nav-section-link">
+</ea-elements-loader>
+<ea-local-nav-shelf-sub-nav-section-link
+    slot="sub-nav-section-link"
+    link-text="FIFA News"
+    link-href="/en-us/games/fifa/news"
+    link-target="_self"
+    
+    unresolved
+>
+    <a href="/en-us/games/fifa/news">FIFA News</a>
+</ea-local-nav-shelf-sub-nav-section-link>
+
+<ea-elements-loader elements="ea-local-nav-shelf-sub-nav-section-link">
+</ea-elements-loader>
+<ea-local-nav-shelf-sub-nav-section-link
+    slot="sub-nav-section-link"
+    link-text="The Pitch Notes"
+    link-href="/en-us/games/fifa/pitch-notes"
+    link-target="_self"
+    
+    unresolved
+>
+    <a href="/en-us/games/fifa/pitch-notes">The Pitch Notes</a>
+</ea-local-nav-shelf-sub-nav-section-link>
+
+</ea-local-nav-shelf-sub-nav-section>
+
+</ea-local-nav-shelf-sub-nav>
+
+        
+    
+        
+            
+                <ea-link
+                    slot="local-nav-shelf-link"
+                    class="eapl-local-nav__shelf-link"
+                    text-color="dark"
+                    link-href="/en-us/games/fifa/fifa-21/newsletter"
+                    link-title="Newsletter"
+                    link-text="Newsletter"
+                    unresolved
+                >
+                    <a href="/en-us/games/fifa/fifa-21/newsletter">Newsletter</a>
+                </ea-link>
+            
+        
+    
+        
+            
+                <ea-link
+                    slot="local-nav-shelf-link"
+                    class="eapl-local-nav__shelf-link"
+                    text-color="dark"
+                    link-href="/en-us/nextlevel"
+                    link-title="Next Level"
+                    link-text="Next Level"
+                    unresolved
+                >
+                    <a href="/en-us/nextlevel">Next Level</a>
+                </ea-link>
+            
+        
+    
+
+    
+
+    
+        
+            
+
+    <ea-elements-loader elements="ea-link">
+    </ea-elements-loader>
+    <ea-link
+        
+            slot="local-nav-drawer-link"
+        
+        class="eapl-local-nav__drawer-link"
+        link-href="/en-us/nextlevel"
+        link-title=""
+        link-text="Next Level"
+        text-color="dark"
+
+        
+        
+        
+        unresolved
+    >
+        <a href="/en-us/nextlevel">Next Level</a>
+    </ea-link>
+
+
+        
+            
+
+    <ea-elements-loader elements="ea-link">
+    </ea-elements-loader>
+    <ea-link
+        
+            slot="local-nav-drawer-link"
+        
+        class="eapl-local-nav__drawer-link"
+        link-href="/en-us/games/fifa/fifa-20/compete"
+        link-title=""
+        link-text="Global Series"
+        text-color="dark"
+
+        
+        
+        
+        unresolved
+    >
+        <a href="/en-us/games/fifa/fifa-20/compete">Global Series</a>
+    </ea-link>
+
+
+        
+            
+
+    <ea-elements-loader elements="ea-local-nav-drawer-sub-nav">
+    </ea-elements-loader>
+    <ea-local-nav-drawer-sub-nav
+        
+            slot="local-nav-drawer-link"
+        
+        toggle-text="Community"
+        toggle-tooltip="Community"
+        theme="light"
+
+        
+        
+        
+        
+        unresolved
+    >
+        
+            
+
+    <ea-elements-loader elements="ea-link">
+    </ea-elements-loader>
+    <ea-link
+        slot="local-nav-drawer-sub-link"
+        class="eapl-local-nav__drawer-sub-link"
+        link-href="https://fifaforums.easports.com/en/"
+        link-title="Forums"
+        link-text="Forums"
+        text-color="dark"
+        unresolved
+    >
+        <a href="https://fifaforums.easports.com/en/">Forums</a>
+    </ea-link>
+
+
+        
+            
+
+    <ea-elements-loader elements="ea-link">
+    </ea-elements-loader>
+    <ea-link
+        slot="local-nav-drawer-sub-link"
+        class="eapl-local-nav__drawer-sub-link"
+        link-href="/en-us/games/fifa/pitch-notes"
+        link-title="Pitch Notes"
+        link-text="Pitch Notes"
+        text-color="dark"
+        unresolved
+    >
+        <a href="/en-us/games/fifa/pitch-notes">Pitch Notes</a>
+    </ea-link>
+
+
+        
+    </ea-local-nav-drawer-sub-nav>
+
+
+        
+            
+
+    <ea-elements-loader elements="ea-local-nav-drawer-sub-nav">
+    </ea-elements-loader>
+    <ea-local-nav-drawer-sub-nav
+        
+            slot="local-nav-drawer-link"
+        
+        toggle-text="News &amp; Updates"
+        toggle-tooltip="News &amp; Updates"
+        theme="light"
+
+        
+            type="standard"
+        
+        
+        
+        
+        unresolved
+    >
+        
+            
+
+    <ea-elements-loader elements="ea-link">
+    </ea-elements-loader>
+    <ea-link
+        slot="local-nav-drawer-sub-link"
+        class="eapl-local-nav__drawer-sub-link"
+        link-href="/en-us/games/fifa/fifa-21/news"
+        link-title="FIFA News"
+        link-text="FIFA 21 News"
+        text-color="dark"
+        unresolved
+    >
+        <a href="/en-us/games/fifa/fifa-21/news">FIFA 21 News</a>
+    </ea-link>
+
+
+        
+            
+
+    <ea-elements-loader elements="ea-link">
+    </ea-elements-loader>
+    <ea-link
+        slot="local-nav-drawer-sub-link"
+        class="eapl-local-nav__drawer-sub-link"
+        link-href="/en-us/games/fifa/pitch-notes"
+        link-title="Pitch Notes"
+        link-text="Pitch Notes"
+        text-color="dark"
+        unresolved
+    >
+        <a href="/en-us/games/fifa/pitch-notes">Pitch Notes</a>
+    </ea-link>
+
+
+        
+            
+
+    <ea-elements-loader elements="ea-link">
+    </ea-elements-loader>
+    <ea-link
+        slot="local-nav-drawer-sub-link"
+        class="eapl-local-nav__drawer-sub-link"
+        link-href="/en-us/games/fifa/fifa-21/newsletter"
+        link-title="Email Updates"
+        link-text="Email Updates"
+        text-color="dark"
+        unresolved
+    >
+        <a href="/en-us/games/fifa/fifa-21/newsletter">Email Updates</a>
+    </ea-link>
+
+
+        
+    </ea-local-nav-drawer-sub-nav>
+
+
+        
+            
+
+    <ea-elements-loader elements="ea-link">
+    </ea-elements-loader>
+    <ea-link
+        
+            slot="local-nav-drawer-link"
+        
+        class="eapl-local-nav__drawer-link"
+        link-href="/en-us/games/fifa/fifa-21/buy"
+        link-title="Pre-order FIFA 21"
+        link-text="Pre-order FIFA 21"
+        text-color="dark"
+
+        
+        
+        
+        unresolved
+    >
+        <a href="/en-us/games/fifa/fifa-21/buy">Pre-order FIFA 21</a>
+    </ea-link>
+
+
+        
+    
+    
+    
+        
+
+    <ea-elements-loader elements="ea-cta-dropdown">
+    </ea-elements-loader>
+    <ea-cta-dropdown
+        slot="cta-dropdown"
+        theme="light"
+        cta-title-text="PRE-ORDER FIFA 21"
+        cta-link="/en-us/games/fifa/fifa-21/buy"
+        border-color="none"
+        fill-color="brand"
+        text-color="light"
+
+        
+        
+        
+        unresolved
+    >
+        
+
+        
+    </ea-cta-dropdown>
+
+
+    
+</ea-local-nav>
+
+
+
+            
+        
+    
+
+
+
+
+    
+        
+            
+                
+<ea-elements-loader elements="ea-spacer">
+</ea-elements-loader>
+<ea-spacer
+    unresolved
+    
+        smallest="6rem"
+    
+    
+        small="6rem"
+    
+    
+        medium="6rem"
+    
+    
+        large="6rem"
+    
+    
+        largest="6rem"
+    
+>
+</ea-spacer>
+
+            
+        
+    
+
+
+
+
+
+
+    
+<ea-elements-loader elements="ea-section">
+</ea-elements-loader>
+<ea-section
+    unresolved
+    slot="section"
+    
+        type="full-bleed"
+    
+    
+        layout="100"
+    
+    
+        background-color="none"
+    
+    
+        background-overflow="hidden"
+    
+    
+        spacing-top="none"
+    
+    
+        spacing-bottom="none"
+    
+    
+    
+    
+    
+>
+    
+    
+<ea-section-column
+    slot="section-column"
+    
+        indent-left=""
+    
+    
+        indent-right=""
+    
+    
+        text-align="left"
+    
+>
+    
+<ea-elements-loader elements="ea-hero">
+</ea-elements-loader>
+<ea-hero
+    
+        layout="medium"
+    
+    
+        text-position="left"
+    
+    
+        text-align="left"
+    
+    
+        text-color="dark"
+    
+    
+        stacked
+    
+    
+    
+        background-color="light"
+    
+    
+    
+    
+        title-text="FUT 21 WEB APP COMING SOON"
+    
+    
+    
+        copy-text="The FUT Web App and other FIFA Web features are down for maintenance while we prepare for FIFA 21. The new web app launches on September 30th."
+    
+    
+        image-smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-comingsoon-7x2-xl.jpg.adapt.crop16x9.320w.jpg"
+        image-small="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-comingsoon-7x2-xl.jpg.adapt.crop16x9.767w.jpg"
+        image-medium="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-comingsoon-7x2-xl.jpg.adapt.crop2x1.1023w.jpg"
+        image-large="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-comingsoon-7x2-xl.jpg.adapt.crop5x2.1455w.jpg"
+        image-largest="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-comingsoon-7x2-xl.jpg.adapt.crop7x2.1920w.jpg"
+        image-tooltip=""
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        spacing-bottom="none"
+    
+    
+        spacing-top="none"
+    
+    
+        scrim-color="none"
+    
+    
+        scrim-opacity="medium"
+    
+    
+    unresolved
+    
+        custom-styles="{}"
+    
+>
+    
+        <h1>FUT 21 WEB APP COMING SOON</h1>
+    
+    
+    
+        <p>The FUT Web App and other FIFA Web features are down for maintenance while we prepare for FIFA 21. The new web app launches on September 30th.</p>
+    
+    
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-comingsoon-7x2-xl.jpg.adapt.crop16x9.320w.jpg"
+            alt=""
+            srcset="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-comingsoon-7x2-xl.jpg.adapt.crop16x9.320w.jpg 320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-comingsoon-7x2-xl.jpg.adapt.crop16x9.767w.jpg 768w, https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-comingsoon-7x2-xl.jpg.adapt.crop2x1.1023w.jpg 1024w, https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-comingsoon-7x2-xl.jpg.adapt.crop5x2.1455w.jpg 1320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-comingsoon-7x2-xl.jpg.adapt.crop7x2.1920w.jpg 1456w"
+        />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="standard"
+    
+    
+        link-url="/en-us/games/fifa/fifa-21/buy"
+    
+    
+    
+        link-text="Get FIFA 21"
+    
+    
+        icon="none"
+    
+    
+    
+        fill-color="playstation-brand"
+    
+    
+        text-color="light"
+    
+    
+        stroke-color="none"
+    
+    
+        target="_self"
+    
+    
+    
+    
+    
+        intent="buy"
+    
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+            href="/en-us/games/fifa/fifa-21/buy"
+        
+        
+    >
+        
+            Get FIFA 21
+        
+    </a>
+</ea-cta>
+
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="standard"
+    
+    
+        link-url="/en-us/games/fifa/fifa-21/ultimate-team/features"
+    
+    
+    
+        link-text="Explore FUT 21"
+    
+    
+        icon="none"
+    
+    
+    
+        fill-color="none"
+    
+    
+        text-color="dark"
+    
+    
+        stroke-color="dark"
+    
+    
+        target="_self"
+    
+    
+    
+    
+    
+        intent="navigation"
+    
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+            href="/en-us/games/fifa/fifa-21/ultimate-team/features"
+        
+        
+    >
+        
+            Explore FUT 21
+        
+    </a>
+</ea-cta>
+
+    
+</ea-hero>
+
+</ea-section-column>
+
+</ea-section>
+
+
+
+<ea-elements-loader elements="ea-section">
+</ea-elements-loader>
+<ea-section
+    unresolved
+    slot="section"
+    
+        type="full-bleed"
+    
+    
+        layout="100"
+    
+    
+        background-color="none"
+    
+    
+        background-overflow="hidden"
+    
+    
+        spacing-top="none"
+    
+    
+        spacing-bottom="none"
+    
+    
+    
+    
+        background-image-smallest="https://media.contentapi.ea.com/content/dam/eacom/subscription/component-assets/common/ea-play-product-conversion-gradient-jpg-2020-xl.jpg.adapt.320w.jpg"
+        background-image-small="https://media.contentapi.ea.com/content/dam/eacom/subscription/component-assets/common/ea-play-product-conversion-gradient-jpg-2020-xl.jpg.adapt.768w.jpg"
+        background-image-medium="https://media.contentapi.ea.com/content/dam/eacom/subscription/component-assets/common/ea-play-product-conversion-gradient-jpg-2020-xl.jpg.adapt.1024w.jpg"
+        background-image-large="https://media.contentapi.ea.com/content/dam/eacom/subscription/component-assets/common/ea-play-product-conversion-gradient-jpg-2020-xl.jpg.adapt.1456w.jpg"
+        background-image-largest="https://media.contentapi.ea.com/content/dam/eacom/subscription/component-assets/common/ea-play-product-conversion-gradient-jpg-2020-xl.jpg.adapt.1920w.jpg"
+        image-tooltip=""
+    
+    
+>
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/eacom/subscription/component-assets/common/ea-play-product-conversion-gradient-jpg-2020-xl.jpg.adapt.320w.jpg"
+            alt=""
+            srcset="https://media.contentapi.ea.com/content/dam/eacom/subscription/component-assets/common/ea-play-product-conversion-gradient-jpg-2020-xl.jpg.adapt.320w.jpg 320w, https://media.contentapi.ea.com/content/dam/eacom/subscription/component-assets/common/ea-play-product-conversion-gradient-jpg-2020-xl.jpg.adapt.768w.jpg 768w, https://media.contentapi.ea.com/content/dam/eacom/subscription/component-assets/common/ea-play-product-conversion-gradient-jpg-2020-xl.jpg.adapt.1024w.jpg 1024w, https://media.contentapi.ea.com/content/dam/eacom/subscription/component-assets/common/ea-play-product-conversion-gradient-jpg-2020-xl.jpg.adapt.1456w.jpg 1320w, https://media.contentapi.ea.com/content/dam/eacom/subscription/component-assets/common/ea-play-product-conversion-gradient-jpg-2020-xl.jpg.adapt.1920w.jpg 1456w"
+        />
+    
+    
+<ea-section-column
+    slot="section-column"
+    
+        indent-left=""
+    
+    
+        indent-right=""
+    
+    
+        text-align="left"
+    
+>
+    
+<ea-elements-loader elements="ea-product-conversion">
+</ea-elements-loader>
+<ea-product-conversion
+    unresolved
+    
+        text-color="light"
+    
+    
+        background-color="none"
+    
+    
+        title-text="START YOUR SEASON ON OCTOBER 1 WITH EA PLAY"
+    
+    
+        spacing-top="none"
+    
+    
+        spacing-bottom="none"
+    
+>
+    
+        
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="image"
+    
+    
+        link-url="/en-us/ea-play"
+    
+    
+    
+        link-text="EA Play"
+    
+    
+        icon="none"
+    
+    
+    
+        fill-color="none"
+    
+    
+        text-color="light"
+    
+    
+        stroke-color="light"
+    
+    
+        target="_self"
+    
+    
+    
+        image="https://media.contentapi.ea.com/content/dam/eacom/subscription/ea-play/common/cta-logos/color/ea-play-logo-coral-cta-type-image.svg"
+    
+    
+    
+        intent="misc"
+    
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+            href="/en-us/ea-play"
+        
+        
+    >
+        
+            EA Play
+        
+    </a>
+</ea-cta>
+
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="standard"
+    
+    
+        link-url="/en-us/ea-play"
+    
+    
+    
+        link-text="Join Now"
+    
+    
+        icon="none"
+    
+    
+    
+        fill-color="none"
+    
+    
+        text-color="light"
+    
+    
+        stroke-color="light"
+    
+    
+        target="_self"
+    
+    
+    
+    
+    
+        intent="misc"
+    
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+            href="/en-us/ea-play"
+        
+        
+    >
+        
+            Join Now
+        
+    </a>
+</ea-cta>
+
+    
+</ea-product-conversion>
+
+<ea-elements-loader elements="ea-spacer">
+</ea-elements-loader>
+<ea-spacer
+    unresolved
+    
+        smallest="22px"
+    
+    
+        small="18px"
+    
+    
+        medium="0px"
+    
+    
+        large="0px"
+    
+    
+        largest="0px"
+    
+>
+</ea-spacer>
+
+</ea-section-column>
+
+</ea-section>
+
+
+    
+<ea-elements-loader elements="ea-section">
+</ea-elements-loader>
+<ea-section
+    unresolved
+    slot="section"
+    
+        type="full-bleed"
+    
+    
+        layout="100"
+    
+    
+        background-color="none"
+    
+    
+        background-overflow="hidden"
+    
+    
+        spacing-top="none"
+    
+    
+        spacing-bottom="none"
+    
+    
+    
+    
+    
+>
+    
+    
+<ea-section-column
+    slot="section-column"
+    
+        indent-left=""
+    
+    
+        indent-right=""
+    
+    
+        text-align="left"
+    
+>
+    
+<ea-elements-loader elements="ea-hero">
+</ea-elements-loader>
+<ea-hero
+    
+        layout="medium"
+    
+    
+        text-position="right"
+    
+    
+        text-align="left"
+    
+    
+        text-color="dark"
+    
+    
+        stacked
+    
+    
+    
+        background-color="none"
+    
+    
+    
+    
+        title-text="BUILD YOUR DREAM SQUAD"
+    
+    
+    
+        copy-text="With more ways to play with your mates, a brand new home to make your own, and new ways to team up with the FUT Community, welcome to the most social FIFA Ultimate Team ever."
+    
+    
+        image-smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-dream-squad-7x2-xl.jpg.adapt.crop16x9.320w.jpg"
+        image-small="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-dream-squad-7x2-xl.jpg.adapt.crop16x9.767w.jpg"
+        image-medium="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-dream-squad-7x2-xl.jpg.adapt.crop2x1.1023w.jpg"
+        image-large="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-dream-squad-7x2-xl.jpg.adapt.crop5x2.1455w.jpg"
+        image-largest="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-dream-squad-7x2-xl.jpg.adapt.crop7x2.1920w.jpg"
+        image-tooltip=""
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        spacing-bottom="none"
+    
+    
+        spacing-top="none"
+    
+    
+        scrim-color="none"
+    
+    
+        scrim-opacity="medium"
+    
+    
+    unresolved
+    
+        custom-styles="{}"
+    
+>
+    
+        <h1>BUILD YOUR DREAM SQUAD</h1>
+    
+    
+    
+        <p>With more ways to play with your mates, a brand new home to make your own, and new ways to team up with the FUT Community, welcome to the most social FIFA Ultimate Team ever.</p>
+    
+    
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-dream-squad-7x2-xl.jpg.adapt.crop16x9.320w.jpg"
+            alt=""
+            srcset="https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-dream-squad-7x2-xl.jpg.adapt.crop16x9.320w.jpg 320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-dream-squad-7x2-xl.jpg.adapt.crop16x9.767w.jpg 768w, https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-dream-squad-7x2-xl.jpg.adapt.crop2x1.1023w.jpg 1024w, https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-dream-squad-7x2-xl.jpg.adapt.crop5x2.1455w.jpg 1320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fut-app/images/2020/09/fut21-hero-med-dream-squad-7x2-xl.jpg.adapt.crop7x2.1920w.jpg 1456w"
+        />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="standard"
+    
+    
+        link-url="/en-us/games/fifa/fifa-21/ultimate-team/features"
+    
+    
+    
+        link-text="Explore FUT 21"
+    
+    
+        icon="none"
+    
+    
+    
+        fill-color="playstation-brand"
+    
+    
+        text-color="light"
+    
+    
+        stroke-color="none"
+    
+    
+        target="_self"
+    
+    
+    
+    
+    
+        intent="navigation"
+    
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+            href="/en-us/games/fifa/fifa-21/ultimate-team/features"
+        
+        
+    >
+        
+            Explore FUT 21
+        
+    </a>
+</ea-cta>
+
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="standard"
+    
+    
+    
+    
+        link-text="Watch Trailer"
+    
+    
+        icon="play"
+    
+    
+    
+        fill-color="none"
+    
+    
+        text-color="dark"
+    
+    
+        stroke-color="dark"
+    
+    
+        target="_self"
+    
+    
+    
+    
+    
+        intent="media"
+    
+    
+        modal-id="fut-features-trailer"
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+        
+    >
+        
+            Watch Trailer
+        
+    </a>
+</ea-cta>
+
+    
+</ea-hero>
+
+</ea-section-column>
+
+</ea-section>
+
+
+    
+<ea-elements-loader elements="ea-modal">
+</ea-elements-loader>
+<ea-modal
+    modal
+    unresolved
+    
+        id="fut-features-trailer"
+    
+    
+        theme="light"
+    
+    
+        type="railed"
+    
+>
+    
+<ea-elements-loader elements="ea-youtube">
+</ea-elements-loader>
+<ea-youtube
+    unresolved
+    slot="youtube"
+    video-id="cy284FVgNcc"
+    
+    
+        playlist=""
+    
+    autoplay="0"
+    controls="1"
+    rel="0"
+    annotations="1"
+    hide-info="1"
+    
+        cover-image-smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/video-posters/f21-fut-dd-trailer-poster.jpg.adapt.crop16x9.320w.jpg"
+        cover-image-small="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/video-posters/f21-fut-dd-trailer-poster.jpg.adapt.crop16x9.767w.jpg"
+        cover-image-medium="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/video-posters/f21-fut-dd-trailer-poster.jpg.adapt.crop16x9.1023w.jpg"
+        cover-image-large="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/video-posters/f21-fut-dd-trailer-poster.jpg.adapt.crop16x9.1455w.jpg"
+        cover-image-largest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/video-posters/f21-fut-dd-trailer-poster.jpg.adapt.crop16x9.1920w.jpg"
+        cover-image-tooltip=""
+        button-color="light"
+    
+>
+    
+    
+        
+            
+        
+    
+</ea-youtube>
+
+</ea-modal>
+
+
+
+
+
+
+    
+<ea-elements-loader elements="ea-section">
+</ea-elements-loader>
+<ea-section
+    unresolved
+    slot="section"
+    
+        type="full-bleed"
+    
+    
+        layout="100"
+    
+    
+        background-color="none"
+    
+    
+        background-overflow="hidden"
+    
+    
+        spacing-top="none"
+    
+    
+        spacing-bottom="none"
+    
+    
+    
+    
+    
+>
+    
+    
+<ea-section-column
+    slot="section-column"
+    
+        indent-left=""
+    
+    
+        indent-right=""
+    
+    
+        text-align="left"
+    
+>
+    
+<ea-elements-loader elements="ea-hero">
+</ea-elements-loader>
+<ea-hero
+    
+        layout="medium"
+    
+    
+        text-position="left"
+    
+    
+        text-align="left"
+    
+    
+        text-color="dark"
+    
+    
+        stacked
+    
+    
+    
+        background-color="light"
+    
+    
+    
+    
+        title-text="PRE-ORDER NOW"
+    
+    
+    
+        copy-text="Pre-order the FIFA 21 Ultimate Edition and get three days early access!"
+    
+    
+        image-smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/images/f21-section-2-bg-preorder-7x2-xl.png.adapt.crop16x9.320w.png"
+        image-small="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/images/f21-section-2-bg-preorder-7x2-xl.png.adapt.crop16x9.767w.png"
+        image-medium="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/images/f21-section-2-bg-preorder-7x2-xl.png.adapt.crop2x1.1023w.png"
+        image-large="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/images/f21-section-2-bg-preorder-7x2-xl.png.adapt.crop5x2.1455w.png"
+        image-largest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/images/f21-section-2-bg-preorder-7x2-xl.png.adapt.crop7x2.1920w.png"
+        image-tooltip=""
+    
+    
+    
+        fg-smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/common/fifa21-hero-medium-fg-pre-order-7x2-xl.png.adapt.crop16x9.320w.png"
+        fg-small="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/common/fifa21-hero-medium-fg-pre-order-7x2-xl.png.adapt.crop16x9.767w.png"
+        fg-medium="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/common/fifa21-hero-medium-fg-pre-order-7x2-xl.png.adapt.crop2x1.1023w.png"
+        fg-large="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/common/fifa21-hero-medium-fg-pre-order-7x2-xl.png.adapt.crop5x2.1455w.png"
+        fg-largest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/common/fifa21-hero-medium-fg-pre-order-7x2-xl.png.adapt.crop7x2.1920w.png"
+        fg-tooltip=""
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        spacing-bottom="none"
+    
+    
+        spacing-top="none"
+    
+    
+        scrim-color="none"
+    
+    
+        scrim-opacity="medium"
+    
+    
+    unresolved
+    
+        custom-styles="{}"
+    
+>
+    
+        <h1>PRE-ORDER NOW</h1>
+    
+    
+    
+        <p>Pre-order the FIFA 21 Ultimate Edition and get three days early access!</p>
+    
+    
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/images/f21-section-2-bg-preorder-7x2-xl.png.adapt.crop16x9.320w.png"
+            alt=""
+            srcset="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/images/f21-section-2-bg-preorder-7x2-xl.png.adapt.crop16x9.320w.png 320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/images/f21-section-2-bg-preorder-7x2-xl.png.adapt.crop16x9.767w.png 768w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/images/f21-section-2-bg-preorder-7x2-xl.png.adapt.crop2x1.1023w.png 1024w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/images/f21-section-2-bg-preorder-7x2-xl.png.adapt.crop5x2.1455w.png 1320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/images/f21-section-2-bg-preorder-7x2-xl.png.adapt.crop7x2.1920w.png 1456w"
+        />
+    
+    
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/common/fifa21-hero-medium-fg-pre-order-7x2-xl.png.adapt.crop16x9.320w.png"
+            alt=""
+            srcset="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/common/fifa21-hero-medium-fg-pre-order-7x2-xl.png.adapt.crop16x9.320w.png 320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/common/fifa21-hero-medium-fg-pre-order-7x2-xl.png.adapt.crop16x9.767w.png 768w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/common/fifa21-hero-medium-fg-pre-order-7x2-xl.png.adapt.crop2x1.1023w.png 1024w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/common/fifa21-hero-medium-fg-pre-order-7x2-xl.png.adapt.crop5x2.1455w.png 1320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/pre-order/common/fifa21-hero-medium-fg-pre-order-7x2-xl.png.adapt.crop7x2.1920w.png 1456w"
+        />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="standard"
+    
+    
+        link-url="/en-us/games/fifa/fifa-21/buy"
+    
+    
+    
+        link-text="Pre-Order Now"
+    
+    
+        icon="none"
+    
+    
+    
+        fill-color="none"
+    
+    
+        text-color="dark"
+    
+    
+        stroke-color="dark"
+    
+    
+        target="_self"
+    
+    
+    
+    
+    
+        intent="buy"
+    
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+            href="/en-us/games/fifa/fifa-21/buy"
+        
+        
+    >
+        
+            Pre-Order Now
+        
+    </a>
+</ea-cta>
+
+    
+</ea-hero>
+
+</ea-section-column>
+
+</ea-section>
+
+
+
+
+    
+<ea-elements-loader elements="ea-section">
+</ea-elements-loader>
+<ea-section
+    unresolved
+    slot="section"
+    
+        type="full-bleed"
+    
+    
+        layout="100"
+    
+    
+        background-color="none"
+    
+    
+        background-overflow="hidden"
+    
+    
+        spacing-top="none"
+    
+    
+        spacing-bottom="none"
+    
+    
+    
+    
+    
+>
+    
+    
+<ea-section-column
+    slot="section-column"
+    
+        indent-left=""
+    
+    
+        indent-right=""
+    
+    
+        text-align="left"
+    
+>
+    
+<ea-elements-loader elements="ea-hero">
+</ea-elements-loader>
+<ea-hero
+    
+        layout="medium"
+    
+    
+        text-position="left"
+    
+    
+        text-align="left"
+    
+    
+        text-color="light"
+    
+    
+        stacked
+    
+    
+    
+        background-color="dark"
+    
+    
+    
+    
+        title-text="ICONS: THE FUT 100"
+    
+    
+    
+        copy-text="Introducing the FUT 100, 100 of the greatest footballers ever to play the game"
+    
+    
+        image-smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/fut21-hero-medium-icons-7x2-xl.jpg.adapt.crop16x9.320w.jpg"
+        image-small="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/fut21-hero-medium-icons-7x2-xl.jpg.adapt.crop16x9.767w.jpg"
+        image-medium="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/fut21-hero-medium-icons-7x2-xl.jpg.adapt.crop2x1.1023w.jpg"
+        image-large="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/fut21-hero-medium-icons-7x2-xl.jpg.adapt.crop5x2.1455w.jpg"
+        image-largest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/fut21-hero-medium-icons-7x2-xl.jpg.adapt.crop7x2.1920w.jpg"
+        image-tooltip=""
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        spacing-bottom="none"
+    
+    
+        spacing-top="none"
+    
+    
+        scrim-color="none"
+    
+    
+        scrim-opacity="medium"
+    
+    
+    unresolved
+    
+        custom-styles="{&quot;xl&quot;:{&quot;paddingLeft&quot;:&quot;35%&quot;,&quot;paddingRight&quot;:&quot;30%&quot;},&quot;l&quot;:{&quot;paddingLeft&quot;:&quot;37%&quot;,&quot;paddingRight&quot;:&quot;30%&quot;}}"
+    
+>
+    
+        <h1>ICONS: THE FUT 100</h1>
+    
+    
+    
+        <p>Introducing the FUT 100, 100 of the greatest footballers ever to play the game</p>
+    
+    
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/fut21-hero-medium-icons-7x2-xl.jpg.adapt.crop16x9.320w.jpg"
+            alt=""
+            srcset="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/fut21-hero-medium-icons-7x2-xl.jpg.adapt.crop16x9.320w.jpg 320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/fut21-hero-medium-icons-7x2-xl.jpg.adapt.crop16x9.767w.jpg 768w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/fut21-hero-medium-icons-7x2-xl.jpg.adapt.crop2x1.1023w.jpg 1024w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/fut21-hero-medium-icons-7x2-xl.jpg.adapt.crop5x2.1455w.jpg 1320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ultimate-team/features/images/fut21-hero-medium-icons-7x2-xl.jpg.adapt.crop7x2.1920w.jpg 1456w"
+        />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="standard"
+    
+    
+        link-url="/en-us/games/fifa/fifa-21/ultimate-team/icons"
+    
+    
+    
+        link-text="Learn more"
+    
+    
+        icon="none"
+    
+    
+    
+        fill-color="none"
+    
+    
+        text-color="light"
+    
+    
+        stroke-color="light"
+    
+    
+        target="_blank"
+    
+    
+    
+    
+    
+        intent="navigation"
+    
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+            href="/en-us/games/fifa/fifa-21/ultimate-team/icons"
+        
+        
+    >
+        
+            Learn more
+        
+    </a>
+</ea-cta>
+
+    
+</ea-hero>
+
+</ea-section-column>
+
+</ea-section>
+
+
+
+
+    
+<ea-elements-loader elements="ea-section">
+</ea-elements-loader>
+<ea-section
+    unresolved
+    slot="section"
+    
+        type="full-bleed"
+    
+    
+        layout="100"
+    
+    
+        background-color="none"
+    
+    
+        background-overflow="hidden"
+    
+    
+        spacing-top="none"
+    
+    
+        spacing-bottom="none"
+    
+    
+    
+    
+    
+>
+    
+    
+<ea-section-column
+    slot="section-column"
+    
+        indent-left=""
+    
+    
+        indent-right=""
+    
+    
+        text-align="left"
+    
+>
+    
+<ea-elements-loader elements="ea-hero">
+</ea-elements-loader>
+<ea-hero
+    
+        layout="medium"
+    
+    
+        text-position="left"
+    
+    
+        text-align="left"
+    
+    
+        text-color="light"
+    
+    
+    
+    
+        background-color="none"
+    
+    
+    
+    
+    
+    
+        copy-text="Get more from your game with EA Play**. Try FIFA 21 before launch, starting October 1 and score exclusive pre-launch challenges and rewards – plus benefits all season long, like unique items, Ultimate Team Season Objective XP boosts, and a 10% discount on EA digital purchases."
+    
+    
+        image-smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/ea-play-subscription/f21-hero-medium-ea-play-pro-7x2-xl.jpg.adapt.crop3x5.320w.jpg"
+        image-small="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/ea-play-subscription/f21-hero-medium-ea-play-pro-7x2-xl.jpg.adapt.crop3x5.767w.jpg"
+        image-medium="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/ea-play-subscription/f21-hero-medium-ea-play-pro-7x2-xl.jpg.adapt.crop2x1.1023w.jpg"
+        image-large="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/ea-play-subscription/f21-hero-medium-ea-play-pro-7x2-xl.jpg.adapt.crop5x2.1455w.jpg"
+        image-largest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/ea-play-subscription/f21-hero-medium-ea-play-pro-7x2-xl.jpg.adapt.crop7x2.1920w.jpg"
+        image-tooltip=""
+    
+    
+    
+    
+    
+    
+        logo-image="https://media.contentapi.ea.com/content/dam/eacom/subscription/ea-play/common/hero-logos/color/ea-play-logo-coral-hero-logo-small.svg"
+    
+    
+    
+    
+    
+    
+    
+        spacing-bottom="none"
+    
+    
+        spacing-top="none"
+    
+    
+        scrim-color="none"
+    
+    
+        scrim-opacity="medium"
+    
+    
+    unresolved
+    
+        custom-styles="{}"
+    
+>
+    
+    
+    
+        <p>Get more from your game with EA Play**. Try FIFA 21 before launch, starting October 1 and score exclusive pre-launch challenges and rewards – plus benefits all season long, like unique items, Ultimate Team Season Objective XP boosts, and a 10% discount on EA digital purchases.</p>
+    
+    
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/ea-play-subscription/f21-hero-medium-ea-play-pro-7x2-xl.jpg.adapt.crop3x5.320w.jpg"
+            alt=""
+            srcset="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/ea-play-subscription/f21-hero-medium-ea-play-pro-7x2-xl.jpg.adapt.crop3x5.320w.jpg 320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/ea-play-subscription/f21-hero-medium-ea-play-pro-7x2-xl.jpg.adapt.crop3x5.767w.jpg 768w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/ea-play-subscription/f21-hero-medium-ea-play-pro-7x2-xl.jpg.adapt.crop2x1.1023w.jpg 1024w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/ea-play-subscription/f21-hero-medium-ea-play-pro-7x2-xl.jpg.adapt.crop5x2.1455w.jpg 1320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/buy/common/ea-play-subscription/f21-hero-medium-ea-play-pro-7x2-xl.jpg.adapt.crop7x2.1920w.jpg 1456w"
+        />
+    
+    
+    
+    
+    
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/eacom/subscription/ea-play/common/hero-logos/color/ea-play-logo-coral-hero-logo-small.svg"
+            
+            
+        />
+    
+    
+    
+    
+    
+    
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="standard"
+    
+    
+        link-url="/en-us/ea-play?join-now=true"
+    
+    
+    
+        link-text="Join EA Play"
+    
+    
+        icon="none"
+    
+    
+    
+        fill-color="none"
+    
+    
+        text-color="light"
+    
+    
+        stroke-color="light"
+    
+    
+        target="_self"
+    
+    
+    
+    
+    
+        intent="navigation"
+    
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+            href="/en-us/ea-play?join-now=true"
+        
+        
+    >
+        
+            Join EA Play
+        
+    </a>
+</ea-cta>
+
+    
+</ea-hero>
+
+</ea-section-column>
+
+</ea-section>
+
+
+
+
+    
+<ea-elements-loader elements="ea-section">
+</ea-elements-loader>
+<ea-section
+    unresolved
+    slot="section"
+    
+        type="full-bleed"
+    
+    
+        layout="100"
+    
+    
+        background-color="none"
+    
+    
+        background-overflow="hidden"
+    
+    
+        spacing-top="none"
+    
+    
+        spacing-bottom="none"
+    
+    
+    
+    
+    
+>
+    
+    
+<ea-section-column
+    slot="section-column"
+    
+        indent-left=""
+    
+    
+        indent-right=""
+    
+    
+        text-align="left"
+    
+>
+    
+<ea-elements-loader elements="ea-hero">
+</ea-elements-loader>
+<ea-hero
+    
+        layout="medium"
+    
+    
+        text-position="left"
+    
+    
+        text-align="left"
+    
+    
+        text-color="dark"
+    
+    
+        stacked
+    
+    
+    
+        background-color="none"
+    
+    
+    
+    
+        title-text="FIFA 21 PLAYER RATINGS"
+    
+    
+    
+        copy-text="Football has returned, and the ratings have been decided. Welcome to the most comprehensive set of player ratings ever assembled, including the top 1000 players in FIFA 21."
+    
+    
+        image-smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ratings-collective/images/2020/09/f21-ratings-hero-medium-keyart-home-7x2-xl.jpg.adapt.crop16x9.320w.jpg"
+        image-small="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ratings-collective/images/2020/09/f21-ratings-hero-medium-keyart-home-7x2-xl.jpg.adapt.crop16x9.767w.jpg"
+        image-medium="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ratings-collective/images/2020/09/f21-ratings-hero-medium-keyart-home-7x2-xl.jpg.adapt.crop2x1.1023w.jpg"
+        image-large="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ratings-collective/images/2020/09/f21-ratings-hero-medium-keyart-home-7x2-xl.jpg.adapt.crop5x2.1455w.jpg"
+        image-largest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ratings-collective/images/2020/09/f21-ratings-hero-medium-keyart-home-7x2-xl.jpg.adapt.crop7x2.1920w.jpg"
+        image-tooltip=""
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        spacing-bottom="none"
+    
+    
+        spacing-top="none"
+    
+    
+        scrim-color="none"
+    
+    
+        scrim-opacity="medium"
+    
+    
+    unresolved
+    
+        custom-styles="{&quot;xl&quot;:{&quot;paddingLeft&quot;:&quot;20%&quot;},&quot;l&quot;:{&quot;paddingLeft&quot;:&quot;18%&quot;},&quot;m&quot;:{&quot;paddingLeft&quot;:&quot;17%&quot;,&quot;paddingRight&quot;:&quot;36%&quot;}}"
+    
+>
+    
+        <h1>FIFA 21 PLAYER RATINGS</h1>
+    
+    
+    
+        <p>Football has returned, and the ratings have been decided. Welcome to the most comprehensive set of player ratings ever assembled, including the top 1000 players in FIFA 21.</p>
+    
+    
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ratings-collective/images/2020/09/f21-ratings-hero-medium-keyart-home-7x2-xl.jpg.adapt.crop16x9.320w.jpg"
+            alt=""
+            srcset="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ratings-collective/images/2020/09/f21-ratings-hero-medium-keyart-home-7x2-xl.jpg.adapt.crop16x9.320w.jpg 320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ratings-collective/images/2020/09/f21-ratings-hero-medium-keyart-home-7x2-xl.jpg.adapt.crop16x9.767w.jpg 768w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ratings-collective/images/2020/09/f21-ratings-hero-medium-keyart-home-7x2-xl.jpg.adapt.crop2x1.1023w.jpg 1024w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ratings-collective/images/2020/09/f21-ratings-hero-medium-keyart-home-7x2-xl.jpg.adapt.crop5x2.1455w.jpg 1320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/ratings-collective/images/2020/09/f21-ratings-hero-medium-keyart-home-7x2-xl.jpg.adapt.crop7x2.1920w.jpg 1456w"
+        />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="standard"
+    
+    
+        link-url="/en-us/games/fifa/fifa-21/ratings/ratings-database"
+    
+    
+    
+        link-text="See Top 1000"
+    
+    
+        icon="none"
+    
+    
+    
+        fill-color="none"
+    
+    
+        text-color="dark"
+    
+    
+        stroke-color="dark"
+    
+    
+        target="_self"
+    
+    
+    
+    
+    
+        intent="buy"
+    
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+            href="/en-us/games/fifa/fifa-21/ratings/ratings-database"
+        
+        
+    >
+        
+            See Top 1000
+        
+    </a>
+</ea-cta>
+
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="standard"
+    
+    
+        link-url="/en-us/games/fifa/fifa-21/ratings"
+    
+    
+    
+        link-text="Ratings Highlights"
+    
+    
+        icon="none"
+    
+    
+    
+        fill-color="none"
+    
+    
+        text-color="dark"
+    
+    
+        stroke-color="dark"
+    
+    
+        target="_self"
+    
+    
+    
+    
+    
+        intent="buy"
+    
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+            href="/en-us/games/fifa/fifa-21/ratings"
+        
+        
+    >
+        
+            Ratings Highlights
+        
+    </a>
+</ea-cta>
+
+    
+</ea-hero>
+
+</ea-section-column>
+
+</ea-section>
+
+
+
+
+
+
+    
+        
+            
+                
+
+    
+<ea-elements-loader elements="ea-section">
+</ea-elements-loader>
+<ea-section
+    unresolved
+    slot="section"
+    
+        type="railed"
+    
+    
+        layout="25:75"
+    
+    
+        background-color="none"
+    
+    
+        background-overflow="hidden"
+    
+    
+        spacing-top="none"
+    
+    
+        spacing-bottom="none"
+    
+    
+    
+    
+        background-image-smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/section_backgrounds/fifa21-section-bg-newsletter-signup-16x9-xl.png.adapt.320w.png"
+        background-image-small="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/section_backgrounds/fifa21-section-bg-newsletter-signup-16x9-xl.png.adapt.768w.png"
+        background-image-medium="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/section_backgrounds/fifa21-section-bg-newsletter-signup-16x9-xl.png.adapt.1024w.png"
+        background-image-large="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/section_backgrounds/fifa21-section-bg-newsletter-signup-16x9-xl.png.adapt.1456w.png"
+        background-image-largest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/section_backgrounds/fifa21-section-bg-newsletter-signup-16x9-xl.png.adapt.1920w.png"
+        image-tooltip=""
+    
+    
+>
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/section_backgrounds/fifa21-section-bg-newsletter-signup-16x9-xl.png.adapt.320w.png"
+            alt=""
+            srcset="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/section_backgrounds/fifa21-section-bg-newsletter-signup-16x9-xl.png.adapt.320w.png 320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/section_backgrounds/fifa21-section-bg-newsletter-signup-16x9-xl.png.adapt.768w.png 768w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/section_backgrounds/fifa21-section-bg-newsletter-signup-16x9-xl.png.adapt.1024w.png 1024w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/section_backgrounds/fifa21-section-bg-newsletter-signup-16x9-xl.png.adapt.1456w.png 1320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/section_backgrounds/fifa21-section-bg-newsletter-signup-16x9-xl.png.adapt.1920w.png 1456w"
+        />
+    
+    
+<ea-section-column
+    slot="section-column"
+    
+    
+    
+        text-align="center"
+    
+>
+    
+<ea-elements-loader elements="ea-spacer">
+</ea-elements-loader>
+<ea-spacer
+    unresolved
+    
+        smallest="20px"
+    
+    
+        small="20px"
+    
+    
+        medium="26px"
+    
+    
+        large="32px"
+    
+    
+        largest="32px"
+    
+>
+</ea-spacer>
+
+
+    <div>
+        <img src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/news/common/fut21-newsletter-section-incentive.png" width=100%>
+    </div>
+
+
+<ea-elements-loader elements="ea-spacer">
+</ea-elements-loader>
+<ea-spacer
+    unresolved
+    
+        smallest="0rem"
+    
+    
+        small="0rem"
+    
+    
+        medium="22px"
+    
+    
+        large="28px"
+    
+    
+        largest="28px"
+    
+>
+</ea-spacer>
+
+</ea-section-column>
+
+<ea-section-column
+    slot="section-column"
+    
+    
+    
+        text-align="left"
+    
+>
+    
+<ea-elements-loader elements="ea-spacer">
+</ea-elements-loader>
+<ea-spacer
+    unresolved
+    
+        smallest="0rem"
+    
+    
+        small="0rem"
+    
+    
+        medium="0px"
+    
+    
+        large="32px"
+    
+    
+        largest="0px"
+    
+>
+</ea-spacer>
+
+<ea-elements-loader elements="ea-text">
+</ea-elements-loader>
+<ea-text
+    unresolved
+    slot="text"
+    
+        text-color="light"
+    
+>
+    <p class="l1">Sign Up for EA SPORTS FIFA news and Get a FUT Loan Icon Player<sup>††</sup> in FIFA 21.</p>
+
+    
+</ea-text>
+
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="standard"
+    
+    
+        link-url="/en-us/games/fifa/fifa-21/newsletter"
+    
+    
+    
+        link-text="SIGN UP"
+    
+    
+        icon="none"
+    
+    
+    
+        fill-color="none"
+    
+    
+        text-color="light"
+    
+    
+        stroke-color="light"
+    
+    
+        target="_self"
+    
+    
+    
+    
+    
+        intent="news"
+    
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+            href="/en-us/games/fifa/fifa-21/newsletter"
+        
+        
+    >
+        
+            SIGN UP
+        
+    </a>
+</ea-cta>
+
+<ea-elements-loader elements="ea-spacer">
+</ea-elements-loader>
+<ea-spacer
+    unresolved
+    
+        smallest="20px"
+    
+    
+        small="20px"
+    
+    
+        medium="0px"
+    
+    
+        large="16px"
+    
+    
+        largest="16px"
+    
+>
+</ea-spacer>
+
+</ea-section-column>
+
+</ea-section>
+
+
+
+            
+                
+
+    
+<ea-elements-loader elements="ea-section">
+</ea-elements-loader>
+<ea-section
+    unresolved
+    slot="section"
+    
+        type="railed"
+    
+    
+        layout="100"
+    
+    
+        background-color="none"
+    
+    
+        background-overflow="hidden"
+    
+    
+        spacing-top="none"
+    
+    
+        spacing-bottom="none"
+    
+    
+    
+    
+        background-image-smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.320w.jpg"
+        background-image-small="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.768w.jpg"
+        background-image-medium="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.1024w.jpg"
+        background-image-large="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.1456w.jpg"
+        background-image-largest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.1920w.jpg"
+        image-tooltip=""
+    
+    
+>
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.320w.jpg"
+            alt=""
+            srcset="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.320w.jpg 320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.768w.jpg 768w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.1024w.jpg 1024w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.1456w.jpg 1320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.1920w.jpg 1456w"
+        />
+    
+    
+<ea-section-column
+    slot="section-column"
+    
+        indent-left=""
+    
+    
+        indent-right=""
+    
+    
+        text-align="left"
+    
+>
+    
+<ea-elements-loader elements="ea-spacer">
+</ea-elements-loader>
+<ea-spacer
+    unresolved
+    
+        smallest="2rem"
+    
+    
+        small="2rem"
+    
+    
+        medium="2rem"
+    
+    
+        large="2rem"
+    
+    
+        largest="2rem"
+    
+>
+</ea-spacer>
+
+</ea-section-column>
+
+</ea-section>
+
+
+    
+<ea-elements-loader elements="ea-section">
+</ea-elements-loader>
+<ea-section
+    unresolved
+    slot="section"
+    
+        type="railed"
+    
+    
+        layout="100"
+    
+    
+        background-color="dark"
+    
+    
+        background-overflow="hidden"
+    
+    
+        spacing-top="none"
+    
+    
+        spacing-bottom="none"
+    
+    
+    
+    
+        background-image-smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.320w.jpg"
+        background-image-small="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.768w.jpg"
+        background-image-medium="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.1024w.jpg"
+        background-image-large="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.1456w.jpg"
+        background-image-largest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.1920w.jpg"
+        image-tooltip=""
+    
+    
+>
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.320w.jpg"
+            alt=""
+            srcset="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.320w.jpg 320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.768w.jpg 768w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.1024w.jpg 1024w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.1456w.jpg 1320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/disclaimers/common/fifa21-section-bg-disclaimers-16x9-xl.jpg.adapt.1920w.jpg 1456w"
+        />
+    
+    
+<ea-section-column
+    slot="section-column"
+    
+        indent-left=""
+    
+    
+        indent-right=""
+    
+    
+        text-align="left"
+    
+>
+    
+<ea-elements-loader elements="ea-text">
+</ea-elements-loader>
+<ea-text
+    unresolved
+    slot="text"
+    
+        text-color="light"
+    
+>
+    <p class="b2"><sup>††</sup>CONDITIONS AND RESTRICTIONS APPLY. SEE&nbsp;<a href="/en-us/games/fifa/fifa-21/newsletter">https://www.ea.com/games/fifa/fifa-21/newsletter</a>&nbsp;FOR DETAILS.</p>
+
+    
+</ea-text>
+
+</ea-section-column>
+
+</ea-section>
+
+
+
+
+    
+<ea-elements-loader elements="ea-section">
+</ea-elements-loader>
+<ea-section
+    unresolved
+    slot="section"
+    
+        type="railed"
+    
+    
+        layout="100"
+    
+    
+        background-color="none"
+    
+    
+        background-overflow="hidden"
+    
+    
+        spacing-top="none"
+    
+    
+        spacing-bottom="none"
+    
+    
+    
+    
+        background-image-smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/dual-entitlement/common/dual-entitlement-banner-gradient-xl.png.adapt.320w.png"
+        background-image-small="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/dual-entitlement/common/dual-entitlement-banner-gradient-xl.png.adapt.768w.png"
+        background-image-medium="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/dual-entitlement/common/dual-entitlement-banner-gradient-xl.png.adapt.1024w.png"
+        background-image-large="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/dual-entitlement/common/dual-entitlement-banner-gradient-xl.png.adapt.1456w.png"
+        background-image-largest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/dual-entitlement/common/dual-entitlement-banner-gradient-xl.png.adapt.1920w.png"
+        image-tooltip=""
+    
+    
+>
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/dual-entitlement/common/dual-entitlement-banner-gradient-xl.png.adapt.320w.png"
+            alt=""
+            srcset="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/dual-entitlement/common/dual-entitlement-banner-gradient-xl.png.adapt.320w.png 320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/dual-entitlement/common/dual-entitlement-banner-gradient-xl.png.adapt.768w.png 768w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/dual-entitlement/common/dual-entitlement-banner-gradient-xl.png.adapt.1024w.png 1024w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/dual-entitlement/common/dual-entitlement-banner-gradient-xl.png.adapt.1456w.png 1320w, https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/dual-entitlement/common/dual-entitlement-banner-gradient-xl.png.adapt.1920w.png 1456w"
+        />
+    
+    
+<ea-section-column
+    slot="section-column"
+    
+        indent-left="1"
+    
+    
+        indent-right="1"
+    
+    
+        text-align="center"
+    
+>
+    
+<ea-elements-loader elements="ea-spacer">
+</ea-elements-loader>
+<ea-spacer
+    unresolved
+    
+        smallest="20px"
+    
+    
+        small="20px"
+    
+    
+        medium="20px"
+    
+    
+        large="20px"
+    
+    
+        largest="20px"
+    
+>
+</ea-spacer>
+
+
+    <div>
+        <img class="" src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/dual-entitlement/common/dual-entitlement-no-text.svg"> 
+
+    </div>
+
+
+<ea-elements-loader elements="ea-text">
+</ea-elements-loader>
+<ea-text
+    unresolved
+    slot="text"
+    
+        text-color="light"
+    
+>
+    <h2 class="d5">DUAL ENTITLEMENT</h2>
+<p class="b2">UPGRADE TO PS5 OR XBOX SERIES X AT NO ADDITIONAL COST</p>
+
+    
+</ea-text>
+
+<ea-elements-loader elements="ea-spacer">
+</ea-elements-loader>
+<ea-spacer
+    unresolved
+    
+        smallest="20px"
+    
+    
+        small="20px"
+    
+    
+        medium="10px"
+    
+    
+        large="10px"
+    
+    
+        largest="10px"
+    
+>
+</ea-spacer>
+
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="standard"
+    
+    
+        link-url="/games/fifa/fifa-21/news/fifa-21-dual-entitlement-info-faq"
+    
+    
+    
+        link-text="Learn More"
+    
+    
+        icon="none"
+    
+    
+    
+        fill-color="nintendo-brand"
+    
+    
+        text-color="dark"
+    
+    
+        stroke-color="none"
+    
+    
+        target="_self"
+    
+    
+    
+    
+    
+        intent="navigation"
+    
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+            href="/games/fifa/fifa-21/news/fifa-21-dual-entitlement-info-faq"
+        
+        
+    >
+        
+            Learn More
+        
+    </a>
+</ea-cta>
+
+<ea-elements-loader elements="ea-cta">
+</ea-elements-loader>
+<ea-cta
+    
+        slot="cta"
+    
+    
+        type="standard"
+    
+    
+        link-url="https://www.ea.com/sports/nextlevel"
+    
+    
+    
+        link-text="Next Level"
+    
+    
+        icon="none"
+    
+    
+    
+        fill-color="none"
+    
+    
+        text-color="light"
+    
+    
+        stroke-color="light"
+    
+    
+        target="_blank"
+    
+    
+    
+    
+    
+        intent="navigation"
+    
+    
+    
+    
+        emphasis="primary"
+    
+    
+    
+    unresolved
+>
+    <a
+        
+            href="https://www.ea.com/sports/nextlevel"
+        
+        
+    >
+        
+            Next Level
+        
+    </a>
+</ea-cta>
+
+<ea-elements-loader elements="ea-spacer">
+</ea-elements-loader>
+<ea-spacer
+    unresolved
+    
+        smallest="20px"
+    
+    
+        small="20px"
+    
+    
+        medium="15px"
+    
+    
+        large="15px"
+    
+    
+        largest="15px"
+    
+>
+</ea-spacer>
+
+</ea-section-column>
+
+</ea-section>
+
+<ea-elements-loader elements="ea-section">
+</ea-elements-loader>
+<ea-section
+    unresolved
+    slot="section"
+    
+        type="railed"
+    
+    
+        layout="100"
+    
+    
+        background-color="dark"
+    
+    
+        background-overflow="visible"
+    
+    
+        spacing-top="none"
+    
+    
+        spacing-bottom="none"
+    
+    
+    
+    
+    
+>
+    
+    
+<ea-section-column
+    slot="section-column"
+    
+    
+    
+        text-align="left"
+    
+>
+    
+<ea-elements-loader elements="ea-text">
+</ea-elements-loader>
+<ea-text
+    unresolved
+    slot="text"
+    
+        text-color="light"
+    
+>
+    <p class="b3">Disc upgrade not available for PlayStation 5 Digital Edition. Digital purchase required for consoles without optical disc drive. View the <a href="/games/fifa/fifa-21/news/fifa-21-dual-entitlement-info-faq" style="text-decoration: underline;">Terms &amp; Conditions</a></p>
+
+    
+</ea-text>
+
+</ea-section-column>
+
+</ea-section>
+
+
+
+
+
+            
+        
+    
+
+
+
+
+
+    
+        
+            
+                
+
+    
+<ea-elements-loader elements="ea-local-footer, ea-local-links, ea-local-link, ea-social-links, ea-social-link">
+</ea-elements-loader>
+<ea-local-footer theme="light" unresolved>
+    <ea-local-links
+        slot="local-links"
+        title-text="FIFA 21"
+        text-color="light"
+        unresolved
+    >
+    
+        <ea-local-link
+            slot="local-link"
+            link-url="/games/fifa/fifa-21"
+            link-title="About FIFA 21"
+            link-text="About FIFA 21"
+            text-color="light"
+            unresolved
+        >
+            <a
+                href="/games/fifa/fifa-21"
+                title="About FIFA 21"
+            >About FIFA 21</a>
+        </ea-local-link>
+    
+        <ea-local-link
+            slot="local-link"
+            link-url="/games/fifa/fifa-21/news"
+            link-title="News"
+            link-text="News"
+            text-color="light"
+            unresolved
+        >
+            <a
+                href="/games/fifa/fifa-21/news"
+                title="News"
+            >News</a>
+        </ea-local-link>
+    
+        <ea-local-link
+            slot="local-link"
+            link-url="/games/fifa/fifa-mobile"
+            link-title="FIFA Mobile"
+            link-text="FIFA Mobile"
+            text-color="light"
+            unresolved
+        >
+            <a
+                href="/games/fifa/fifa-mobile"
+                title="FIFA Mobile"
+            >FIFA Mobile</a>
+        </ea-local-link>
+    
+        <ea-local-link
+            slot="local-link"
+            link-url="/games/fifa/fifa-21/buy"
+            link-title="Pre-order FIFA Now"
+            link-text="Pre-order FIFA Now"
+            text-color="light"
+            unresolved
+        >
+            <a
+                href="/games/fifa/fifa-21/buy"
+                title="Pre-order FIFA Now"
+            >Pre-order FIFA Now</a>
+        </ea-local-link>
+    
+    </ea-local-links>
+
+    <ea-social-links
+        slot="social-links"
+        text-color="light"
+        title-text="Follow FIFA"
+        unresolved
+    >
+    
+        <ea-social-link
+            slot="social-link"
+            link-url="https://www.twitch.tv/easportsfifa"
+            link-title="Twitch"
+            link-target="_blank"
+            text-color="light"
+            theme="brand"
+            social-network="twitch"
+            unresolved
+        >
+            <a
+                href="https://www.twitch.tv/easportsfifa"
+                title="Twitch"
+            >twitch</a>
+        </ea-social-link>
+    
+        <ea-social-link
+            slot="social-link"
+            link-url="https://twitter.com/easportsfifa"
+            link-title="Twitter"
+            link-target="_blank"
+            text-color="light"
+            theme="brand"
+            social-network="twitter"
+            unresolved
+        >
+            <a
+                href="https://twitter.com/easportsfifa"
+                title="Twitter"
+            >twitter</a>
+        </ea-social-link>
+    
+        <ea-social-link
+            slot="social-link"
+            link-url="https://www.instagram.com/easportsfifa"
+            link-title="Instagram"
+            link-target="_blank"
+            text-color="light"
+            theme="brand"
+            social-network="instagram"
+            unresolved
+        >
+            <a
+                href="https://www.instagram.com/easportsfifa"
+                title="Instagram"
+            >instagram</a>
+        </ea-social-link>
+    
+        <ea-social-link
+            slot="social-link"
+            link-url="https://www.facebook.com/easportsfifa"
+            link-title="Facebook"
+            link-target="_blank"
+            text-color="light"
+            theme="brand"
+            social-network="facebook"
+            unresolved
+        >
+            <a
+                href="https://www.facebook.com/easportsfifa"
+                title="Facebook"
+            >facebook</a>
+        </ea-social-link>
+    
+    </ea-social-links>
+
+    
+
+    
+        
+<ea-elements-loader elements="ea-rating-link">
+</ea-elements-loader>
+<ea-rating-link
+    unresolved
+    slot="rating-link"
+    link-url="http://www.fifa.com/"
+    link-title="Official FIFA Website"
+    
+    
+        image-smallest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/navigation/fifa-21-fifa-logo-footer-olp-white.svg"
+        image-small="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/navigation/fifa-21-fifa-logo-footer-olp-white.svg"
+        image-medium="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/navigation/fifa-21-fifa-logo-footer-olp-white.svg"
+        image-large="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/navigation/fifa-21-fifa-logo-footer-olp-white.svg"
+        image-largest="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-21/global_assets/common/navigation/fifa-21-fifa-logo-footer-olp-white.svg"
+        image-alt=""
+        
+        
+    
+>
+    <a
+        href="http://www.fifa.com/"
+        title="Official FIFA Website"
+    ></a>
+</ea-rating-link>
+
+<ea-elements-loader elements="ea-rating-link">
+</ea-elements-loader>
+<ea-rating-link
+    unresolved
+    slot="rating-link"
+    link-url="https://www.esrb.org/ratings-guide/"
+    link-title="ESRB Ratings"
+    
+        image-max-height="90px"
+    
+    
+        image-smallest="https://media.contentapi.ea.com/content/dam/gin/common/rating-icons/esrb/fifa21-esrb-rating-e.svg"
+        image-small="https://media.contentapi.ea.com/content/dam/gin/common/rating-icons/esrb/fifa21-esrb-rating-e.svg"
+        image-medium="https://media.contentapi.ea.com/content/dam/gin/common/rating-icons/esrb/fifa21-esrb-rating-e.svg"
+        image-large="https://media.contentapi.ea.com/content/dam/gin/common/rating-icons/esrb/fifa21-esrb-rating-e.svg"
+        image-largest="https://media.contentapi.ea.com/content/dam/gin/common/rating-icons/esrb/fifa21-esrb-rating-e.svg"
+        image-alt=""
+        
+        
+    
+>
+    <a
+        href="https://www.esrb.org/ratings-guide/"
+        title="ESRB Ratings"
+    ></a>
+</ea-rating-link>
+
+    
+    
+</ea-local-footer>
+
+
+
+            
+        
+    
+
+
+
+
+    
+        
+            
+                
+
+    
+<ea-elements-loader elements="ea-network-footer, ea-network-legal, ea-link, ea-content-loader">
+</ea-elements-loader>
+<ea-network-footer
+    theme="dark"
+    
+    
+        logo-image="https://media.contentapi.ea.com/content/dam/eacom/en-us/common/october-ea-ring.png"
+        logo-tooltip=""
+    
+    
+        logo-link-url="https://www.ea.com"
+        logo-link-text="EA"
+        logo-link-tooltip="EA"
+    
+    unresolved
+>
+    
+        <img
+            src="https://media.contentapi.ea.com/content/dam/eacom/en-us/common/october-ea-ring.png"
+            alt=""
+        />
+    
+    
+        
+            <ea-link
+                slot="link"
+                link-href="/en-us/games"
+                link-title="Browse Games"
+                link-text="Browse Games"
+                text-color="dark"
+                unresolved
+            >
+                <a
+                    href="/en-us/games"
+                    title="Browse Games"
+                >Browse Games</a>
+            </ea-link>
+        
+            <ea-link
+                slot="link"
+                link-href="/en-us/news"
+                link-title="Latest News"
+                link-text="Latest News"
+                text-color="dark"
+                unresolved
+            >
+                <a
+                    href="/en-us/news"
+                    title="Latest News"
+                >Latest News</a>
+            </ea-link>
+        
+            <ea-link
+                slot="link"
+                link-href="https://help.ea.com/en/"
+                link-title="Help Center"
+                link-text="Help Center"
+                text-color="dark"
+                unresolved
+            >
+                <a
+                    href="https://help.ea.com/en/"
+                    title="Help Center"
+                >Help Center</a>
+            </ea-link>
+        
+            <ea-link
+                slot="link"
+                link-href="/en-us/forums"
+                link-title="EA Forums"
+                link-text="EA Forums"
+                text-color="dark"
+                unresolved
+            >
+                <a
+                    href="/en-us/forums"
+                    title="EA Forums"
+                >EA Forums</a>
+            </ea-link>
+        
+            <ea-link
+                slot="link"
+                link-href="/en-us/about"
+                link-title="About Us"
+                link-text="About Us"
+                text-color="dark"
+                unresolved
+            >
+                <a
+                    href="/en-us/about"
+                    title="About Us"
+                >About Us</a>
+            </ea-link>
+        
+            <ea-link
+                slot="link"
+                link-href="/en-us/careers"
+                link-title="Careers"
+                link-text="Careers"
+                text-color="dark"
+                unresolved
+            >
+                <a
+                    href="/en-us/careers"
+                    title="Careers"
+                >Careers</a>
+            </ea-link>
+        
+    
+    
+<ea-elements-loader elements="ea-locale-selector">
+</ea-elements-loader>
+<ea-locale-selector
+    slot="locale-selector"
+    theme="dark"
+    value="en-us"
+    
+    unresolved
+    >
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="en-us"
+        >United States</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="en-gb"
+        >United Kingdom</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="ar-sa"
+        >العربية</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="en-au"
+        >Australia</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="pt-br"
+        >Brasil</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="zh-hk"
+        >繁體中文(香港)</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="cs-cz"
+        >Česká republika</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="da-dk"
+        >Danmark</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="de-de"
+        >Deutschland</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="es-es"
+        >España</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="fr-fr"
+        >France</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="it-it"
+        >Italia</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="ja-jp"
+        >日本</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="ko-kr"
+        >대한민국</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="es-mx"
+        >México</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="nl-nl"
+        >Nederland</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="nb-no"
+        >Norge</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="pl-pl"
+        >Polska</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="ru-ru"
+        >Россия</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="sv-se"
+        >Sverige</ea-locale-selector-option>
+    
+        <ea-locale-selector-option
+            slot="locale-selector-option"
+            value="tr-tr"
+        >Türkiye</ea-locale-selector-option>
+    
+</ea-locale-selector>
+
+    <ea-network-legal
+        slot="network-legal"
+        copyright-text="© 2020 Electronic Arts Inc."
+        text-color="dark"
+        unresolved
+    >
+        
+            <ea-link
+                slot="link"
+                link-href="http://www.ea.com/en-us/legal"
+                link-title="Legal"
+                link-text="Legal"
+                text-color="dark"
+                unresolved
+            >
+                <a
+                    href="http://www.ea.com/en-us/legal"
+                    title="Legal"
+                >Legal</a>
+            </ea-link>
+        
+            <ea-link
+                slot="link"
+                link-href="http://www.ea.com/en-us/service-updates"
+                link-title="Online Service Updates"
+                link-text="Online Service Updates"
+                text-color="dark"
+                unresolved
+            >
+                <a
+                    href="http://www.ea.com/en-us/service-updates"
+                    title="Online Service Updates"
+                >Online Service Updates</a>
+            </ea-link>
+        
+            <ea-link
+                slot="link"
+                link-href="https://www.ea.com/en-us/terms-of-service"
+                link-title="User Agreement"
+                link-text="User Agreement"
+                text-color="dark"
+                unresolved
+            >
+                <a
+                    href="https://www.ea.com/en-us/terms-of-service"
+                    title="User Agreement"
+                >User Agreement</a>
+            </ea-link>
+        
+            <ea-link
+                slot="link"
+                link-href="http://tos.ea.com/legalapp/WEBPRIVACY/US/en/PC/"
+                link-title="Privacy &amp; Cookie Policy (Your Privacy Rights)"
+                link-text="Privacy &amp; Cookie Policy (Your Privacy Rights)"
+                text-color="dark"
+                unresolved
+            >
+                <a
+                    href="http://tos.ea.com/legalapp/WEBPRIVACY/US/en/PC/"
+                    title="Privacy &amp; Cookie Policy (Your Privacy Rights)"
+                >Privacy &amp; Cookie Policy (Your Privacy Rights)</a>
+            </ea-link>
+        
+        <ea-content-loader
+            slot="link"
+            content-url="https://www.ea.com/ccpa/footer-link"
+        >
+        </ea-content-loader>
+    </ea-network-legal>
+    
+<ea-elements-loader elements="ea-truste">
+</ea-elements-loader>
+<ea-truste
+    unresolved
+    slot="truste"
+    
+        domain="ea.com"
+    
+>
+    <div>
+        
+            <a href="https://privacy.truste.com/privacy-seal/validation?rid=f1a11c5d-0232-4077-8498-2e69a38c1335" target="_blank">
+                <img style="border: none" src="//privacy-policy.truste.com/privacy-seal/seal?rid=f1a11c5d-0232-4077-8498-2e69a38c1335" alt="TRUSTe"/>
+            </a>
+        
+    </div>
+</ea-truste>
+
+</ea-network-footer>
+
+
+
+            
+        
+    
+
+
+<ea-player player-endpoint="/user-data"></ea-player>
+
+
+    
+        
+            
+                
+<ea-elements-loader elements="ea-modal">
+</ea-elements-loader>
+<ea-modal
+    modal
+    unresolved
+    
+        id="eacomagegate"
+    
+    
+        theme="dark"
+    
+    
+>
+    
+<ea-elements-loader elements="ea-age-gate">
+</ea-elements-loader>
+<ea-age-gate
+    unresolved
+    slot="age-gate"
+    id="eacomagegate"
+    
+        age="18"
+    
+    
+        error="You are not eligible to view this content."
+    
+    
+        message="Please provide your birth date. "
+    
+>
+    
+        
+<ea-elements-loader elements="ea-date-field">
+</ea-elements-loader>
+<ea-date-field
+    
+        slot="date-field"
+    
+    
+        type="date"
+    
+    
+    
+    
+    
+    
+        text-color="light"
+    
+    
+    
+        month-placeholder="MM"
+    
+    
+        day-placeholder="DD"
+    
+    
+        year-placeholder="YYYY"
+    
+    
+    
+        label-text="Enter your birthdate"
+    
+    
+    
+    unresolved
+>
+</ea-date-field>
+
+    
+    
+        
+<ea-elements-loader elements="ea-submit">
+</ea-elements-loader>
+<ea-submit
+    unresolved
+    
+        slot="submit"
+    
+    
+        value-text="Submit"
+    
+    
+        text-color="light"
+    
+    
+    
+></ea-submit>
+
+    
+</ea-age-gate>
+
+</ea-modal>
+
+            
+        
+    
+
+
+
+
+    
+        
+            
+                <script src="//pl.ea.com/release/4.12.0/elements/browser-support.min.js"></script>
+<script>
+    eaBrowserSupport.requiredFeatures = 'picture';
+    eaBrowserSupport.requiredHeading = 'Sorry, this browser is not supported';
+    eaBrowserSupport.requiredText = 'Please download a supported browser to view this webpage.';
+    eaBrowserSupport.recommendedFeatures = 'cssgrid';
+    eaBrowserSupport.recommendedText = 'This browser is not recommended and the webpage may not display properly.';
+    eaBrowserSupport.ctaText = 'Download Chrome';
+    eaBrowserSupport.ctaUrl = 'https://www.google.com/chrome/';
+    eaBrowserSupport.dismissText = 'Dismiss';
+    eaBrowserSupport.svgLogo = '';
+    eaBrowserSupport.init();
+</script>
+
+            
+                <script src="//pl.ea.com/release/4.12.0/elements/browser-support.min.js"></script>
+<script>
+    eaBrowserSupport.requiredFeatures = '';
+    eaBrowserSupport.requiredHeading = '';
+    eaBrowserSupport.requiredText = '';
+    eaBrowserSupport.recommendedFeatures = '';
+    eaBrowserSupport.recommendedText = '';
+    eaBrowserSupport.ctaText = '';
+    eaBrowserSupport.ctaUrl = '';
+    eaBrowserSupport.dismissText = '';
+    eaBrowserSupport.svgLogo = '';
+    eaBrowserSupport.init();
+</script>
+
+            
+        
+    
+
+
+
+
+    <ea-type-kit kit-url="//use.typekit.net/jjd6ead.js"></ea-type-kit>
+
+
+<!-- Google Tag Manager -->
+<script>
+    (function(w, d, s, l) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+
+        var f = d.getElementsByTagName(s)[0];
+        var j = d.createElement(s);
+        var dl = l !== 'dataLayer' ? '&l=' + l : '';
+
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-TG32RCX' + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer');
+</script>
+<!-- End Google Tag Manager -->
+
+
+
+    </body>
+</html>
+

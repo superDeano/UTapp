@@ -1,0 +1,93 @@
+//
+//  ContentView.swift
+//  UT
+//
+//  Created by Dean Chong San on 2024-01-02.
+//
+
+import SwiftUI
+import SwiftData
+
+
+
+struct ContentView: View {
+    @Environment(\.modelContext) private var modelContext
+//    @Query private var items: [Item]
+    @State private var latestPlayers = [Player]()
+    
+    @State private var searchText: String = ""
+    
+    var body: some View {
+        NavigationSplitView {
+            
+            List {
+                ForEach(latestPlayers) { latestPlayer in
+                    NavigationLink {
+                        PlayerInfoView(player: latestPlayer)
+                    } label: {
+                        Text("\(latestPlayer.name)")
+                    }
+                }
+//                .onDelete(perform: deleteItems)
+            }.onAppear(perform: getLatestPlayers)
+                .refreshable {
+                    getLatestPlayers()
+                }
+#if os(macOS)
+            .navigationSplitViewColumnWidth(min: 160, ideal: 180)
+#endif
+            /*.toolbar {
+                //#if os(iOS)
+                //                ToolbarItem(placement: .navigationBarTrailing) {
+                //                    EditButton()
+                //                }
+                //#endif
+                ToolbarItem {
+                    Button(action: getLatestPlayers) {
+                        Label("Refresh", systemImage: "arrow.triangle.2.circlepath")
+                    }
+                }
+            }*/
+        } detail: {
+            Text("Select an item")
+        }.searchable(text: $searchText)
+            .onSubmit() {
+                runSearch()
+            }
+            .onChange(of: searchText) { runSearch() }
+    }
+    
+    private func addItem() {
+        withAnimation {
+//            let newItem = Item(timestamp: Date())
+//            modelContext.insert(newItem)
+        }
+    }
+    
+    private func deleteItems(offsets: IndexSet) {
+        withAnimation {
+//            for index in offsets {
+//                modelContext.delete(items[index])
+//            }
+        }
+    }
+    
+    private func runSearch(){
+        if (!searchText.isEmpty){
+            print("Searching for \(searchText)")
+        }
+    }
+    
+    private func getLatestPlayers(){
+        let service = ContentService()
+        service.getLatestPlayers(finished: {
+            players in latestPlayers = players
+        })
+        print("After getting latestPlayers,",$latestPlayers.count)
+    }
+}
+
+#Preview {
+    ContentView()
+//        .modelContainer(for: Item.self, inMemory: true)
+}
