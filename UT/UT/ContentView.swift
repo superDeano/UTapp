@@ -12,6 +12,7 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var launchScreenState: LaunchScreenStateManager
 //    @Query private var items: [Item]
     @State private var latestPlayers = [Player]()
     
@@ -23,7 +24,7 @@ struct ContentView: View {
             List {
                 ForEach(latestPlayers) { latestPlayer in
                     NavigationLink {
-                        PlayerInfoView(player: latestPlayer)
+                        PlayerInfoView(for: latestPlayer)
                     } label: {
                         Text("\(latestPlayer.name)")
                     }
@@ -50,11 +51,16 @@ struct ContentView: View {
             }*/
         } detail: {
             Text("Select an item")
-        }.searchable(text: $searchText)
+        }
+//        .task {
+//            <#code#>
+//        }
+        .searchable(text: $searchText)
             .onSubmit() {
                 runSearch()
             }
             .onChange(of: searchText) { runSearch() }
+            
     }
     
     private func addItem() {
