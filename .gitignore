@@ -90,3 +90,5 @@ fastlane/test_output
 #iOSInjectionProject/
 *.paw
 *.DS_Store
+*.txt
+*.py
