@@ -4,37 +4,82 @@
 //
 //  Created by Dean Chong San on 2024-01-03.
 //
-
+import Combine
 import Foundation
 
 class ContentService {
-
-    let baseUrl = "https://www.futwiz.com/"
     
+    let baseUrl = "https://www.futwiz.com/"
+    static let baseContentUrl = "https://cdn.futwiz.com/assets/img/fc24/"
     
     func getLatestPlayers(finished: @escaping(([Player]) -> Void)) -> Void {
         guard let url = URL(string: "\(baseUrl)en/fc24/players/latest?appreq") else { return }
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request,completionHandler: {data, response, error in
             if let data = data {
-//                let decoder = JSONDecoder()
-//                do {
-//                    let da = try decoder.decode([Player].self, from: data)
-//                } catch {
-//                    print(error)
-//                    fatalError(error.localizedDescription)
-//                }
+                //                let decoder = JSONDecoder()
+                //                do {
+                //                    let da = try decoder.decode([Player].self, from: data)
+                //                } catch {
+                //                    print(error)
+                //                    fatalError(error.localizedDescription)
+                //                }
                 let decodedData = try? JSONDecoder().decode([Player].self, from: data)
-                    let players = decodedData ?? [Player]()
-                    finished(players)
-//                    fatalError("Error happened when decoding latest players.")
-//                    print("Error happened when decoding latest players.")
-//                }
+                let players = decodedData ?? [Player]()
+                finished(players)
+                //                    fatalError("Error happened when decoding latest players.")
+                //                    print("Error happened when decoding latest players.")
+                //                }
             } else if let error = error {
                 print("Error happened during call to get latest players. \(error)")
             }
         })
         task.resume()
-//        return players
+    }
+    
+    func getPlayerStats(for lineId: String, finished: @escaping((PlayerStats) -> Void)) -> Void {
+        guard let url = URL(string: "\(baseUrl)en/app/sold24/\(lineId)/console") else { return }
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request,completionHandler: {data, response, error in
+            if let data = data {
+                let decodedData = try? JSONDecoder().decode(RootPlayerStats.self, from: data)
+                let player = decodedData ?? RootPlayerStats()
+                finished(player.playerStats)
+            } else if let error = error {
+                print("Error happened during call to player prices. \(error)")
+            }
+        })
+        task.resume()
+    }
+    
+    func getLowestBin(for lineId: String,finished: @escaping((LowestBin) -> Void)) -> Void {
+        guard let url = URL(string: "\(baseUrl)en/app/sold24/\(lineId)/console") else { return }
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request,completionHandler: {data, response, error in
+            if let data = data {
+                let decodedData = try? JSONDecoder().decode(RootLowestBin.self, from: data)
+                let rootLowestBin = decodedData ?? RootLowestBin()
+                finished(rootLowestBin.lowestBin)
+            } else if let error = error {
+                print("Error happened during call to player lowest bin. \(error)")
+            }
+        })
+        task.resume()
+    }
+    
+    public static func getPlayerFacesUrl() -> String {
+        return baseContentUrl + "faces/"
+    }
+    public static func getLeagueLogosUrl() -> String {
+        return baseContentUrl + "leagues/"
+    }
+    public static func getCountryFlagsUrl() -> String {
+        return baseContentUrl + "flags/"
+    }
+    public static func getCardImagesUrl() -> String {
+        return baseContentUrl + "items/"
+    }
+    public static func getClubLogosUrl() -> String {
+        return baseContentUrl + "badges/"
     }
 }
