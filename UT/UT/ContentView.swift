@@ -12,8 +12,7 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @EnvironmentObject private var launchScreenState: LaunchScreenStateManager
-//    @Query private var items: [Item]
+//    @EnvironmentObject private var launchScreenState: LaunchScreenStateManager
     @State private var latestPlayers = [Player]()
     
     @State private var searchText: String = ""
@@ -25,6 +24,7 @@ struct ContentView: View {
                 ForEach(latestPlayers) { latestPlayer in
                     NavigationLink {
                         PlayerInfoView(for: latestPlayer)
+//                            .modelContainer(modelContext)
                     } label: {
                         Text("\(latestPlayer.name)")
                     }
@@ -63,20 +63,6 @@ struct ContentView: View {
             
     }
     
-    private func addItem() {
-        withAnimation {
-//            let newItem = Item(timestamp: Date())
-//            modelContext.insert(newItem)
-        }
-    }
-    
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-//            for index in offsets {
-//                modelContext.delete(items[index])
-//            }
-        }
-    }
     
     private func runSearch(){
         if (!searchText.isEmpty){
@@ -89,7 +75,7 @@ struct ContentView: View {
         service.getLatestPlayers(finished: {
             players in latestPlayers = players
         })
-        print("After getting latestPlayers,",$latestPlayers.count)
+//        print("After getting latestPlayers,",$latestPlayers.count)
     }
 }
 

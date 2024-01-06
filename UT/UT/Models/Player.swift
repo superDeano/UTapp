@@ -31,7 +31,12 @@ class Player: Decodable, Identifiable {
     let weakfoot, attackworkrate, defenseworkrate, heightft: String
     let playstyleslist: [String]?
     var id: String
-    
+    var att1Label = "PAC"
+    var att2Label = "SHO"
+    var att3Label = "PAS"
+    var att4Label = "DRI"
+    var att5Label = "DEF"
+    var att6Label = "PHY"
     
     enum CodingKeys: String, CodingKey {
         case lineid, cardname, name, urlname, rating, pid, position, position2, position3, position4, nation, league, club, att1, att2, att3, att4, att5, att6, acceleration, agility, balance, jumping, reactions, sprintspeed, stamina, strength, aggression, positioning, tactaware, vision, ballcontrol, crossing, curve, dribbling, finishing, fkacc, headingacc, longpass, longshot, marking, penalties, shortpass, shotpower, slidetackle, standingtackle, volleys, rare, fname, lname, dob, height, foot, traits, fut, minprice, maxprice
@@ -43,28 +48,28 @@ class Player: Decodable, Identifiable {
         case isUpgrade = "is_upgrade"
         case updatedate, appclass, cardtype, smallpreview, skillmoves, weakfoot, attackworkrate, defenseworkrate, heightft, playstyleslist
     }
-    
+    //MARK: Init no args
     init(){
         self.id = ""
         self.lineid = ""
-        self.cardname = ""
+        self.cardname = "superDeano"
         self.name = ""
         self.urlname = ""
-        self.rating = ""
+        self.rating = "99"
         self.pid = ""
-        self.position = ""
+        self.position = "CDM"
         self.position2 = ""
         self.position3 = ""
         self.position4 = ""
-        self.nation = ""
-        self.league = ""
-        self.club = ""
-        self.att1 = ""
-        self.att2 = ""
-        self.att3 = ""
-        self.att4 = ""
-        self.att5 = ""
-        self.att6 = ""
+        self.nation = "70"
+        self.league = "13"
+        self.club = "9"
+        self.att1 = "99"
+        self.att2 = "99"
+        self.att3 = "99"
+        self.att4 = "99"
+        self.att5 = "99"
+        self.att6 = "99"
         self.acceleration = ""
         self.agility = ""
         self.balance = ""
@@ -93,7 +98,7 @@ class Player: Decodable, Identifiable {
         self.slidetackle = ""
         self.standingtackle = ""
         self.volleys = ""
-        self.rare = ""
+        self.rare = "0"
         self.fname = ""
         self.lname = ""
         self.dob = ""
@@ -116,7 +121,7 @@ class Player: Decodable, Identifiable {
         self.isUpgrade = ""
         self.updatedate = ""
         self.appclass = ""
-        self.cardtype = ""
+        self.cardtype = "card-24-bronze-nr"
         self.smallpreview = ""
         self.skillmoves = ""
         self.weakfoot = ""
@@ -126,6 +131,7 @@ class Player: Decodable, Identifiable {
         self.playstyleslist = [String]()
     }
     
+    //MARK: Init all args
     init(lineid: String, cardname: String, name: String, urlname: String, rating: String, pid: String, position: String, position2: String?, position3: String?, position4: String?, nation: String, league: String, club: String, att1: String, att2: String, att3: String, att4: String, att5: String, att6: String, acceleration: String, agility: String, balance: String, jumping: String, reactions: String, sprintspeed: String, stamina: String, strength: String, aggression: String, positioning: String, tactaware: String, vision: String, ballcontrol: String, crossing: String, curve: String, dribbling: String, finishing: String, fkacc: String, headingacc: String, longpass: String, longshot: String, marking: String, penalties: String, shortpass: String, shotpower: String, slidetackle: String, standingtackle: String, volleys: String, rare: String, fname: String, lname: String, dob: String, height: String, foot: String, traits: String?, fut: String?, minprice: String, maxprice: String,  pcminprice: String?, pcmaxprice: String?, totalStats: String, userrating: String, altimage: String?, xbbin: String?, psbin: String?, pcbin: String?, isUpgrade: String?, updatedate: String?, appclass: String, cardtype: String, smallpreview: String, skillmoves: String, weakfoot: String, attackworkrate: String, defenseworkrate: String, heightft: String, playstyleslist: [String]) {
         self.id = lineid
         self.lineid = lineid
@@ -206,8 +212,11 @@ class Player: Decodable, Identifiable {
         self.defenseworkrate = defenseworkrate
         self.heightft = heightft
         self.playstyleslist = playstyleslist
+
+        self.funcSetAttributeLabels()
     }
     
+    //MARK: Required init
     public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -291,6 +300,51 @@ class Player: Decodable, Identifiable {
         heightft = try values.decode(String.self,forKey: .heightft)
         playstyleslist = try values.decode([String]?.self,forKey: .playstyleslist)
 //        print("Decoded for \(name)")
+        funcSetAttributeLabels()
+    }
+    
+    private func funcSetAttributeLabels() {
+        if self.position == "GK" {
+            self.att1Label = "DIV"
+            self.att2Label = "HAN"
+            self.att3Label = "KIC"
+            self.att4Label = "REF"
+            self.att5Label = "SPE"
+            self.att6Label = "POS"
+        } else {
+            self.att1Label = "PAC"
+            self.att2Label = "SHO"
+            self.att3Label = "PAS"
+            self.att4Label = "DRI"
+            self.att5Label = "DEF"
+            self.att6Label = "PHY"
+        }
+    }
+    
+    public func getCardName() -> String {
+        let cardRarity = Int(self.rare)!
+        var cardName = ""
+        if cardRarity < 2 {
+            if self.cardtype.contains("gold") {
+                cardName = "fc24-gold-\(cardRarity + 1)"
+            } else if self.cardtype.contains("silver") {
+                cardName = "fc24-silver-\(cardRarity + 1)"
+            } else {
+                cardName = "fc24-bronze-\(cardRarity + 1)"
+            }
+        } else if cardRarity == 3 {
+            if self.cardtype.contains("gold") {
+                cardName = "gold-if"
+            } else if self.cardtype.contains("silver") {
+                cardName = "silver-if"
+            } else {
+                cardName = "bronze-if"
+            }
+        } else {
+//            cardName = self.rare
+            return ""
+        }
+        return "Cards/\(cardName)"
     }
 }
 
