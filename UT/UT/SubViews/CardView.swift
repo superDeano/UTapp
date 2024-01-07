@@ -16,7 +16,11 @@ struct CardView: View {
     var clubImage = "Clubs/11"
     var player: Player
     var cardUrl = ""
+    #if os(iOS)
     var textColour = Color(UIColor.darkGray)
+    #else
+    var textColour = Color(Color.gray)
+    #endif
     var needToDownloadCard = false
     var playerFaceUrl = ""
     
@@ -35,7 +39,11 @@ struct CardView: View {
         if self.cardImage == "" {
             self.needToDownloadCard = true
             self.cardUrl = ContentService.getCardImagesUrl() + player.rare + ".png"
+            #if os(iOS)
             self.textColour = Color(UIColor.white)
+            #else
+            self.textColour = Color(Color.white)
+            #endif
         }
     }
     
@@ -43,10 +51,11 @@ struct CardView: View {
         VStack {
             ZStack {
                 if self.needToDownloadCard {
-                    AsyncImage(url: URL(string: self.cardUrl)){
+                    AsyncImage(url: URL(string: self.cardUrl)!){
                         image in
                         image.resizable().aspectRatio(contentMode: .fit)
-                    } placeholder: {
+                    } 
+                    placeholder: {
                         ProgressView()
                     }
                 } else {
@@ -58,7 +67,7 @@ struct CardView: View {
                         VStack{
                             Text(player.rating).font(.system(size: 37, weight: .bold)).foregroundStyle(self.textColour)
                             Text(player.position).font(.system(size: 18, weight: .semibold)).foregroundStyle(self.textColour).multilineTextAlignment(.leading)
-                        }.position(x:65, y: 150).frame(alignment: .center)
+                        }.position(x:63, y: 145).frame(alignment: .center)
                         
                         // MARK: - Player Face
                         AsyncImage(url: URL(string: playerFaceUrl)){
@@ -144,3 +153,4 @@ struct CardView: View {
 #Preview {
     CardView(player: Player())
 }
+
