@@ -109,12 +109,41 @@ struct PlayerInfoView: View {
             }
             Section(header: Text("Stats")){
                 VStack(){
-                    Text("Hello, World!")
+                    AllStatsView(stats: $playerStats)
                 }
             }
             Section(header: Text("Playstyles")){
-                VStack(){
-                    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                VStack{
+                    if playerStats.playstylesPlus != nil && !playerStats.playstylesPlus!.isEmpty {
+                        VStack {
+                            HStack{
+                                Text("Playstyles+").font(.title2).bold()
+                                Spacer()
+                            }
+                            HStack {
+                                Text(playerStats.playstylesPlus ?? "")
+                                Spacer()
+                                Image("Playstyles/\(playerStats.playstylesPlus!)-plus").resizable().scaledToFit().frame(maxWidth:75)
+                            }
+                        }.padding(.bottom, 15)
+                    }
+                    VStack {
+                        HStack{
+                            Text("Playstyles").font(.title2).bold()
+                            Spacer()
+                        }
+                        HStack {
+                            ForEach(playerStats.playstyles?.split(separator: ",") ?? [], id: \.self) { playStyle in
+                                VStack{
+                                    HStack {
+                                        Text(playStyle)
+                                        Spacer()
+                                        Image("Playstyles/\(playStyle)").resizable().scaledToFit().frame(maxWidth:75)
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }.navigationTitle("\(player.cardname)")
