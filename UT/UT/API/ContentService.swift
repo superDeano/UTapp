@@ -50,6 +50,14 @@ class ContentService {
             }
         })
         task.resume()
+//        _ = URLSession.shared.dataTaskPublisher(for: url)
+//            .map(\.data)
+//            .decode(type: RootPlayerStats.self, decoder: JSONDecoder())
+//            .sink(receiveCompletion: { result in
+//                print(result)
+//            }, receiveValue: { playerData in
+//                finished(playerData.playerStats)
+//            })
     }
     
     func getLowestBin(for lineId: String,finished: @escaping((LowestBin) -> Void)) -> Void {
@@ -60,6 +68,26 @@ class ContentService {
                 let decodedData = try? JSONDecoder().decode(RootLowestBin.self, from: data)
                 let rootLowestBin = decodedData ?? RootLowestBin()
                 finished(rootLowestBin.lowestBin)
+            } else if let error = error {
+                print("Error happened during call to player lowest bin. \(error)")
+            }
+        })
+        task.resume()
+    }
+    
+    func getStatsAndLowestBin(for lineId: String,finished: @escaping((PlayerStats, LowestBin) -> Void)) -> Void {
+        guard let url = URL(string: "\(baseUrl)en/app/sold24/\(lineId)/console") else { return }
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {data, response, error in
+            if let data = data {
+                let decodedBin = try? JSONDecoder().decode(RootTest.self, from: data)
+//                let decodedStats = try? JSONDecoder().decode(RootPlayerStats.self, from: data)
+                if decodedBin == nil {
+                    print("Null data for", lineId)
+                }
+//                let rootLowestBin = decodedBin ?? RootLowestBin()
+//                let rootStats = decodedStats ?? RootPlayerStats()
+                finished(decodedBin?.stats ?? PlayerStats(), decodedBin?.lowBin ?? LowestBin())
             } else if let error = error {
                 print("Error happened during call to player lowest bin. \(error)")
             }
