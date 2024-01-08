@@ -95,6 +95,18 @@ class ContentService {
         task.resume()
     }
     
+    public func searchPlayer(for name: String, finished: @escaping (([Player]) -> Void)) -> Void {
+        guard let url = URL(string: "\(baseUrl)en/searches/player24/\(name)") else { return }
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { data, response, err in
+            if let data = data {
+                let decodedData = try? JSONDecoder().decode([Player].self, from: data)
+                finished(decodedData ?? [])
+            }
+        }
+        task.resume()
+    }
+    
     public static func getPlayerFacesUrl() -> String {
         return baseContentUrl + "faces/"
     }
