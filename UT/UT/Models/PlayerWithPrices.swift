@@ -251,7 +251,12 @@ class LowestBin: Decodable {
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        bin = try values.decode(String?.self, forKey: .bin)
         ud = try values.decode(String?.self, forKey: .ud)
+        if ud != "Never" {
+            bin = try values.decode(String?.self, forKey: .bin)
+        } else {
+            bin = "0"
+        }
+        
     }
 }
