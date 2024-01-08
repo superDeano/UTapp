@@ -11,33 +11,34 @@ import SwiftData
 
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-//    @EnvironmentObject private var launchScreenState: LaunchScreenStateManager
+//    @Environment(\.modelContext) private var modelContext
     @State private var latestPlayers = [Player]()
-    
     @State private var searchText: String = ""
+    
+    init() {
+        getLatestPlayers()
+    }
+    
     
     var body: some View {
         NavigationSplitView {
             
             List {
-                ForEach(latestPlayers) { latestPlayer in
+                ForEach($latestPlayers) { $latestPlayer in
                     NavigationLink {
-                        PlayerInfoView(for: latestPlayer)
-//                            .modelContainer(modelContext)
+                        PlayerInfoView().environment(latestPlayer)
                     } label: {
-                        Text("\(latestPlayer.name)")
+                        Text("\($latestPlayer.wrappedValue.name)")
                     }
                 }
-//                .onDelete(perform: deleteItems)
-            }.onAppear(perform: getLatestPlayers)
+            }//.onAppear(perform: getLatestPlayers)
                 .refreshable {
                     getLatestPlayers()
-                }
+                }.keyboardShortcut(KeyboardShortcut("N", modifiers: [.shift, .command]))
 #if os(macOS)
             .navigationSplitViewColumnWidth(min: 160, ideal: 180)
-#endif
-            /*.toolbar {
+
+            .toolbar {
                 //#if os(iOS)
                 //                ToolbarItem(placement: .navigationBarTrailing) {
                 //                    EditButton()
@@ -48,7 +49,8 @@ struct ContentView: View {
                         Label("Refresh", systemImage: "arrow.triangle.2.circlepath")
                     }
                 }
-            }*/
+            }
+#endif
         } detail: {
             Text("Select an item")
         }
@@ -71,11 +73,18 @@ struct ContentView: View {
     }
     
     private func getLatestPlayers(){
+        print("Getting latest players")
         let service = ContentService()
         service.getLatestPlayers(finished: {
+            
             players in latestPlayers = players
+//            latestPlayers.forEach { player in
+//                service.getStatsAndLowestBin(for: player.lineid) { stats, lowBin in
+//                    player.stats = stats
+//                    player.lowestBin = lowBin
+//                }
+//            }
         })
-//        print("After getting latestPlayers,",$latestPlayers.count)
     }
 }
 

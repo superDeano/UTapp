@@ -8,16 +8,7 @@
 import SwiftUI
 
 struct AllStatsView: View {
-//    var playerId: String
-   @Binding var stats: PlayerStats
-    
-//    init(for playerId: String){
-//        self.playerId = playerId
-//        self.player = PlayerStats()
-//    }
-//    init(with playerStats: PlayerStats) {
-//        player = playerStats
-//    }
+    @Binding var stats: PlayerStats?
     
     var body: some View {
         VStack {
@@ -27,22 +18,22 @@ struct AllStatsView: View {
                     HStack{
                         Text("Pace").bold().font(.title2)
                         Spacer()
-                        Text(stats.att1 ?? "").font(.title2)
+                        Text(stats?.att1 ?? "").font(.title2)
                     }.padding(.bottom, 5)
                     HStack{
                         Text("Acceleration")
                         Spacer()
-                        Text(stats.acceleration ?? "")
+                        Text(stats?.acceleration ?? "")
                     }
                     HStack{
                         Text("Sprint Speed")
                         Spacer()
-                        Text(stats.sprintspeed ?? "")
+                        Text(stats?.sprintspeed ?? "")
                     }
                     HStack{
                         Text("AcceleRATE").bold()
                         Spacer()
-                        Text(stats.accelerate ?? "")
+                        Text(stats?.accelerate ?? "")
                     }
                 }.padding(.bottom, 15)
                 
@@ -51,37 +42,37 @@ struct AllStatsView: View {
                     HStack{
                         Text("Shooting").bold().font(.title2)
                         Spacer()
-                        Text(stats.att2 ?? "").font(.title2)
+                        Text(stats?.att2 ?? "").font(.title2)
                     }.padding(.bottom, 5)
                     HStack{
                         Text("Positioning")
                         Spacer()
-                        Text(stats.positioning ?? "")
+                        Text(stats?.positioning ?? "")
                     }
                     HStack{
                         Text("Finishing")
                         Spacer()
-                        Text(stats.finishing ?? "")
+                        Text(stats?.finishing ?? "")
                     }
                     HStack{
                         Text("Shot Power")
                         Spacer()
-                        Text(stats.shotpower ?? "")
+                        Text(stats?.shotpower ?? "")
                     }
                     HStack{
                         Text("Long Shots")
                         Spacer()
-                        Text(stats.longshot ?? "")
+                        Text(stats?.longshot ?? "")
                     }
                     HStack{
                         Text("Volleys")
                         Spacer()
-                        Text(stats.volleys ?? "")
+                        Text(stats?.volleys ?? "")
                     }
                     HStack{
                         Text("Penalties")
                         Spacer()
-                        Text(stats.penalties ?? "")
+                        Text(stats?.penalties ?? "")
                     }
                 }.padding(.bottom, 15)
                 
@@ -90,37 +81,37 @@ struct AllStatsView: View {
                     HStack{
                         Text("Passing").bold().font(.title2)
                         Spacer()
-                        Text(stats.att3 ?? "").font(.title2)
+                        Text(stats?.att3 ?? "").font(.title2)
                     }.padding(.bottom, 5)
                     HStack{
                         Text("Vision")
                         Spacer()
-                        Text(stats.vision ?? "")
+                        Text(stats?.vision ?? "")
                     }
                     HStack{
                         Text("Crossing")
                         Spacer()
-                        Text(stats.crossing ?? "")
+                        Text(stats?.crossing ?? "")
                     }
                     HStack{
                         Text("FK Accuracy")
                         Spacer()
-                        Text(stats.fkacc ?? "")
+                        Text(stats?.fkacc ?? "")
                     }
                     HStack{
                         Text("Short Passing")
                         Spacer()
-                        Text(stats.shortpass ?? "")
+                        Text(stats?.shortpass ?? "")
                     }
                     HStack{
                         Text("Long Passing")
                         Spacer()
-                        Text(stats.longpass ?? "")
+                        Text(stats?.longpass ?? "")
                     }
                     HStack{
                         Text("Curve").fontWeight(.semibold)
                         Spacer()
-                        Text(stats.curve ?? "")
+                        Text(stats?.curve ?? "")
                     }
                 }.padding(.bottom, 15)
                 
@@ -129,37 +120,37 @@ struct AllStatsView: View {
                     HStack{
                         Text("Dribbling").bold().font(.title2)
                         Spacer()
-                        Text(stats.att4 ?? "").font(.title2)
+                        Text(stats?.att4 ?? "").font(.title2)
                     }.padding(.bottom, 5)
                     HStack{
                         Text("Agility")
                         Spacer()
-                        Text(stats.agility ?? "")
+                        Text(stats?.agility ?? "")
                     }
                     HStack{
                         Text("Balance")
                         Spacer()
-                        Text(stats.balance ?? "")
+                        Text(stats?.balance ?? "")
                     }
                     HStack{
                         Text("Reactions")
                         Spacer()
-                        Text(stats.reactions ?? "")
+                        Text(stats?.reactions ?? "")
                     }
                     HStack{
                         Text("Ball Control")
                         Spacer()
-                        Text(stats.ballcontrol ?? "")
+                        Text(stats?.ballcontrol ?? "")
                     }
                     HStack{
                         Text("Dribbling")
                         Spacer()
-                        Text(stats.dribbling ?? "")
+                        Text(stats?.dribbling ?? "")
                     }
                     HStack{
                         Text("Composure")
                         Spacer()
-                        Text(stats.composure ?? "")
+                        Text(stats?.composure ?? "")
                     }
                 }.padding(.bottom, 15)
                 
@@ -168,32 +159,32 @@ struct AllStatsView: View {
                     HStack{
                         Text("Defending").bold().font(.title2)
                         Spacer()
-                        Text(stats.att5 ?? "").font(.title2)
+                        Text(stats?.att5 ?? "").font(.title2)
                     }.padding(.bottom, 5)
                     HStack{
                         Text("Interception")
                         Spacer()
-                        Text(stats.tactaware ?? "")
+                        Text(stats?.tactaware ?? "")
                     }
                     HStack{
                         Text("Heading Accuracy")
                         Spacer()
-                        Text(stats.headingacc ?? "")
+                        Text(stats?.headingacc ?? "")
                     }
                     HStack{
                         Text("Defensive Awareness")
                         Spacer()
-                        Text(stats.marking ?? "")
+                        Text(stats?.marking ?? "")
                     }
                     HStack{
                         Text("Standing Tackle")
                         Spacer()
-                        Text(stats.standingtackle ?? "")
+                        Text(stats?.standingtackle ?? "")
                     }
                     HStack{
                         Text("Sliding Tackle")
                         Spacer()
-                        Text(stats.slidetackle ?? "")
+                        Text(stats?.slidetackle ?? "")
                     }
                 }.padding(.bottom, 15)
                 
@@ -202,27 +193,27 @@ struct AllStatsView: View {
                     HStack{
                         Text("Physicality").bold().font(.title2)
                         Spacer()
-                        Text(stats.att6 ?? "").font(.title2)
+                        Text(stats?.att6 ?? "").font(.title2)
                     }.padding(.bottom, 5)
                     HStack{
                         Text("Jumbing")
                         Spacer()
-                        Text(stats.jumping ?? "")
+                        Text(stats?.jumping ?? "")
                     }
                     HStack{
                         Text("Stamina")
                         Spacer()
-                        Text(stats.stamina ?? "")
+                        Text(stats?.stamina ?? "")
                     }
                     HStack{
                         Text("Strength")
                         Spacer()
-                        Text(stats.strength ?? "")
+                        Text(stats?.strength ?? "")
                     }
                     HStack{
                         Text("Agression")
                         Spacer()
-                        Text(stats.aggression ?? "")
+                        Text(stats?.aggression ?? "")
                     }
                 }
             }
@@ -234,7 +225,8 @@ struct AllStatsView: View {
 #Preview {
 //    struct FormView_View: PreviewProvider {
 //        static var body: some View {
-            AllStatsView(stats: .constant(PlayerStats()))
+//    AllStatsView().environmentObject(PlayerStats())
+    AllStatsView(stats: .constant(PlayerStats()))
 //        }
 //    }
 }

@@ -6,21 +6,53 @@
 //
 
 import SwiftUI
+//import SwiftData
 
 struct PlayerInfoView: View {
-    public var player: Player
+    //    @State public var playerStats: PlayerStats
+    @EnvironmentObject public var player: Player
+    //    @State private var lowestBin = LowestBin()
+    //    @State private var playStyles = [String]()
+    private let maxWidth: CGFloat = 100
+    
+//        init(for player: Player){
+//            self.player = player
+//            playerStats = PlayerStats()
+//            self.getData()
+//        }
+    
+    
     var body: some View {
         List{
+            Section{
+                HStack{
+                    Spacer()
+                    CardView(player: player)
+                    Spacer()
+                }
+            }.listRowBackground(Color.clear)
+            
             Section(header: Text("Price")){
                 VStack(){
-                    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                    HStack(){
+                        Text("Lowest Price").bold()
+                        Spacer()
+                        Text(player.lowestBin?.bin ?? "n/a")
+                        Image("Misc/coins").resizable().scaledToFit().frame(maxWidth: 18)
+                    }
+                    HStack(){
+                        Text("Last Updated").font(.callout).bold()
+                        Spacer()
+                        Text("\(player.lowestBin?.ud ?? "n/a") \(player.lowestBin != nil ? "ago" : "")")
+                            .font(.callout)
+                    }
                 }
             }
             Section(header: Text("Biography")){
                 VStack(){
                     HStack(){
                         Text("Name").bold()
-                            .frame(maxWidth: 150, alignment: .leading)
+                            .frame(maxWidth: self.maxWidth, alignment: .leading)
                         Text(player.name)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
@@ -44,20 +76,20 @@ struct PlayerInfoView: View {
                     //                    }
                     HStack(){
                         Text("Club").bold()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text(player.club)
+                            .frame(maxWidth: self.maxWidth, alignment: .leading)
+                        Text(Clubs.teams[self.player.club] ?? "")
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     HStack(){
                         Text("League").bold()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text(player.league)
+                            .frame(maxWidth: self.maxWidth, alignment: .leading)
+                        Text(Leagues.leagues[self.player.league] ?? "")
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     HStack(){
                         Text("Nationality").bold()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text(player.nation)
+                            .frame(maxWidth: self.maxWidth, alignment: .leading)
+                        Text(Nations.nations[self.player.nation] ?? "")
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     HStack(){
@@ -109,21 +141,21 @@ struct PlayerInfoView: View {
             }
             Section(header: Text("Stats")){
                 VStack(){
-                    AllStatsView(stats: $playerStats)
+                    AllStatsView(stats: $player.stats)
                 }
             }
             Section(header: Text("Playstyles")){
                 VStack{
-                    if playerStats.playstylesPlus != nil && !playerStats.playstylesPlus!.isEmpty {
+                    if player.stats?.playstylesPlus != nil && !(player.stats!.playstylesPlus!.isEmpty) {
                         VStack {
                             HStack{
                                 Text("Playstyles+").font(.title2).bold()
                                 Spacer()
                             }
                             HStack {
-                                Text(playerStats.playstylesPlus ?? "")
+                                Text(player.stats?.playstylesPlus ?? "")
                                 Spacer()
-                                Image("Playstyles/\(playerStats.playstylesPlus!)-plus").resizable().scaledToFit().frame(maxWidth:75)
+                                Image("Playstyles/\(player.stats!.playstylesPlus!)-plus").resizable().scaledToFit().frame(maxWidth:75)
                             }
                         }.padding(.bottom, 15)
                     }
@@ -133,7 +165,7 @@ struct PlayerInfoView: View {
                             Spacer()
                         }
                         HStack {
-                            ForEach(playerStats.playstyles?.split(separator: ",") ?? [], id: \.self) { playStyle in
+                            ForEach(player.stats?.playstyles?.split(separator: ",") ?? [], id: \.self) { playStyle in
                                 VStack{
                                     HStack {
                                         Text(playStyle)
@@ -148,11 +180,67 @@ struct PlayerInfoView: View {
             }
         }.navigationTitle("\(player.cardname)")
             .refreshable {
-                // TODO: get like newest price
+                self.getLowestBin()
+                print("Swiped down to refresh in PlayerInfoView!")
             }
+#if os(macOS)
+            .toolbar(content: {
+                Button("Refresh", action: getLowestBin).keyboardShortcut("R", modifiers: .command)
+            })
+#endif
+            .onAppear(perform: getPlayerStatsAndPrice)
+//            .onChange(of: player, getData)
+        //            .onDisappear(perform: purgeCurrentPlayer)
+//            .task(priority: .high, {
+//                do {
+//                    getPlayerStats()
+//                    getLowestBin()
+//                } catch {
+//                    print(error)
+//                }
+//            })
     }
+    
+    private func getData(){
+        getLowestBin()
+        if player.stats == nil {
+            getPlayerStats()
+        }
+    }
+    
+    private func getLowestBin(){
+        ContentService().getLowestBin(for: player.lineid, finished: { lb in
+            DispatchQueue.main.async {
+                player.lowestBin = lb
+            }
+            print("Price is", lb.bin!)
+        })
+    }
+    
+    private func getPlayerStats() -> Void {
+        let service = ContentService()
+        service.getPlayerStats(for: player.lineid, finished: { ps in
+            DispatchQueue.main.async {
+                player.stats = ps
+            }
+        })
+    }
+    
+    private func getPlayerStatsAndPrice() -> Void {
+        let service = ContentService()
+        service.getStatsAndLowestBin(for: player.lineid) { pStats, pLowBin in
+            DispatchQueue.main.async {   
+                player.stats = pStats
+                player.lowestBin = pLowBin
+            }
+        }
+    }
+    
+//    private func purgeCurrentPlayer(){
+//        self.player = Player()
+//    }
 }
 
 #Preview {
-    PlayerInfoView(player: Player())
+    PlayerInfoView().environment(Player())
 }

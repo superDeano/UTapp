@@ -23,6 +23,21 @@ import Foundation
 //        playerWithPrices = try value.decode(PlayerStats.self, forKey: .playerWithPrices)
 //    }
 //}
+class RootTest: Decodable {
+    let stats: PlayerStats
+    let lowBin: LowestBin
+    
+    enum CodingKeys: String, CodingKey {
+        case stats = "player"
+        case lowBin = "lowestbin"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.stats = try container.decode(PlayerStats.self, forKey: .stats)
+        self.lowBin = try container.decode(LowestBin.self, forKey: .lowBin)
+    }
+}
 
 class RootLowestBin: Decodable {
     let lowestBin: LowestBin
@@ -60,21 +75,47 @@ class RootPlayerStats: Decodable {
 
 
 
-class PlayerStats: Decodable {
+class PlayerStats: Decodable, Observable, ObservableObject {
     
-    let accelerate: String?
-    let sex: String?
-    let playstyles: String?
-    let playstylesPlus: String?
-    let agility, balance, jumping, reactions: String?
-    let sprintspeed, stamina, strength, aggression: String?
-    let positioning, tactaware, vision, ballcontrol: String?
-    let crossing, curve, dribbling, finishing: String?
-    let fkacc, headingacc, longpass, longshot: String?
-    let marking, penalties, shortpass, shotpower: String?
-    let slidetackle, standingtackle, volleys: String?
-    let att1, att2, att3, composure: String?
-    let att4, att5, att6, acceleration: String?
+    @Published var accelerate: String?
+    @Published var sex: String?
+    @Published var playstyles: String?
+    @Published var playstylesPlus: String?
+    @Published var agility: String?
+    @Published var balance: String?
+    @Published var jumping: String?
+    @Published var reactions: String?
+    @Published var sprintspeed: String?
+    @Published var stamina: String?
+    @Published var strength: String?
+    @Published var aggression: String?
+    @Published var positioning: String?
+    @Published var tactaware: String?
+    @Published var vision: String?
+    @Published var ballcontrol: String?
+    @Published var crossing: String?
+    @Published var curve: String?
+    @Published var dribbling: String?
+    @Published var finishing: String?
+    @Published var fkacc: String?
+    @Published var headingacc: String?
+    @Published var longpass: String?
+    @Published var longshot: String?
+    @Published var marking: String?
+    @Published var penalties: String?
+    @Published var shortpass: String?
+    @Published var shotpower: String?
+    @Published var slidetackle: String?
+    @Published var standingtackle: String?
+    @Published var volleys: String?
+    @Published var att1: String?
+    @Published var att2: String?
+    @Published var att3: String?
+    @Published var composure: String?
+    @Published var att4: String?
+    @Published var att5: String?
+    @Published var att6: String?
+    @Published var acceleration: String?
     
     enum CodingKeys: String, CodingKey {
         case accelerate, sex, playstyles
