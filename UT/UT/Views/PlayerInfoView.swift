@@ -15,11 +15,11 @@ struct PlayerInfoView: View {
     //    @State private var playStyles = [String]()
     private let maxWidth: CGFloat = 100
     
-//        init(for player: Player){
-//            self.player = player
-//            playerStats = PlayerStats()
-//            self.getData()
-//        }
+    //        init(for player: Player){
+    //            self.player = player
+    //            playerStats = PlayerStats()
+    //            self.getData()
+    //        }
     
     
     var body: some View {
@@ -43,7 +43,7 @@ struct PlayerInfoView: View {
                     HStack(){
                         Text("Last Updated").font(.callout).bold()
                         Spacer()
-                        Text("\(player.lowestBin?.ud ?? "n/a") \(player.lowestBin != nil ? "ago" : "")")
+                        Text("\(player.lowestBin?.ud ?? "n/a") \(player.lowestBin != nil && player.lowestBin!.ud != "Never" ? "ago" : "")")
                             .font(.callout)
                     }
                 }
@@ -149,13 +149,13 @@ struct PlayerInfoView: View {
                     if player.stats?.playstylesPlus != nil && !(player.stats!.playstylesPlus!.isEmpty) {
                         VStack {
                             HStack{
-                                Text("Playstyles+").font(.title2).bold()
+                                Text("Playstyles+").font(.title2).bold().padding(.top, 5)
                                 Spacer()
                             }
                             HStack {
                                 Text(player.stats?.playstylesPlus ?? "")
                                 Spacer()
-                                Image("Playstyles/\(player.stats!.playstylesPlus!)-plus").resizable().scaledToFit().frame(maxWidth:75)
+                                Image("Playstyles/\(player.stats!.playstylesPlus!)-plus").resizable().scaledToFit().frame(width:40)
                             }
                         }.padding(.bottom, 15)
                     }
@@ -165,12 +165,14 @@ struct PlayerInfoView: View {
                             Spacer()
                         }
                         HStack {
-                            ForEach(player.stats?.playstyles?.split(separator: ",") ?? [], id: \.self) { playStyle in
-                                VStack{
-                                    HStack {
-                                        Text(playStyle)
-                                        Spacer()
-                                        Image("Playstyles/\(playStyle)").resizable().scaledToFit().frame(maxWidth:75)
+                            ScrollView {
+                                ForEach(player.stats?.playstyles?.split(separator: ",") ?? [], id: \.self) { playStyle in
+                                    VStack{
+                                        HStack {
+                                            Text(playStyle)
+                                            Spacer()
+                                            Image("Playstyles/\(playStyle)").resizable().scaledToFit().frame(width: 35)
+                                        }
                                     }
                                 }
                             }
@@ -180,7 +182,8 @@ struct PlayerInfoView: View {
             }
         }.navigationTitle("\(player.cardname)")
             .refreshable {
-                self.getLowestBin()
+                //                self.getLowestBin()
+                self.getPlayerStatsAndPrice()
                 print("Swiped down to refresh in PlayerInfoView!")
             }
 #if os(macOS)
@@ -189,16 +192,24 @@ struct PlayerInfoView: View {
             })
 #endif
             .onAppear(perform: getPlayerStatsAndPrice)
-//            .onChange(of: player, getData)
+            .onChange(of: player) { _, _ in
+#if os(macOS)
+                getData()
+#else
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    getData()
+                }
+#endif
+            }
         //            .onDisappear(perform: purgeCurrentPlayer)
-//            .task(priority: .high, {
-//                do {
-//                    getPlayerStats()
-//                    getLowestBin()
-//                } catch {
-//                    print(error)
-//                }
-//            })
+        //            .task(priority: .high, {
+        //                do {
+        //                    getPlayerStats()
+        //                    getLowestBin()
+        //                } catch {
+        //                    print(error)
+        //                }
+        //            })
     }
     
     private func getData(){
@@ -229,16 +240,16 @@ struct PlayerInfoView: View {
     private func getPlayerStatsAndPrice() -> Void {
         let service = ContentService()
         service.getStatsAndLowestBin(for: player.lineid) { pStats, pLowBin in
-            DispatchQueue.main.async {   
+            DispatchQueue.main.async {
                 player.stats = pStats
                 player.lowestBin = pLowBin
             }
         }
     }
     
-//    private func purgeCurrentPlayer(){
-//        self.player = Player()
-//    }
+    //    private func purgeCurrentPlayer(){
+    //        self.player = Player()
+    //    }
 }
 
 #Preview {
