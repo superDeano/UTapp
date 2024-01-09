@@ -94,6 +94,96 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         self.heightft = ""
     }
     
+    //MARK: init with just player id
+    init(for playerId: String){
+        self.id = playerId
+        self.lineid = playerId
+        self.cardname = ""
+        self.name = ""
+        self.urlname = ""
+        self.rating = ""
+        self.pid = ""
+        self.position = ""
+        self.position2 = ""
+        self.position3 = ""
+        self.position4 = ""
+        self.nation = ""
+        self.league = ""
+        self.club = ""
+        self.att1 = ""
+        self.att2 = ""
+        self.att3 = ""
+        self.att4 = ""
+        self.att5 = ""
+        self.att6 = ""
+        self.rare = ""
+        self.fname = ""
+        self.lname = ""
+        self.dob = ""
+        self.height = ""
+        self.foot = ""
+        self.traits = ""
+        self.minprice = ""
+        self.maxprice = ""
+        self.totalStats = ""
+        self.altimage = ""
+        self.isUpgrade = ""
+        self.updatedate = ""
+        self.appclass = ""
+        self.cardtype = "card-24-bronze-nr"
+        self.smallpreview = ""
+        self.skillmoves = ""
+        self.weakfoot = ""
+        self.attackworkrate = ""
+        self.defenseworkrate = ""
+        self.heightft = ""
+    }
+    
+    //MARK: init with SearchedPlayer
+    init(for player: SearchedPlayer){
+        self.id = player.lineid
+        self.lineid = player.lineid
+        self.cardname = player.cardname
+        self.name = player.name
+        self.urlname = player.urlName
+        self.rating = player.rating
+        self.pid = player.pid
+        self.position = player.position
+        self.position2 = player.position2
+        self.position3 = player.position3
+        self.position4 = player.position4
+        self.nation = player.nation
+        self.league = player.league
+        self.club = player.club
+        self.att1 = player.att1
+        self.att2 = player.att2
+        self.att3 = player.att3
+        self.att4 = player.att4
+        self.att5 = player.att5
+        self.att6 = player.att6
+        self.rare = player.rare
+        self.fname = ""
+        self.lname = ""
+        self.dob = player.dob
+        self.height = player.height
+        self.foot = player.foot
+        self.traits = ""
+        self.minprice = ""
+        self.maxprice = ""
+        self.totalStats = ""
+        self.altimage = player.altimage
+        self.isUpgrade = ""
+        self.updatedate = ""
+        self.appclass = ""
+        self.cardtype = player.cardtype
+        self.smallpreview = ""
+        self.skillmoves = player.skillmoves
+        self.weakfoot = player.weakfoot
+        self.attackworkrate = player.attackworkrate
+        self.defenseworkrate = player.defenseworkrate
+        self.heightft = Player.convertCmIntoFt(val: player.height)
+    }
+    
     //MARK: Init all args
     init(lineid: String, cardname: String, name: String, urlname: String, rating: String, pid: String, position: String, position2: String?, position3: String?, position4: String?, nation: String, league: String, club: String, att1: String, att2: String, att3: String, att4: String, att5: String, att6: String, rare: String, fname: String, lname: String, dob: String, height: String, foot: String, traits: String?, minprice: String, maxprice: String, totalStats: String, altimage: String?, isUpgrade: String?, updatedate: String?, appclass: String, cardtype: String, smallpreview: String, skillmoves: String, weakfoot: String, attackworkrate: String, defenseworkrate: String, heightft: String) {
         
@@ -241,6 +331,13 @@ extension Player {
     //        let values = try decoder.container(keyedBy: CodingKeys.self)
     //
     //    }
+    public static func convertCmIntoFt(val: String) -> String {
+        guard let valInCm = Float(val) else { return "" }
+        let footFloatVal = valInCm / 30.48
+        let remFootVal = footFloatVal.truncatingRemainder(dividingBy: 1)
+        let footVal = Int(remFootVal * 12)
+        return "\(Int(footFloatVal))'\(footVal)\""
+    }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
