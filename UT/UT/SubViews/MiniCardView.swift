@@ -8,28 +8,22 @@
 import SwiftUI
 
 struct MiniCardView: View {
-    /*@EnvironmentObject*/ private var itemManager: GetItemInfo
+    
     var player: Player
-    var itemInfo: ItemInfo?
 #if os(iOS)
     var textColour = Color(UIColor.darkGray)
 #else
     var textColour = Color(Color.gray)
 #endif
     
-    init(player: Player, itemManager: GetItemInfo) {
-        print("Trying to assign player")
-        print("color", textColour.hashValue)
+    init(player: Player) {
         self.player = player
-        self.itemManager = itemManager
-        print("Trying to get itemInfo")
-        self.itemInfo = itemManager.getItemInfo(for: player.smallpreview)
-        self.textColour = Color.init(hexStr: self.itemInfo?.color ?? "FAF")
+        self.textColour = Color.init(hexStr: self.player.itemInfo?.color ?? "453A22")
     }
     
     var body: some View {
         ZStack {
-            AsyncImage(url: URL(string: itemInfo?.backgroundImage ?? "\(ContentService.getCardImagesUrl() + player.rare).png")){
+            AsyncImage(url: URL(string: self.player.itemInfo?.backgroundImage ?? "\(ContentService.getCardImagesUrl() + player.rare).png")){
                 image in image.resizable().aspectRatio(contentMode: .fit)
             } placeholder: {
 //#if DEBUG
@@ -80,13 +74,13 @@ struct testView: View {
     @EnvironmentObject var test: GetItemInfo
     var body: some View {
         Text("Test view2!")
-        MiniCardView(player: Player(), itemManager: test)//.environmentObject(test)
+        MiniCardView(player: Player())//.environmentObject(test)
     }
 }
 #endif
 #Preview {
     Group {
 //       testView().environmentObject(GetItemInfo())
-    MiniCardView(player: Player(), itemManager: GetItemInfo())//.environmentObject(GetItemInfo())
-    }.environmentObject(GetItemInfo())
+    MiniCardView(player: Player())//.environmentObject(GetItemInfo())
+    }//.environmentObject(GetItemInfo())
 }

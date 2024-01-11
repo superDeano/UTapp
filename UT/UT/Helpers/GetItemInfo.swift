@@ -13,13 +13,21 @@ class GetItemInfo: ObservableObject {
     
     init() {
         self.items = [ItemInfo]()
-        self.retrieveContent()
+        Task.init {
+            await self.retrieveContent()
+        }
     }
     
-    private func retrieveContent(){
+    private func retrieveContent() async {
         let url = URL(string: ContentService.itemsUrl)!
-        let fileContent = try! String(contentsOf: url)
-        self.createObjects(lines: fileContent.components(separatedBy: .newlines))
+        do {
+            let (fileUrl, _) = try await URLSession.shared.download(from: url)
+            let fileContent = try String(contentsOf: fileUrl)
+//            let fileC
+            self.createObjects(lines: fileContent.components(separatedBy: .newlines))
+        } catch {
+            print(error)
+        }
     }
     
     private func createObjects(lines: [String]) {

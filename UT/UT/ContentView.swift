@@ -6,17 +6,23 @@
 //
 
 import SwiftUI
-import SwiftData
+//import SwiftData
 
 
 
 struct ContentView: View {
-//    @Environment(\.modelContext) private var modelContext
-    @State private var latestPlayers = [Player]()
+    @State private var latestPlayers: [Player]
     @State private var searchText: String = ""
+    @State private var searchedPlayers: [Player]
+    @State private var popularPlayers: [Player]
+    @State private var presentSearch = false
+    @Environment (\.isSearching) private var isSearching
+//    @EnvironmentObject private var itemManager : GetItemInfo
     
     init() {
-        getLatestPlayers()
+        self.latestPlayers = []
+        self.searchedPlayers = []
+        self.popularPlayers = []
     }
     
     
@@ -28,13 +34,13 @@ struct ContentView: View {
                     ForEach($searchedPlayers) {
                         $searchedPlayer in
                         NavigationLink {
-                            PlayerInfoView(itemInfo: itemManager.getItemInfo(for: searchedPlayer.smallpreview)).environment(searchedPlayer)
+                            PlayerInfoView().environment(searchedPlayer)
                         } label: {
                             HStack {
                                 Text(searchedPlayer.name)
                                 Spacer()
                                 HStack{
-                                    MiniCardView(player: searchedPlayer, itemManager: itemManager)
+                                    MiniCardView(player: searchedPlayer)
                                 }.frame(maxWidth: 40)
                             }
                         }
@@ -45,18 +51,24 @@ struct ContentView: View {
                 // MARK: List of popular players view
                 List {
                     Section(header: Text("Latest Players")) {
-                        ForEach($latestPlayers) { $latestPlayer in
-                            NavigationLink {
-                                PlayerInfoView(itemInfo: itemManager.getItemInfo(for: latestPlayer.cardtype)).environment(latestPlayer)
-                            } label: {
-                                Text("\($latestPlayer.wrappedValue.name)")
-                            }
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach($latestPlayers) { $latestPlayer in
+                                    NavigationLink {
+                                        PlayerInfoView().environment(latestPlayer)
+                                    } label: {
+                                        HStack {
+                                            MediumCardView().environment(latestPlayer)
+                                        }.padding(.horizontal, 5)
+                                    }
+                                }
+                            }.frame(height: 200, alignment: .top)
                         }
-                    }
+                    }.listRowBackground(Color.clear)
                     Section(header: Text("Popular Players")) {
                         ForEach($popularPlayers) { $popPlayer in
                             NavigationLink {
-                                PlayerInfoView(itemInfo: itemManager.getItemInfo(for: popPlayer.cardtype)).environment(popPlayer)
+                                PlayerInfoView().environment(popPlayer)
                             } label: {
                                 Text("\(popPlayer.name)")
                             }
@@ -82,7 +94,8 @@ struct ContentView: View {
             }
             } detail: {
                 Text("Select an item")
-            }.environmentObject(itemManager)
+            }//.environmentObject(itemManager)
+            .navigationTitle(Text("Home"))
             .searchable(text: $searchText, prompt: "Player name").onChange(of: $searchText) {
                 _, newValue in
                 presentSearch = searchText.count > 0 ? true : false
@@ -99,28 +112,44 @@ struct ContentView: View {
     
     
     private func runSearch(){
-        if (!searchText.isEmpty){
+        if (!searchText.isEmpty && searchText.count > 3){
             print("Searching for \(searchText)")
+            ContentService.shared.searchPlayer(for: searchText) { players in
+                players.forEach { p in
+                    DispatchQueue.main.async {
+                        searchedPlayers = players
+                    }
+                }
+            }
         }
     }
     
-    private func getLatestPlayers(){
+    private func getLatestAndPopularPlayers(){
         print("Getting latest players")
-        let service = ContentService()
-        service.getLatestPlayers(finished: {
-            
-            players in latestPlayers = players
-//            latestPlayers.forEach { player in
-//                service.getStatsAndLowestBin(for: player.lineid) { stats, lowBin in
-//                    player.stats = stats
-//                    player.lowestBin = lowBin
-//                }
-//            }
+        ContentService.shared.getLatestPlayers(finished: { players in
+            DispatchQueue.main.async {
+                latestPlayers = players
+            }
+
+        })
+        ContentService.shared.getPopularPlayers(finished: {
+            players in
+            DispatchQueue.main.async {
+                popularPlayers = players
+            }
         })
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView()//.environmentObject(GetItemInfo())
 //        .modelContainer(for: Item.self, inMemory: true)
+}
+
+extension Binding<String>: Equatable {
+    public static func == (lhs: Binding<Value>, rhs: Binding<Value>) -> Bool {
+        lhs.wrappedValue == rhs.wrappedValue
+    }
+    
+    
 }

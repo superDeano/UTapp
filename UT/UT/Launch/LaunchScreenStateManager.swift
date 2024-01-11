@@ -15,10 +15,23 @@ final class LaunchScreenStateManager: ObservableObject, Observable {
     @MainActor
     func dismiss(){
         Task {
-            state = .secondStep
-//            try? await Task.sleep(for: Duration.seconds(5))
+//            state = .secondStep
+//            try? await Task.sleep(for: Duration.seconds(2))
             self.state = .finished
         }
     }
     
+    @MainActor
+    func setSecondStage() -> Void {
+        Task{
+            self.state = .secondStep
+        }
+    }
+    
+    @MainActor
+    func setFirstStep() {
+        Task {
+            self.state = .firstStep
+        }
+    }
 }

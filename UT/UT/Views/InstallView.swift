@@ -10,19 +10,23 @@ import SwiftData
 
 struct InstallView: View {
     @EnvironmentObject private var launchScreenState: LaunchScreenStateManager
-    @Environment(\.modelContext) private var modelContext
+//    @Environment(\.modelContext) private var modelContext
     @State private var msg: String = ""
 
-    private let timer = Timer.publish(every: 0.5, on: .current, in: .common)
+    private let timer = Timer.publish(every: 0.1, on: .current, in: .default).autoconnect()
 
     var body: some View {
         VStack {
-            Text(msg)
+            Text("Loading").fontWeight(.bold).font(.headline)
+            Text(msg).font(.subheadline)
         }.onAppear {
             updateStatusMessage()
-            checkFirstInstall(context: modelContext)
+//            checkFirstInstall(context: modelContext)
         }.onReceive(timer){
-            timer in updateStatusMessage()
+            timer in
+                print("Received timer in launch screen")
+                updateStatusMessage()
+                checkOnContentService()
         }
     }
     
@@ -37,7 +41,20 @@ struct InstallView: View {
             msg = "Done."
             break
         }
-        print("after state check:",msg)
+        print("after state check:", msg)
+    }
+    
+    private func checkOnContentService() {
+        switch ContentService.shared.itemManager.items.count {
+        case 0:
+            launchScreenState.setFirstStep()
+        case 1...10:
+            launchScreenState.setSecondStage()
+        case 300...600:
+            launchScreenState.dismiss()
+        default:
+            break
+        }
     }
     
     private func checkFirstInstall(context: ModelContext)-> Void {

@@ -8,30 +8,52 @@ import Combine
 import Foundation
 
 class ContentService {
+
+    public static let shared: ContentService = {
+        let instance = ContentService()
+        return instance
+    }()
     
-    let baseUrl = "https://www.futwiz.com/"
-    static let baseContentUrl = "https://cdn.futwiz.com/assets/img/fc24/"
+    public var itemManager: GetItemInfo
+    
+    
+    init() {
+        self.itemManager = GetItemInfo()
+    }
+    
+    public let baseUrl = "https://www.futwiz.com/"
+    public static let baseContentUrl = "https://cdn.futwiz.com/assets/img/fc24/"
+    public static let itemsUrl = "https://www.futwiz.com/app/items24.txt"
+    public static let goldRareCardUrl = "https://cdn.futwiz.com/assets/img/fc24/items/small/fc24-gold-2.png"
     
     func getLatestPlayers(finished: @escaping(([Player]) -> Void)) -> Void {
         guard let url = URL(string: "\(baseUrl)en/fc24/players/latest?appreq") else { return }
         let request = URLRequest(url: url)
-        let task = URLSession.shared.dataTask(with: request,completionHandler: {data, response, error in
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {data, response, error in
             if let data = data {
-                //                let decoder = JSONDecoder()
-                //                do {
-                //                    let da = try decoder.decode([Player].self, from: data)
-                //                } catch {
-                //                    print(error)
-                //                    fatalError(error.localizedDescription)
-                //                }
+
                 let decodedData = try? JSONDecoder().decode([Player].self, from: data)
                 let players = decodedData ?? [Player]()
                 finished(players)
-                //                    fatalError("Error happened when decoding latest players.")
-                //                    print("Error happened when decoding latest players.")
-                //                }
+            
             } else if let error = error {
                 print("Error happened during call to get latest players. \(error)")
+            }
+        })
+        task.resume()
+    }
+    
+    func getPopularPlayers(finished: @escaping(([Player]) -> Void)) -> Void{
+        guard let url = URL(string: "\(baseUrl)en/popular?appreq") else { return }
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {
+            data, res, err in
+            if let data = data {
+                let decodedData = try? JSONDecoder().decode([Player].self, from: data)
+                let players = decodedData ?? [Player]()
+                finished(players)
+            } else if let error = err {
+                print("Error happened during call to get popular players \n \(error)")
             }
         })
         task.resume()
@@ -50,14 +72,6 @@ class ContentService {
             }
         })
         task.resume()
-//        _ = URLSession.shared.dataTaskPublisher(for: url)
-//            .map(\.data)
-//            .decode(type: RootPlayerStats.self, decoder: JSONDecoder())
-//            .sink(receiveCompletion: { result in
-//                print(result)
-//            }, receiveValue: { playerData in
-//                finished(playerData.playerStats)
-//            })
     }
     
     func getLowestBin(for lineId: String,finished: @escaping((LowestBin) -> Void)) -> Void {
@@ -100,12 +114,17 @@ class ContentService {
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { data, response, err in
             if let data = data {
-                let decodedData = try? JSONDecoder().decode([Player].self, from: data)
-                finished(decodedData ?? [])
+                let decodedData = try? JSONDecoder().decode([SearchedPlayer].self, from: data)
+                var searchedPlayers = [Player]()
+                decodedData?.forEach({ sP in
+                    searchedPlayers.append(Player(for: sP))
+                })
+                finished(searchedPlayers)
             }
         }
         task.resume()
     }
+    
     
     public static func getPlayerFacesUrl() -> String {
         return baseContentUrl + "faces/"

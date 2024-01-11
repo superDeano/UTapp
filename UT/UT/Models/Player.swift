@@ -28,6 +28,7 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
     let isUpgrade, updatedate: String?
     let appclass, cardtype, smallpreview, skillmoves: String
     let weakfoot, attackworkrate, defenseworkrate, heightft: String
+    @Published var itemInfo: ItemInfo?
     
     var id: String
     var att1Label = "PAC"
@@ -43,21 +44,22 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
     
     enum CodingKeys: String, CodingKey {
         case lineid, cardname, name, urlname, rating, pid, position, position2, position3, position4, nation, league, club, att1, att2, att3, att4, att5, att6, rare, fname, lname, dob, height, foot, traits, fut, minprice, maxprice
-        
+        case line_id
         case totalStats = "total_stats"
         case userrating, altimage
         case isUpgrade = "is_upgrade"
+        case common_name = "common_name"
         case updatedate, appclass, cardtype, smallpreview, skillmoves, weakfoot, attackworkrate, defenseworkrate, heightft
     }
     //MARK: Init no args
     init(){
         self.id = ""
-        self.lineid = ""
+        self.lineid = "19464"
         self.cardname = "superDeano"
         self.name = ""
         self.urlname = ""
         self.rating = "99"
-        self.pid = ""
+        self.pid = "183394"
         self.position = "CDM"
         self.position2 = ""
         self.position3 = ""
@@ -81,7 +83,7 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         self.minprice = ""
         self.maxprice = ""
         self.totalStats = ""
-        self.altimage = ""
+        self.altimage = "50515042"
         self.isUpgrade = ""
         self.updatedate = ""
         self.appclass = ""
@@ -92,6 +94,7 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         self.attackworkrate = ""
         self.defenseworkrate = ""
         self.heightft = ""
+        self.itemInfo = nil
     }
     
     //MARK: init with just player id
@@ -137,6 +140,7 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         self.attackworkrate = ""
         self.defenseworkrate = ""
         self.heightft = ""
+        self.itemInfo = nil
     }
     
     //MARK: init with SearchedPlayer
@@ -176,12 +180,19 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         self.updatedate = ""
         self.appclass = ""
         self.cardtype = player.cardtype
-        self.smallpreview = ""
+        self.smallpreview = player.smallpreview
         self.skillmoves = player.skillmoves
         self.weakfoot = player.weakfoot
         self.attackworkrate = player.attackworkrate
         self.defenseworkrate = player.defenseworkrate
         self.heightft = Player.convertCmIntoFt(val: player.height)
+        
+        if let i = ContentService.shared.itemManager.getItemInfo(for: cardtype) {
+            self.itemInfo = i
+        } else {
+            self.itemInfo = ContentService.shared.itemManager.getItemInfo(for: smallpreview)
+        }
+        self.funcSetAttributeLabels()
     }
     
     //MARK: Init all args
@@ -228,7 +239,7 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         self.attackworkrate = attackworkrate
         self.defenseworkrate = defenseworkrate
         self.heightft = heightft
-        
+        self.itemInfo = ItemInfo()
         self.funcSetAttributeLabels()
     }
     
@@ -237,14 +248,16 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
-        lineid = try values.decode(String.self,forKey: .lineid)
+        
+        lineid = try values.decodeIfPresent(String.self,forKey: .lineid) ?? values.decode(String.self, forKey: .line_id)
+
         id = lineid
         cardname = try values.decode(String.self,forKey: .cardname)
-        name = try values.decode(String.self,forKey: .name)
+        name = try values.decodeIfPresent(String.self,forKey: .name) ?? values.decode(String.self, forKey: .common_name)
         urlname = try values.decode(String.self,forKey: .urlname)
         rating = try values.decode(String.self,forKey: .rating)
-        pid = try values.decode(String.self,forKey: .pid)
-        position = try values.decode(String.self,forKey: .position)
+        pid = try values.decode(String.self, forKey: .pid)
+        position = try values.decode(String.self, forKey: .position)
         position2 = try values.decode(String?.self,forKey: .position2)
         position3 = try values.decode(String?.self,forKey: .position3)
         position4 = try values.decode(String?.self, forKey: .position4)
@@ -266,10 +279,10 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         traits = try values.decode(String?.self,forKey: .traits)
         minprice = try values.decode(String.self,forKey: .minprice)
         maxprice = try values.decode(String.self,forKey: .maxprice)
-        totalStats = try values.decode(String.self,forKey: .totalStats)
+        totalStats = try values.decodeIfPresent(String.self,forKey: .totalStats) ?? ""
         altimage = try values.decode(String?.self,forKey: .altimage)
         isUpgrade = try values.decode(String?.self,forKey: .isUpgrade)
-        updatedate = try values.decode(String?.self,forKey: .updatedate)
+        updatedate = try values.decodeIfPresent(String?.self,forKey: .updatedate) ?? ""
         appclass = try values.decode(String.self,forKey: .appclass)
         cardtype = try values.decode(String.self,forKey: .cardtype)
         smallpreview = try values.decode(String.self,forKey: .smallpreview)
@@ -277,8 +290,12 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         weakfoot = try values.decode(String.self,forKey: .weakfoot)
         attackworkrate = try values.decode(String.self,forKey: .attackworkrate)
         defenseworkrate = try values.decode(String.self,forKey: .defenseworkrate)
-        heightft = try values.decode(String.self,forKey: .heightft)
-        
+        heightft = try values.decodeIfPresent(String.self,forKey: .heightft) ?? Player.convertCmIntoFt(val: height)
+        if let i = ContentService.shared.itemManager.getItemInfo(for: cardtype) {
+            itemInfo = i
+        } else {
+            itemInfo = ContentService.shared.itemManager.getItemInfo(for: smallpreview)
+        }
         funcSetAttributeLabels()
     }
     
@@ -323,6 +340,11 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
             return ""
         }
         return "Cards/\(cardName)"
+    }
+    
+    public func setItem(item: ItemInfo) -> Player {
+        self.itemInfo = item
+        return self
     }
 }
 

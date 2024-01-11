@@ -6,20 +6,18 @@
 //
 
 import SwiftUI
-//import SwiftData
 
 struct PlayerInfoView: View {
-    //    @State public var playerStats: PlayerStats
-    @EnvironmentObject public var player: Player
-    //    @State private var lowestBin = LowestBin()
-    //    @State private var playStyles = [String]()
+
+    @EnvironmentObject public var obtainedPlayer: Player
+    @State private var displayedPlayer = Player()
     private let maxWidth: CGFloat = 100
-    
-    //        init(for player: Player){
-    //            self.player = player
-    //            playerStats = PlayerStats()
-    //            self.getData()
-    //        }
+//    private var itemInfo: ItemInfo?
+  
+//    init(itemInfo: ItemInfo?){
+//        self.itemInfo = itemInfo
+//        self.displayedPlayer = player
+//    }
     
     
     var body: some View {
@@ -27,23 +25,28 @@ struct PlayerInfoView: View {
             Section{
                 HStack{
                     Spacer()
-                    CardView(player: player)
+                    CardView(player: displayedPlayer)
                     Spacer()
                 }
             }.listRowBackground(Color.clear)
+                
+//                .onChange(of: obtainedPlayer) {
+//                    self.displayedPlayer = obtainedPlayer
+//                    self.getData()
+//                }
             
             Section(header: Text("Price")){
                 VStack(){
                     HStack(){
                         Text("Lowest Price").bold()
                         Spacer()
-                        Text(player.lowestBin?.bin ?? "n/a")
+                        Text(displayedPlayer.lowestBin?.bin ?? "n/a")
                         Image("Misc/coins").resizable().scaledToFit().frame(maxWidth: 18)
                     }
                     HStack(){
                         Text("Last Updated").font(.callout).bold()
                         Spacer()
-                        Text("\(player.lowestBin?.ud ?? "n/a") \(player.lowestBin != nil && player.lowestBin!.ud != "Never" ? "ago" : "")")
+                        Text("\(displayedPlayer.lowestBin?.ud ?? "n/a") \(displayedPlayer.lowestBin != nil && displayedPlayer.lowestBin!.ud != "Never" ? "ago" : "")")
                             .font(.callout)
                     }
                 }
@@ -53,19 +56,19 @@ struct PlayerInfoView: View {
                     HStack(){
                         Text("Name").bold()
                             .frame(maxWidth: self.maxWidth, alignment: .leading)
-                        Text(player.name)
+                        Text(displayedPlayer.name)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     HStack(){
                         Text("Age").bold()
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        Text(player.dob)
+                        Text(displayedPlayer.dob)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     HStack(){
                         Text("Height").bold()
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("\(player.height) cm / \(player.heightft)")
+                        Text("\(displayedPlayer.height) cm / \(displayedPlayer.heightft)")
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     //                    HStack(){
@@ -76,41 +79,37 @@ struct PlayerInfoView: View {
                     //                    }
                     HStack(){
                         Text("Club").bold()
-                            .frame(maxWidth: self.maxWidth, alignment: .leading)
-                        Text(Clubs.teams[self.player.club] ?? "")
-                            .frame(maxWidth: .infinity, alignment: .trailing)
+                        Spacer()
+                        Text(Clubs.teams[self.displayedPlayer.club] ?? "")
                     }
                     HStack(){
                         Text("League").bold()
-                            .frame(maxWidth: self.maxWidth, alignment: .leading)
-                        Text(Leagues.leagues[self.player.league] ?? "")
-                            .frame(maxWidth: .infinity, alignment: .trailing)
+                        Spacer()
+                        Text(Leagues.leagues[self.displayedPlayer.league] ?? "")
                     }
                     HStack(){
                         Text("Nationality").bold()
                             .frame(maxWidth: self.maxWidth, alignment: .leading)
-                        Text(Nations.nations[self.player.nation] ?? "")
+                        Text(Nations.nations[self.displayedPlayer.nation] ?? "")
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     HStack(){
                         Text("Skill Moves").bold()
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            Spacer()
                         HStack(){
-                            Text(player.skillmoves)
+                            Text(displayedPlayer.skillmoves)
                             Label("", systemImage: "star")
                                 .labelStyle(.iconOnly)
                                 .symbolVariant(.fill)
                                 .foregroundColor(.gray)
                                 .font(.caption2)
                         }
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        
                     }
                     HStack(){
                         Text("Weak Foot").bold()
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            Spacer()
                         HStack(){
-                            Text(player.weakfoot)
+                            Text(displayedPlayer.weakfoot)
                             Label("", systemImage: "star")
                                 .labelStyle(.iconOnly)
                                 .symbolVariant(.fill)
@@ -119,54 +118,54 @@ struct PlayerInfoView: View {
                         }
                     }
                     HStack(){
-                        Text("Foot").bold()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text(player.foot)
-                            .frame(maxWidth: .infinity, alignment: .trailing)
+                        Text("Preferred Foot").bold()
+                            Spacer()
+                        Text(displayedPlayer.foot)
                     }
                     HStack(){
                         Text("Attacking Workrate").bold()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text(player.attackworkrate)
-                            .frame(maxWidth: .infinity, alignment: .trailing)
+                        Spacer()
+                           Text(displayedPlayer.attackworkrate)
+                           
                     }
                     HStack(){
                         Text("Defending Workrate").bold()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text(player.defenseworkrate)
-                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            Spacer()
+                        Text(displayedPlayer.defenseworkrate)
+                           
                     }
                     
                 }
             }
             Section(header: Text("Stats")){
                 VStack(){
-                    AllStatsView(stats: $player.stats)
+                    AllStatsView(stats: $displayedPlayer.stats)
                 }
             }
             Section(header: Text("Playstyles")){
                 VStack{
-                    if player.stats?.playstylesPlus != nil && !(player.stats!.playstylesPlus!.isEmpty) {
+                    if displayedPlayer.stats?.playstylesPlus != nil && !(displayedPlayer.stats!.playstylesPlus!.isEmpty) {
                         VStack {
                             HStack{
                                 Text("Playstyles+").font(.title2).bold().padding(.top, 5)
                                 Spacer()
                             }
                             HStack {
-                                Text(player.stats?.playstylesPlus ?? "")
+                                Text(displayedPlayer.stats?.playstylesPlus ?? "")
                                 Spacer()
-                                Image("Playstyles/\(player.stats!.playstylesPlus!)-plus").resizable().scaledToFit().frame(width:40)
+                                Image("Playstyles/\(displayedPlayer.stats!.playstylesPlus!)-plus").resizable().scaledToFit().frame(width:40)
                             }
                         }.padding(.bottom, 15)
                     }
                     VStack {
-                        HStack{
+                        if displayedPlayer.stats?.playstyles != "" {
+                            HStack{
                             Text("Playstyles").font(.title2).bold()
                             Spacer()
                         }
                         HStack {
                             ScrollView {
-                                ForEach(player.stats?.playstyles?.split(separator: ",") ?? [], id: \.self) { playStyle in
+                                ForEach(displayedPlayer.stats?.playstyles?.split(separator: ",") ?? [], id: \.self) { playStyle in
                                     VStack{
                                         HStack {
                                             Text(playStyle)
@@ -177,10 +176,20 @@ struct PlayerInfoView: View {
                                 }
                             }
                         }
+                        } else if displayedPlayer.stats?.playstylesPlus == nil || (displayedPlayer.stats!.playstylesPlus!.isEmpty){
+                            HStack {
+                                Text("Player has no playstyles")
+                                Spacer()
+                            }
+                        }
                     }
                 }
             }
-        }.navigationTitle("\(player.cardname)")
+        }.navigationTitle("\(displayedPlayer.cardname)")
+            .onAppear(perform: {
+                self.displayedPlayer = obtainedPlayer
+                self.getData()
+        })
             .refreshable {
                 //                self.getLowestBin()
                 self.getPlayerStatsAndPrice()
@@ -192,7 +201,7 @@ struct PlayerInfoView: View {
             })
 #endif
             .onAppear(perform: getPlayerStatsAndPrice)
-            .onChange(of: player) { _, _ in
+            .onChange(of: displayedPlayer) { _, _ in
 #if os(macOS)
                 getData()
 #else
@@ -201,55 +210,42 @@ struct PlayerInfoView: View {
                 }
 #endif
             }
-        //            .onDisappear(perform: purgeCurrentPlayer)
-        //            .task(priority: .high, {
-        //                do {
-        //                    getPlayerStats()
-        //                    getLowestBin()
-        //                } catch {
-        //                    print(error)
-        //                }
-        //            })
     }
     
     private func getData(){
         getLowestBin()
-        if player.stats == nil {
+        if displayedPlayer.stats == nil {
             getPlayerStats()
         }
     }
     
     private func getLowestBin(){
-        ContentService().getLowestBin(for: player.lineid, finished: { lb in
+        ContentService.shared.getLowestBin(for: displayedPlayer.lineid, finished: { lb in
             DispatchQueue.main.async {
-                player.lowestBin = lb
+                displayedPlayer.lowestBin = lb
             }
             print("Price is", lb.bin!)
         })
     }
     
     private func getPlayerStats() -> Void {
-        let service = ContentService()
-        service.getPlayerStats(for: player.lineid, finished: { ps in
+        ContentService.shared.getPlayerStats(for: displayedPlayer.lineid, finished: { ps in
             DispatchQueue.main.async {
-                player.stats = ps
+                displayedPlayer.stats = ps
             }
         })
     }
     
     private func getPlayerStatsAndPrice() -> Void {
-        let service = ContentService()
-        service.getStatsAndLowestBin(for: player.lineid) { pStats, pLowBin in
+        
+        ContentService.shared.getStatsAndLowestBin(for: displayedPlayer.lineid) { pStats, pLowBin in
             DispatchQueue.main.async {
-                player.stats = pStats
-                player.lowestBin = pLowBin
+                displayedPlayer.stats = pStats
+                displayedPlayer.lowestBin = pLowBin
             }
         }
     }
     
-    //    private func purgeCurrentPlayer(){
-    //        self.player = Player()
-    //    }
 }
 
 #Preview {
