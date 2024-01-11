@@ -92,3 +92,4 @@ fastlane/test_output
 *.DS_Store
 *.txt
 *.py
+*.playground/

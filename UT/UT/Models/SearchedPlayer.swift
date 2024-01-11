@@ -37,6 +37,7 @@ class SearchedPlayer: Decodable, Identifiable {
     let attackworkrate: String
     let defenseworkrate: String
     let skillmoves: String
+    let smallpreview: String
     let weakfoot: String
     let foot: String
     
@@ -48,7 +49,7 @@ class SearchedPlayer: Decodable, Identifiable {
         case position2, position3, position4
         case att1, att2, att3, att4, att5, att6
         case skillmoves, weakfoot, workrates
-        case height, foot
+        case height, foot, smallpreview
     }
     
     public required init(from decoder: Decoder) throws {
@@ -84,6 +85,7 @@ class SearchedPlayer: Decodable, Identifiable {
         skillmoves = try container.decode(String.self, forKey: .skillmoves)
         weakfoot = try container.decode(String.self, forKey: .weakfoot)
         foot = try container.decode(String.self, forKey: .foot)
+        smallpreview = try container.decode(String.self, forKey: .smallpreview)
     }
     
 }
