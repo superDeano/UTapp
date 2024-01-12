@@ -17,7 +17,6 @@ struct ContentView: View {
     @State private var popularPlayers: [Player]
     @State private var presentSearch = false
     @Environment (\.isSearching) private var isSearching
-//    @EnvironmentObject private var itemManager : GetItemInfo
     
     init() {
         self.latestPlayers = []
@@ -46,38 +45,51 @@ struct ContentView: View {
                         }
                     }
                 }
-
+                
             } else {
-                // MARK: List of popular players view
+                // MARK: List of Latest players view
                 List {
-                    Section(header: Text("Latest Players")) {
+                    Section(header: Text("Latest Players").bold().font(.title).foregroundStyle(Color.white)) {
                         ScrollView(.horizontal) {
                             HStack {
                                 ForEach($latestPlayers) { $latestPlayer in
                                     NavigationLink {
                                         PlayerInfoView().environment(latestPlayer)
                                     } label: {
-                                        HStack {
-                                            MediumCardView().environment(latestPlayer)
-                                        }.padding(.horizontal, 5)
+                                        MediumCardView().environment(latestPlayer)
                                     }
                                 }
-                            }.frame(height: 200, alignment: .top)
+                            }.frame(height: 250)
                         }
-                    }.listRowBackground(Color.clear)
-                    Section(header: Text("Popular Players")) {
-                        ForEach($popularPlayers) { $popPlayer in
-                            NavigationLink {
-                                PlayerInfoView().environment(popPlayer)
-                            } label: {
-                                Text("\(popPlayer.name)")
-                            }
+                    }.listRowBackground(Color.clear).listRowSeparator(.hidden)
+                    //MARK: List of Popular players
+                    Section(header: Text("Popular Players").bold().font(.title)) {
+                        ScrollView(.horizontal){
+                            HStack {
+                                ForEach($popularPlayers) { $popPlayer in
+                                    NavigationLink {
+                                        PlayerInfoView().environment(popPlayer)
+                                    } label: {
+                                        MediumCardView().environment(popPlayer)
+                                    }
+                                }
+                            }.frame(height: 250)
                         }
+                    }.listRowBackground(Color.clear).listRowSeparator(.hidden)
+                }.onAppear(perform:
+                            {
+                    if self.latestPlayers.count == 0 {
+                        self.getLatestPlayers()
                     }
-                }.onAppear(perform: getLatestAndPopularPlayers)
-                    .refreshable {
-                        getLatestAndPopularPlayers()
+                    if self.popularPlayers.count == 0 {
+                        self.getPopularPlayers()
                     }
+                }
+                )
+                .refreshable {
+                    getLatestAndPopularPlayers()
+                }.listStyle(PlainListStyle())
+                    .edgesIgnoringSafeArea(.horizontal)
                 //            }
 #if os(macOS)
                 
@@ -92,21 +104,21 @@ struct ContentView: View {
                     }
 #endif
             }
-            } detail: {
-                Text("Select an item")
-            }//.environmentObject(itemManager)
-            .navigationTitle(Text("Home"))
-            .searchable(text: $searchText, prompt: "Player name").onChange(of: $searchText) {
-                _, newValue in
-                presentSearch = searchText.count > 0 ? true : false
-                runSearch()
-            }.onSubmit {
-                runSearch()
-            }
-            .onChange(of: isSearching) {
-                print("change of isSearching:", isSearching, "text is:", searchText)
-            }
-            
+        } detail: {
+            Text("Select an item")
+        }//.environmentObject(itemManager)
+        .navigationTitle(Text("Home"))
+        .searchable(text: $searchText, prompt: "Player name").onChange(of: $searchText) {
+            _, newValue in
+            presentSearch = searchText.count > 0 ? true : false
+            runSearch()
+        }.onSubmit {
+            runSearch()
+        }
+        .onChange(of: isSearching) {
+            print("change of isSearching:", isSearching, "text is:", searchText)
+        }
+        
         
     }
     
@@ -126,12 +138,20 @@ struct ContentView: View {
     
     private func getLatestAndPopularPlayers(){
         print("Getting latest players")
+        getLatestPlayers()
+        getPopularPlayers()
+    }
+    
+    func getLatestPlayers() -> Void {
         ContentService.shared.getLatestPlayers(finished: { players in
             DispatchQueue.main.async {
                 latestPlayers = players
             }
-
+            
         })
+    }
+    
+    func getPopularPlayers() -> Void {
         ContentService.shared.getPopularPlayers(finished: {
             players in
             DispatchQueue.main.async {
@@ -143,7 +163,7 @@ struct ContentView: View {
 
 #Preview {
     ContentView()//.environmentObject(GetItemInfo())
-//        .modelContainer(for: Item.self, inMemory: true)
+    //        .modelContainer(for: Item.self, inMemory: true)
 }
 
 extension Binding<String>: Equatable {
