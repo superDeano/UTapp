@@ -223,10 +223,5 @@ struct AllStatsView: View {
 }
 
 #Preview {
-//    struct FormView_View: PreviewProvider {
-//        static var body: some View {
-//    AllStatsView().environmentObject(PlayerStats())
     AllStatsView(stats: .constant(PlayerStats()))
-//        }
-//    }
 }

@@ -16,11 +16,7 @@ struct CardView: View {
     var clubImage = "Clubs/11"
     var player: Player
     var cardUrl = ""
-    #if os(iOS)
-    var textColour = Color(UIColor.darkGray)
-    #else
     var textColour = Color(Color.gray)
-    #endif
     var needToDownloadCard = false
     var playerFaceUrl = ""
     
@@ -31,7 +27,7 @@ struct CardView: View {
         } else {
             self.playerFaceUrl = ContentService.getPlayerFacesUrl() + player.pid + ".png"
         }
-        
+//        self.itemInfo = itemInfo
         self.cardImage = player.getCardName()
         self.clubImage = "Clubs/\(player.club)"
         self.leagueImage = "Leagues/\(player.league)"
@@ -39,12 +35,8 @@ struct CardView: View {
         if self.cardImage == "" {
             self.needToDownloadCard = true
             self.cardUrl = ContentService.getCardImagesUrl() + player.rare + ".png"
-            #if os(iOS)
-            self.textColour = Color(UIColor.white)
-            #else
-            self.textColour = Color(Color.white)
-            #endif
         }
+        self.textColour = Color.init(hexStr: self.player.itemInfo?.color ?? "453A22")
     }
     
     var body: some View {
@@ -75,7 +67,7 @@ struct CardView: View {
                             image.resizable().aspectRatio(contentMode: .fit)
                         } placeholder: {
                             ProgressView()
-                        }.frame(width: self.frameWidth / 1.5).position(x: 20, y: 209)
+                        }.frame(width: self.frameWidth / 1.5).position(x: 20, y: 200)
                         
                     }.frame(width: self.frameWidth, height: self.frameHeight, alignment: .center)
                     

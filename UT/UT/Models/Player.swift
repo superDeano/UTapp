@@ -101,18 +101,18 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
     init(for playerId: String){
         self.id = playerId
         self.lineid = playerId
-        self.cardname = ""
+        self.cardname = "test"
         self.name = ""
         self.urlname = ""
-        self.rating = ""
-        self.pid = ""
-        self.position = ""
+        self.rating = "99"
+        self.pid = "183394"
+        self.position = "CDM"
         self.position2 = ""
         self.position3 = ""
         self.position4 = ""
-        self.nation = ""
-        self.league = ""
-        self.club = ""
+        self.nation = "77"
+        self.league = "13"
+        self.club = "19"
         self.att1 = ""
         self.att2 = ""
         self.att3 = ""
@@ -129,7 +129,7 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         self.minprice = ""
         self.maxprice = ""
         self.totalStats = ""
-        self.altimage = ""
+        self.altimage = nil
         self.isUpgrade = ""
         self.updatedate = ""
         self.appclass = ""
@@ -140,7 +140,7 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         self.attackworkrate = ""
         self.defenseworkrate = ""
         self.heightft = ""
-        self.itemInfo = nil
+        self.itemInfo = ItemInfo(backgroundImage: "https://cdn.futwiz.com/assets/img/fc24/items/small/gold-if.png", color: "f6db7b", names: [])
     }
     
     //MARK: init with SearchedPlayer
@@ -247,10 +247,7 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
     public required init(from decoder: Decoder) throws {
         
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        
-        
         lineid = try values.decodeIfPresent(String.self,forKey: .lineid) ?? values.decode(String.self, forKey: .line_id)
-
         id = lineid
         cardname = try values.decode(String.self,forKey: .cardname)
         name = try values.decodeIfPresent(String.self,forKey: .name) ?? values.decode(String.self, forKey: .common_name)
