@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct InstallView: View {
+struct LaunchScreenView: View {
     @EnvironmentObject private var launchScreenState: LaunchScreenStateManager
 //    @Environment(\.modelContext) private var modelContext
     @State private var msg: String = ""
@@ -71,5 +71,5 @@ struct InstallView: View {
 }
 
 #Preview {
-    InstallView().environment(LaunchScreenStateManager())
+    LaunchScreenView().environment(LaunchScreenStateManager())
 }
