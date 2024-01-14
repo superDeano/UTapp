@@ -13,42 +13,50 @@ struct LaunchScreenView: View {
 //    @Environment(\.modelContext) private var modelContext
     @State private var msg: String = ""
 
-    private let timer = Timer.publish(every: 0.1, on: .current, in: .default).autoconnect()
+    private let timer = Timer.publish(every: 0.25, on: .current, in: .default).autoconnect()
 
     var body: some View {
-        VStack {
-            Text("Loading").fontWeight(.bold).font(.headline)
-            Text(msg).font(.subheadline)
-        }.onAppear {
-            updateStatusMessage()
-//            checkFirstInstall(context: modelContext)
-        }.onReceive(timer){
-            timer in
-                print("Received timer in launch screen")
-                updateStatusMessage()
+        HStack{
+            VStack {
+                Image(systemName: "soccerball.inverse").resizable().aspectRatio(contentMode: .fit).font(.largeTitle).padding(115).foregroundStyle(Color.white)
+                Text("Loading").fontWeight(.bold).font(.largeTitle).foregroundStyle(Color.white)
+//                Text(msg).font(.headline).foregroundStyle(Color.white)
+            }.onAppear {
+//                updateStatusMessage()
                 checkOnContentService()
+//                checkFirstInstall(context: modelContext)
+            }.onReceive(timer){
+                timer in
+
+//                updateStatusMessage()
+                checkOnContentService()
+            }
         }
+
+            .frame(maxHeight: .infinity)
+        .background(
+            LinearGradient(gradient: Gradient(colors: [Color(hexStr: "09B030"),
+                                                       Color(hexStr: "0B720B"),
+                                                       Color(hexStr: "0B3628")] ), startPoint: .topLeading, endPoint: .bottomTrailing))
     }
     
     private func updateStatusMessage(){
-        print("before state check:", msg)
         switch launchScreenState.state {
         case .firstStep:
             msg = "Starting."
         case .secondStep:
-            msg = "Installing data."
+            msg = "Downloading data."
         case .finished:
             msg = "Done."
             break
         }
-        print("after state check:", msg)
     }
     
     private func checkOnContentService() {
         switch ContentService.shared.itemManager.items.count {
         case 0:
             launchScreenState.setFirstStep()
-        case 1...10:
+        case 100...299:
             launchScreenState.setSecondStage()
         case 300...600:
             launchScreenState.dismiss()

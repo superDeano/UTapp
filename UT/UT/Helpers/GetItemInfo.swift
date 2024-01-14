@@ -13,7 +13,7 @@ class GetItemInfo: ObservableObject {
     
     init() {
         self.items = [ItemInfo]()
-        Task.init {
+        Task(priority: .userInitiated) {
             await self.retrieveContent()
         }
     }
@@ -24,13 +24,14 @@ class GetItemInfo: ObservableObject {
             let (fileUrl, _) = try await URLSession.shared.download(from: url)
             let fileContent = try String(contentsOf: fileUrl)
 //            let fileC
-            self.createObjects(lines: fileContent.components(separatedBy: .newlines))
+        
+           try self.createObjects(lines: fileContent.components(separatedBy: .newlines))
         } catch {
             print(error)
         }
     }
     
-    private func createObjects(lines: [String]) {
+    private func createObjects(lines: [String]) throws {
         var item: ItemInfo = ItemInfo()
         for line in lines {
             if line.contains("{") {
@@ -53,7 +54,7 @@ class GetItemInfo: ObservableObject {
                         .replacingOccurrences(of: ":url(", with: "")
                         .replacingOccurrences(of: ");", with: "")
                         .replacingOccurrences(of: " ", with: "")
-                } else if line.contains("color:") {
+                } else if line.starts(with: try Regex(".*\\scolor:")) {
                     item.color = line
                         .replacingOccurrences(of: "color:", with: "")
                         .replacingOccurrences(of: " ", with: "")

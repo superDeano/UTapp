@@ -44,7 +44,7 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
     
     enum CodingKeys: String, CodingKey {
         case lineid, cardname, name, urlname, rating, pid, position, position2, position3, position4, nation, league, club, att1, att2, att3, att4, att5, att6, rare, fname, lname, dob, height, foot, traits, fut, minprice, maxprice
-        case line_id
+        case line_id, itemdesign
         case totalStats = "total_stats"
         case userrating, altimage
         case isUpgrade = "is_upgrade"
@@ -278,10 +278,10 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         maxprice = try values.decode(String.self,forKey: .maxprice)
         totalStats = try values.decodeIfPresent(String.self,forKey: .totalStats) ?? ""
         altimage = try values.decode(String?.self,forKey: .altimage)
-        isUpgrade = try values.decode(String?.self,forKey: .isUpgrade)
+        isUpgrade = try values.decodeIfPresent(String.self,forKey: .isUpgrade) ?? ""
         updatedate = try values.decodeIfPresent(String?.self,forKey: .updatedate) ?? ""
         appclass = try values.decode(String.self,forKey: .appclass)
-        cardtype = try values.decode(String.self,forKey: .cardtype)
+        cardtype = try values.decodeIfPresent(String.self,forKey: .cardtype) ?? values.decodeIfPresent(String.self, forKey: .itemdesign) ?? ""
         smallpreview = try values.decode(String.self,forKey: .smallpreview)
         skillmoves = try values.decode(String.self,forKey: .skillmoves)
         weakfoot = try values.decode(String.self,forKey: .weakfoot)

@@ -23,7 +23,7 @@ struct MiniCardView: View {
     
     var body: some View {
         ZStack {
-            AsyncImage(url: URL(string: self.player.itemInfo?.backgroundImage ?? "\(ContentService.getCardImagesUrl() + player.rare).png")){
+            AsyncImage(url: URL(string: self.player.itemInfo?.backgroundImage ?? "\(ContentService.getCardImagesUrl() + player.getCardName()).png")){
                 image in image.resizable().aspectRatio(contentMode: .fit)
             } placeholder: {
 //#if DEBUG
