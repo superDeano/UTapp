@@ -8,9 +8,9 @@ import SwiftUI
 
 let allPositions = Filter().getAllPositions()
 
-let allLeagues = Leagues.leagues.map({ (key: String, value: String) in
-    GenericKeyValue(key: key, value: value)
-})
+//let allLeagues = Leagues.leagues.map({ (key: String, value: String) in
+//    GenericKeyValue(key: key, value: value)
+//})
 
 struct SearchByFilterView: View {
     @ObservedObject var searchFilter = Filter()
@@ -56,9 +56,13 @@ struct SearchByFilterView: View {
                     Form {
                         // League can be multiple
                         Section {
-                            MultiPicker(label: Text("League\(searchFilter.selectedLeagues.count > 1 ? "s" : "")"), options: allLeagues, optionToString: { $0.value }, selected: $searchFilter.selectedLeagues)
+                            MultiPicker(label: Text("League\(searchFilter.selectedLeagues.count > 1 ? "s" : "")"), options: searchFilter.getAllLeagues(), optionToString: { $0.value }, selected: $searchFilter.selectedLeagues)
                         } header: {
                             Text("Leagues")
+                        }.onChange(of: searchFilter.selectedLeagues) { oldValue, newValue in
+                            if oldValue.count > 0 && newValue.count == 0 {
+                                searchFilter.selectedTeams.removeAll()
+                            }
                         }
                         
                         if searchFilter.selectedLeagues.count > 0 {
