@@ -134,7 +134,11 @@ struct PlayerInfoView: View {
                         Text(displayedPlayer.defenseworkrate)
                            
                     }
-                    
+                    HStack(){
+                        Text("Alt Positions").bold()
+                        Spacer()
+                        Text(displayedPlayer.getAltPositions())
+                    }
                 }
             }
             Section(header: Text("Stats")){

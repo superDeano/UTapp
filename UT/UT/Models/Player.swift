@@ -343,6 +343,22 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         self.itemInfo = item
         return self
     }
+    
+    public func getAltPositions() -> String {
+        var positions = ""
+        if self.position2 != nil && self.position2 != "" {
+            positions.append(self.position2!)
+        }
+        if self.position3 != nil && self.position3 != "" {
+            positions.append(", ")
+            positions.append(self.position3!)
+        }
+        if self.position4 != nil && self.position4 != "" {
+            positions.append(", ")
+            positions.append(self.position4!)
+        }
+        return positions == "" ? "N/A" : positions
+    }
 }
 
 extension Player {
