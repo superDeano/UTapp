@@ -125,6 +125,28 @@ class ContentService {
         task.resume()
     }
     
+    public func searchPlayers(filter query: String, page number: Int, finished: @escaping (([Player]) -> Void)) -> Void {
+        guard let url = URL(string: "\(baseUrl)en/fc24/players?page=\(number)&\(query)&appreq") else { return }
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { data, response, err in
+            if let data = data {
+                let decodedData = try? JSONDecoder().decode([Player].self, from: data)
+                finished(decodedData ?? [Player]())
+            }
+        }
+        task.resume()
+    }
+    
+    public func testConnection() -> Void {
+        searchPlayer(for: "emir-tintis") { p in
+            if p.first?.itemInfo == nil {
+                print("Item info is nil")
+            } else {
+                print("Obtained item info")
+            }
+        }
+    }
+    
     
     public static func getPlayerFacesUrl() -> String {
         return baseContentUrl + "faces/"

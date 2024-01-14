@@ -11,40 +11,35 @@ import SwiftData
 @main
 struct UTApp: App {
     @StateObject var launchScreenState = LaunchScreenStateManager()
-//    @StateObject var itemsManager = GetItemInfo()
-//    var sharedModelContainer: ModelContainer = {
-//        let schema = Schema([
-//            Club.self,
-//        ])
-//        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-//
-//        do {
-//            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-//        } catch {
-//            fatalError("Could not create ModelContainer: \(error)")
-//        }
-//    }()
-    
-    
     
     var body: some Scene {
         WindowGroup {
             ZStack {
                 if launchScreenState.state != .finished {
-                    InstallView()
+                    LaunchScreenView()
                         .environmentObject(launchScreenState)
-                } else {
-                //            TabView(){
-                
-                ContentView()
-
-                //                    .tabItem { Label("Home", systemImage: "house") }
                 }
-
+                
+                if launchScreenState.state != .firstStep{
+                    
+                    TabView(){
+                        
+                        ContentView()
+                            .tabItem {
+                                Label("Home", systemImage: "house")
+                            }.environmentObject(launchScreenState)
+                        
+                        SearchByFilterView()
+                            .tabItem {
+                                Label("Search", systemImage: "text.magnifyingglass")
+                            }
+                        
+                    }.opacity(launchScreenState.state != .finished ? 0 : 1)
+                }
+                
             }
-//            .environment(launchScreenState)
-        }//.environmentObject(itemsManager)
-//        .modelContainer(sharedModelContainer)
+
+        }
     }
     
     
