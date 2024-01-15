@@ -21,22 +21,22 @@ struct UTApp: App {
                 }
                 
                 if launchScreenState.state != .firstStep{
-                    
-                    TabView(){
-                        
-                        ContentView()
-                            .tabItem {
-                                Label("Home", systemImage: "house")
-                            }.environmentObject(launchScreenState)
-                        
-                        SearchByFilterView()
-                            .tabItem {
-                                Label("Search", systemImage: "text.magnifyingglass")
-                            }
-                        
-                    }.opacity(launchScreenState.state != .finished ? 0 : 1)
+                    NavigationStack{
+                        TabView(){
+                            
+                            ContentView()
+                                .tabItem {
+                                    Label("Home", systemImage: "house")
+                                }.environmentObject(launchScreenState)
+                            
+                            SearchByFilterView()
+                                .tabItem {
+                                    Label("Search", systemImage: "text.magnifyingglass")
+                                }
+                            
+                        }.opacity(launchScreenState.state != .finished ? 0 : 1)
+                    }
                 }
-                
             }
 
         }
