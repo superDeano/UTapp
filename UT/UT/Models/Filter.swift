@@ -77,7 +77,6 @@ class Filter: ObservableObject {
                 teams.append(GenericKeyValue(key: teamId, value: Clubs.teams[teamId] ?? ""))
             }
         }
-        self.selectedTeams.removeAll()
         return teams
     }
     
@@ -342,8 +341,4 @@ class Filter: ObservableObject {
             return query
         }
     }
-}
-
-extension Set<GenericKeyValue> {
-    
 }
