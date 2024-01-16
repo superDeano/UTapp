@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct MediumCardView: View {
     @EnvironmentObject var player: Player
@@ -14,7 +15,7 @@ struct MediumCardView: View {
         VStack{
             ZStack{
                 //MARK: Card background
-                AsyncImage(url: URL(string: "\(player.itemInfo?.backgroundImage ?? (ContentService.getCardImagesUrl() + player.rare + ".png"))")) {
+                CachedAsyncImage(url: URL(string: "\(player.itemInfo?.backgroundImage ?? (ContentService.getCardImagesUrl() + player.rare + ".png"))")) {
                     image in image.resizable()
                         .frame(width:180, height: 250)
                 } placeholder: {
@@ -25,7 +26,7 @@ struct MediumCardView: View {
                 VStack {
 
                         //MARK: Player Face
-                        AsyncImage(url: URL(string: "\(ContentService.getPlayerFacesUrl() + (player.altimage ?? player.pid)).png")) {
+                        CachedAsyncImage(url: URL(string: "\(ContentService.getPlayerFacesUrl() + (player.altimage ?? player.pid)).png")) {
                             image in image.resizable().aspectRatio(contentMode: .fill).frame(width: 125)
                         } placeholder: {
                             ProgressView()

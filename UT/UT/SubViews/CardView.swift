@@ -4,7 +4,7 @@
 //
 //  Created by Dean Chong San on 2024-01-05.
 //
-
+import CachedAsyncImage
 import SwiftUI
 
 struct CardView: View {
@@ -43,7 +43,7 @@ struct CardView: View {
         VStack {
             ZStack {
                 if self.needToDownloadCard {
-                    AsyncImage(url: URL(string: self.cardUrl)!){
+                    CachedAsyncImage(url: URL(string: self.cardUrl)!){
                         image in
                         image.resizable().aspectRatio(contentMode: .fit)
                     } 

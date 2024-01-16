@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct MiniCardView: View {
     
@@ -23,7 +24,7 @@ struct MiniCardView: View {
     
     var body: some View {
         ZStack {
-            AsyncImage(url: URL(string: self.player.itemInfo?.backgroundImage ?? "\(ContentService.getCardImagesUrl() + player.getCardName()).png")){
+            CachedAsyncImage(url: URL(string: self.player.itemInfo?.backgroundImage ?? "\(ContentService.getCardImagesUrl() + player.getCardName()).png")){
                 image in image.resizable().aspectRatio(contentMode: .fit)
             } placeholder: {
 //#if DEBUG
