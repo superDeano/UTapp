@@ -34,6 +34,12 @@ class Filter: ObservableObject {
     private let MAX_RATING = "maxrating="
     private let ACCELERATE = "accelerate="
     
+    private var allLeagues: [GenericKeyValue] = []
+    private var allNations: [GenericKeyValue] = []
+    private var allPositions: [GenericValue] = []
+    private var workRates: [GenericValue] = []
+    private var starRatings: [GenericValue] = []
+    
     @Published public var selectedLeagues: Set<GenericKeyValue> = Set()
     @Published public var selectedTeams: Set<GenericKeyValue> = Set()
     @Published public var selectedPositions: Set<GenericValue> = Set()
@@ -46,30 +52,80 @@ class Filter: ObservableObject {
     
     @Published public var selectedMinRating: Double = 1
     @Published public var selectedMaxRating: Double = 99
+//    Pace Stats
     @Published public var selectedMinPace: Double = 1
     @Published public var selectedMaxPace: Double = 99
+
+    @Published public var selectedMinAcceleration: Double = 1
+    @Published public var selectedMaxAcceleration: Double = 99
+    @Published public var selectedMinSprint: Double = 1
+    @Published public var selectedMaxSprint: Double = 99
+    
+//    Shooting
     @Published public var selectedMinShooting: Double = 1
     @Published public var selectedMaxShooting: Double = 99
+
+    @Published public var selectedMinPosition: Double = 1
+    @Published public var selectedMaxPosition: Double = 99
+    @Published public var selectedMinFinishing: Double = 1
+    @Published public var selectedMaxFinishing: Double = 99
+    @Published public var selectedMinShotPower: Double = 1
+    @Published public var selectedMaxShotPower: Double = 99
+    @Published public var selectedMinLongShot: Double = 1
+    @Published public var selectedMaxLongShot: Double = 99
+    @Published public var selectedMinVolleys: Double = 1
+    @Published public var selectedMaxVolleys: Double = 99
+    @Published public var selectedMinPenalties: Double = 1
+    @Published public var selectedMaxPenalties: Double = 99
+//    Passing
     @Published public var selectedMinPassing: Double = 1
     @Published public var selectedMaxPassing: Double = 99
+    @Published public var selectedMinVision: Double = 1
+    @Published public var selectedMaxVision: Double = 99
+    @Published public var selectedMinCrossing: Double = 1
+    @Published public var selectedMaxCrossing: Double = 99
+    
+//    Dribbling
     @Published public var selectedMinDribbling: Double = 1
     @Published public var selectedMaxDribbling: Double = 99
+    
+//    Defending
     @Published public var selectedMinDefending: Double = 1
     @Published public var selectedMaxDefending: Double = 99
+    
+//    Physical
     @Published public var selectedMinPhysical: Double = 1
     @Published public var selectedMaxPhysical: Double = 99
     
-    func getAllPositions() -> [GenericValue] {
+    init() {
+        self.allLeagues = computeAllLeagues()
+        self.allPositions = computeAllPositions()
+        self.allNations = computeAllNations()
+        self.starRatings = computeStarRatings()
+        self.workRates = computeAllWorkRates()
+    }
+    
+    private func computeAllPositions() -> [GenericValue] {
         return [GenericValue(value: "Attackers"),GenericValue(value: "Midfielders"),GenericValue(value: "Defenders"), GenericValue(value: "GK"), GenericValue(value: "LB"), GenericValue(value: "LWB"), GenericValue(value: "CB"), GenericValue(value: "RB"), GenericValue(value: "RWB"), GenericValue(value: "CDM"), GenericValue(value: "CM"), GenericValue(value: "CAM"), GenericValue(value: "LM"), GenericValue(value: "RM"), GenericValue(value: "LW"), GenericValue(value: "RW"), GenericValue(value: "CF"), GenericValue(value: "ST")]
     }
     
-    func getAllLeagues() -> [GenericKeyValue] {
+    public func getAllPositions() -> [GenericValue]{
+        return self.allPositions
+    }
+    
+    private func computeAllLeagues() -> [GenericKeyValue] {
         return Leagues.leagues.map { (k: String, val: String) in
             GenericKeyValue(key: k, value: val)
+        }.sorted { obj1, obj2 in
+            obj1.value < obj2.value
         }
     }
     
-    func getSpecificTeams() -> [GenericKeyValue] {
+    func getAllLeagues() -> [GenericKeyValue] {
+        return self.allLeagues
+    }
+    
+    public func getSpecificTeams() -> [GenericKeyValue] {
         var teams = [GenericKeyValue]()
         for (_, val) in self.selectedLeagues.enumerated() {
             let teamsInLeague: [String] = Leagues.leaguesAndClubs[val.id] ?? []
@@ -80,7 +136,7 @@ class Filter: ObservableObject {
         return teams
     }
     
-    func getAllWorkRates() -> [GenericValue]{
+    private func computeAllWorkRates() -> [GenericValue]{
         //        <input type="checkbox" name="attworkrates[]" value="high" id="attwrhigh" />
         //        <input type="checkbox" name="attworkrates[]" value="med" id="attwrmed" />
         //        <input type="checkbox" name="attworkrates[]" value="low" id="attwrlow" />
@@ -94,13 +150,21 @@ class Filter: ObservableObject {
         ]
     }
     
-    func getAllNations() -> [GenericKeyValue] {
+    public func getAllWorkRates() -> [GenericValue] {
+        return self.workRates
+    }
+    
+    private func computeAllNations() -> [GenericKeyValue] {
         return Nations.nations.map { (k: String, val: String) in
             GenericKeyValue(key: k, value: val)
         }.sorted(by: {$0.value < $1.value})
     }
     
-    func getStarRatings() -> [GenericValue]{
+    public func getAllNations() -> [GenericKeyValue]{
+        return self.allNations
+    }
+    
+    private func computeStarRatings() -> [GenericValue]{
         return [
             GenericValue(value: "5"),
             GenericValue(value: "4"),
@@ -108,6 +172,10 @@ class Filter: ObservableObject {
             GenericValue(value: "2"),
             GenericValue(value: "1")
         ]
+    }
+    
+    public func getStarRatings() -> [GenericValue]{
+        return self.starRatings
     }
     
     func getQuery() -> String {
