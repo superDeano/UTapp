@@ -7,7 +7,7 @@
 import SwiftUI
 import Combine
 
-let allPositions = Filter().getAllPositions()
+//let allPositions = Filter().getAllPositions()
 
 
 
@@ -24,6 +24,7 @@ struct SearchByFilterView: View {
         formatter.numberStyle = .decimal
         formatter.roundingMode = NumberFormatter.RoundingMode.halfUp
         formatter.maximumFractionDigits = 0
+        print("Creating number formatter")
         return formatter
     }()
     
@@ -40,17 +41,7 @@ struct SearchByFilterView: View {
                                 .toolbar(.hidden, for: .tabBar)
 #endif
                         } label: {
-                            HStack {
-                                VStack(alignment: .leading){
-                                    Text(searchedPlayer.name).multilineTextAlignment(.leading)
-                                    Text("\(Nations.nations[searchedPlayer.nation] ?? "") | \(Leagues.leagues[searchedPlayer.league] ?? "") | \(Clubs.teams[searchedPlayer.club] ?? "")").multilineTextAlignment(.leading).fontWidth(.compressed)
-                                    
-                                }
-                                Spacer()
-                                HStack{
-                                    MiniCardView(player: searchedPlayer)
-                                }.frame(maxWidth: 40)
-                            }
+                            SearchedPlayerCellView(player: searchedPlayer)
                         }
                     }
                 }
@@ -75,7 +66,7 @@ struct SearchByFilterView: View {
                                     searchFilter.selectedTeams.removeAll()
                                 }
                             }
-                            
+                        
                             if searchFilter.selectedLeagues.count > 0 {
                                 Section {
                                     MultiPicker(label: Text("Team\(searchFilter.selectedTeams.count > 1 ? "s" : "")"), options: searchFilter.getSpecificTeams(), optionToString: { $0.value }, selected: $searchFilter.selectedTeams)
@@ -85,7 +76,7 @@ struct SearchByFilterView: View {
                             }
                             
                             Section {
-                                MultiPicker(label: Text("Position\(searchFilter.selectedPositions.count > 1 ? "s" : "")"), options: allPositions, optionToString: { $0.value }, selected: $searchFilter.selectedPositions)
+                                MultiPicker(label: Text("Position\(searchFilter.selectedPositions.count > 1 ? "s" : "")"), options: searchFilter.getAllPositions(), optionToString: { $0.value }, selected: $searchFilter.selectedPositions)
                             } header: {
                                 Text("Positions")
                             }
@@ -350,7 +341,7 @@ struct SearchByFilterView: View {
                                 }
                             } header: {
                                 Text("Physicality")
-                            }
+                            }//.collap
                             
                             
                             // MARK: Button to search
@@ -423,6 +414,7 @@ struct SearchByFilterView: View {
                 }
             }
             if players.count == 28 && searchedPlayers.count < 200 {
+                print("Searching again as", players.count, "on page", self.pageNum)
                 self.pageNum += 1
                 searchPlayers()
             }

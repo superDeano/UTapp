@@ -79,17 +79,7 @@ struct ContentView: View {
                                     .toolbar(.hidden, for: .tabBar)
                                 #endif
                             } label: {
-                                HStack {
-                                    VStack(alignment: .leading){
-                                        Text(searchedPlayer.name).multilineTextAlignment(.leading)
-                                        Text("\(Nations.nations[searchedPlayer.nation] ?? "") | \(Leagues.leagues[searchedPlayer.league] ?? "") | \(Clubs.teams[searchedPlayer.club] ?? "")").multilineTextAlignment(.leading).fontWidth(.compressed)
-
-                                    }
-                                    Spacer()
-                                    HStack{
-                                        MiniCardView(player: searchedPlayer)
-                                    }.frame(maxWidth: 40)
-                                }
+                                SearchedPlayerCellView(player: searchedPlayer)
                             }
                         }
                     }
