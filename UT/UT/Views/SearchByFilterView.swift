@@ -32,21 +32,24 @@ struct SearchByFilterView: View {
     var body: some View {
         NavigationView{
             VStack {
+                
                 List{
                     ForEach($searchedPlayers) {
                         $searchedPlayer in
-                        NavigationLink {
-                            PlayerInfoView().environment(searchedPlayer)
+                        LazyVStack {
+                            NavigationLink {
+                                PlayerInfoView().environment(searchedPlayer)
 #if os(iOS)
-                                .toolbar(.hidden, for: .tabBar)
+                                    .toolbar(.hidden, for: .tabBar)
 #endif
-                        } label: {
-                            SearchedPlayerCellView(player: searchedPlayer)
+                            } label: {
+                                SearchedPlayerCellView(player: searchedPlayer)
+                            }
                         }
                     }
                 }
                 .sheet(isPresented: $presentFilterForm, content: {
-
+                    
                     /*
                      Leagues can be multiple: leagues[]
                      Clubs can be multiple: clubs[]
@@ -55,7 +58,7 @@ struct SearchByFilterView: View {
                     NavigationView{
                         
                         Form {
-
+                            
                             // League can be multiple
                             Section {
                                 MultiPicker(label: Text("League\(searchFilter.selectedLeagues.count > 1 ? "s" : "")"), options: searchFilter.getAllLeagues(), optionToString: { $0.value }, selected: $searchFilter.selectedLeagues)
@@ -65,8 +68,8 @@ struct SearchByFilterView: View {
                                 if oldValue.count > 0 && newValue.count == 0 {
                                     searchFilter.selectedTeams.removeAll()
                                 }
-                            }
-                        
+                            }.padding(.top, 15)
+                            
                             if searchFilter.selectedLeagues.count > 0 {
                                 Section {
                                     MultiPicker(label: Text("Team\(searchFilter.selectedTeams.count > 1 ? "s" : "")"), options: searchFilter.getSpecificTeams(), optionToString: { $0.value }, selected: $searchFilter.selectedTeams)
@@ -116,7 +119,7 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Max")
                                     Slider(value: $searchFilter.selectedMaxRating, in: 1.0...99.0, step: 1.0)
-//                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxRating))")
+                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxRating))")
                                     TextField("\(String(format:"%.0f", searchFilter.selectedMaxRating))", value: $searchFilter.selectedMaxRating, formatter: self.formatter)
                                         .autocorrectionDisabled()
                                         .keyboardType(.numberPad)
@@ -130,7 +133,7 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinRating, in: 1.0...99.0, step: 1.0)
-//                                    Text("\(String(format:"%.0f", searchFilter.selectedMinRating))")
+                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinRating))")
                                     TextField("\(String(format:"%.0f", searchFilter.selectedMinRating))", value: $searchFilter.selectedMinRating, formatter: self.formatter)
                                         .autocorrectionDisabled()
                                         .keyboardType(.numberPad)
@@ -149,7 +152,7 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Max")
                                     Slider(value: $searchFilter.selectedMaxPace, in: 1.0...99.0, step: 1.0)
-//                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxPace))")
+                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxPace))")
                                     TextField("\(String(format:"%.0f", searchFilter.selectedMaxPace))", value: $searchFilter.selectedMaxPace, formatter: self.formatter)
                                         .autocorrectionDisabled()
                                         .keyboardType(.numberPad)
@@ -163,7 +166,7 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinPace, in: 1.0...99.0, step: 1.0)
-//                                    Text("\(String(format:"%.0f", searchFilter.selectedMinPace))")
+                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinPace))")
                                     TextField("\(String(format:"%.0f", searchFilter.selectedMinPace))", value: $searchFilter.selectedMinPace, formatter: self.formatter)
                                         .autocorrectionDisabled()
                                         .keyboardType(.numberPad)
@@ -182,7 +185,7 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Max")
                                     Slider(value: $searchFilter.selectedMaxShooting, in: 1.0...99.0, step: 1.0)
-//                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxShooting))")
+                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxShooting))")
                                     TextField("\(String(format:"%.0f", searchFilter.selectedMaxShooting))", value: $searchFilter.selectedMaxShooting, formatter: self.formatter)
                                         .autocorrectionDisabled()
                                         .keyboardType(.numberPad)
@@ -196,7 +199,7 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinShooting, in: 1.0...99.0, step: 1.0)
-//                                    Text("\(String(format:"%.0f", searchFilter.selectedMinShooting))")
+                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinShooting))")
                                     TextField("\(String(format:"%.0f", searchFilter.selectedMinShooting))", value: $searchFilter.selectedMinShooting, formatter: self.formatter)
                                         .autocorrectionDisabled()
                                         .keyboardType(.numberPad)
@@ -215,7 +218,6 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Max")
                                     Slider(value: $searchFilter.selectedMaxPassing, in: 1.0...99.0, step: 1.0)
-//                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxPassing))")
                                     TextField("\(String(format:"%.0f", searchFilter.selectedMaxPassing))", value: $searchFilter.selectedMaxPassing, formatter: self.formatter)
                                         .autocorrectionDisabled()
                                         .keyboardType(.numberPad)
@@ -229,7 +231,7 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinPassing, in: 1.0...99.0, step: 1.0)
-//                                    Text("\(String(format:"%.0f", searchFilter.selectedMinPassing))")
+                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinPassing))")
                                     TextField("\(String(format:"%.0f", searchFilter.selectedMinPassing))", value: $searchFilter.selectedMinPassing, formatter: self.formatter)
                                         .autocorrectionDisabled()
                                         .keyboardType(.numberPad)
@@ -262,7 +264,7 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinDribbling, in: 1.0...99.0, step: 1.0)
-//                                    Text("\(String(format:"%.0f", searchFilter.selectedMinDribbling))")
+                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinDribbling))")
                                     TextField("\(String(format:"%.0f", searchFilter.selectedMinDribbling))", value: $searchFilter.selectedMinDribbling, formatter: self.formatter)
                                         .autocorrectionDisabled()
                                         .keyboardType(.numberPad)
@@ -281,7 +283,7 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Max")
                                     Slider(value: $searchFilter.selectedMaxDefending, in: 1.0...99.0, step: 1.0)
-//                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxDefending))")
+                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxDefending))")
                                     TextField("\(String(format:"%.0f", searchFilter.selectedMaxDefending))", value: $searchFilter.selectedMaxDefending, formatter: self.formatter)
                                         .autocorrectionDisabled()
                                         .keyboardType(.numberPad)
@@ -295,7 +297,7 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinDefending, in: 1.0...99.0, step: 1.0)
-//                                    Text("\(String(format:"%.0f", searchFilter.selectedMinDefending))")
+                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinDefending))")
                                     TextField("\(String(format:"%.0f", searchFilter.selectedMinDefending))", value: $searchFilter.selectedMinDefending, formatter: self.formatter)
                                         .autocorrectionDisabled()
                                         .keyboardType(.numberPad)
@@ -314,7 +316,7 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Max")
                                     Slider(value: $searchFilter.selectedMaxPhysical, in: 1.0...99.0, step: 1.0)
-//                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxPhysical))")
+                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxPhysical))")
                                     TextField("\(String(format:"%.0f", searchFilter.selectedMaxPhysical))", value: $searchFilter.selectedMaxPhysical, formatter: self.formatter)
                                         .autocorrectionDisabled()
                                         .keyboardType(.numberPad)
@@ -328,7 +330,7 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinPhysical, in: 1.0...99.0, step: 1.0)
-//                                    Text("\(String(format:"%.0f", searchFilter.selectedMinPhysical))")
+                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinPhysical))")
                                     TextField("\(String(format:"%.0f", searchFilter.selectedMinPhysical))", value: $searchFilter.selectedMinPhysical, formatter: self.formatter)
                                         .autocorrectionDisabled()
                                         .keyboardType(.numberPad)
@@ -374,12 +376,12 @@ struct SearchByFilterView: View {
                             }
                         }
                         
-                    }.padding(.top, 15)
+                    }
                 }
                 )
                 .navigationTitle(Text("Filter Search"))
                 .toolbar{
-
+                    
                     Button {
                         presentFilterForm.toggle()
                     } label: {

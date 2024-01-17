@@ -34,7 +34,7 @@ struct ContentView: View {
             List {
                 Section(header: Text("Latest Players").bold().font(.title3)) {
                     ScrollView(.horizontal) {
-                        HStack {
+                        LazyHStack {
                             ForEach($latestPlayers) { $latestPlayer in
                                 NavigationLink {
                                     PlayerInfoView().environment(latestPlayer)
@@ -52,7 +52,7 @@ struct ContentView: View {
                 //MARK: List of Popular players
                 Section(header: Text("Popular Players").bold().font(.title3)) {
                     ScrollView(.horizontal){
-                        HStack {
+                        LazyHStack {
                             ForEach($popularPlayers) { $popPlayer in
                                 NavigationLink {
                                     PlayerInfoView().environment(popPlayer)
@@ -130,6 +130,7 @@ struct ContentView: View {
     
     
     private func runSearch(){
+//        searchText.publisher.debounce(for: .seconds(1), scheduler: RunLoop.main)
         if (!searchText.isEmpty && searchText.count > 3){
             print("Searching for \(searchText)")
             ContentService.shared.searchPlayer(for: searchText) { players in
