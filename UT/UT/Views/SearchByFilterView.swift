@@ -7,8 +7,6 @@
 import SwiftUI
 import Combine
 
-//let allPositions = Filter().getAllPositions()
-
 
 
 struct SearchByFilterView: View {
@@ -18,6 +16,7 @@ struct SearchByFilterView: View {
     @State var newSearch = false
     @State var pageNum: Int = 0
     @FocusState var isInputActive: Bool
+//    @Namespace var nameSpace
     
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -68,7 +67,7 @@ struct SearchByFilterView: View {
                                 if oldValue.count > 0 && newValue.count == 0 {
                                     searchFilter.selectedTeams.removeAll()
                                 }
-                            }.padding(.top, 15)
+                            }
                             
                             if searchFilter.selectedLeagues.count > 0 {
                                 Section {
@@ -119,30 +118,12 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Max")
                                     Slider(value: $searchFilter.selectedMaxRating, in: 1.0...99.0, step: 1.0)
-                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxRating))")
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMaxRating))", value: $searchFilter.selectedMaxRating, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMaxRating, isInputActive: $isInputActive, formatter: self.formatter)
                                 }
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinRating, in: 1.0...99.0, step: 1.0)
-                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinRating))")
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMinRating))", value: $searchFilter.selectedMinRating, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMinRating, isInputActive: $isInputActive, formatter: self.formatter)
                                 }
                             } header: {
                                 Text("Overall Rating")
@@ -152,30 +133,12 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Max")
                                     Slider(value: $searchFilter.selectedMaxPace, in: 1.0...99.0, step: 1.0)
-                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxPace))")
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMaxPace))", value: $searchFilter.selectedMaxPace, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMaxPace, isInputActive: $isInputActive, formatter: self.formatter)
                                 }
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinPace, in: 1.0...99.0, step: 1.0)
-                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinPace))")
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMinPace))", value: $searchFilter.selectedMinPace, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMinPace, isInputActive: $isInputActive, formatter: self.formatter)
                                 }
                             } header: {
                                 Text("Pace")
@@ -185,30 +148,12 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Max")
                                     Slider(value: $searchFilter.selectedMaxShooting, in: 1.0...99.0, step: 1.0)
-                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxShooting))")
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMaxShooting))", value: $searchFilter.selectedMaxShooting, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMaxShooting, isInputActive: $isInputActive, formatter: self.formatter)
                                 }
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinShooting, in: 1.0...99.0, step: 1.0)
-                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinShooting))")
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMinShooting))", value: $searchFilter.selectedMinShooting, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMinShooting, isInputActive: $isInputActive, formatter: self.formatter)
                                 }
                             } header: {
                                 Text("Shooting")
@@ -218,29 +163,12 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Max")
                                     Slider(value: $searchFilter.selectedMaxPassing, in: 1.0...99.0, step: 1.0)
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMaxPassing))", value: $searchFilter.selectedMaxPassing, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMaxPassing, isInputActive: $isInputActive, formatter: self.formatter)
                                 }
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinPassing, in: 1.0...99.0, step: 1.0)
-                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinPassing))")
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMinPassing))", value: $searchFilter.selectedMinPassing, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMinPassing, isInputActive: $isInputActive, formatter: self.formatter)
                                 }
                             } header: {
                                 Text("Passing")
@@ -250,30 +178,13 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Max")
                                     Slider(value: $searchFilter.selectedMaxDribbling, in: 1.0...99.0, step: 1.0)
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMaxDribbling))", value: $searchFilter.selectedMaxDribbling, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMaxDribbling, isInputActive: $isInputActive, formatter: self.formatter)
                                     
                                 }
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinDribbling, in: 1.0...99.0, step: 1.0)
-                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinDribbling))")
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMinDribbling))", value: $searchFilter.selectedMinDribbling, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMinDribbling, isInputActive: $isInputActive, formatter: self.formatter)
                                 }
                             } header: {
                                 Text("Dribbling")
@@ -283,30 +194,12 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Max")
                                     Slider(value: $searchFilter.selectedMaxDefending, in: 1.0...99.0, step: 1.0)
-                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxDefending))")
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMaxDefending))", value: $searchFilter.selectedMaxDefending, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMaxDefending, isInputActive: $isInputActive, formatter: self.formatter)
                                 }
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinDefending, in: 1.0...99.0, step: 1.0)
-                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinDefending))")
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMinDefending))", value: $searchFilter.selectedMinDefending, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMinDefending, isInputActive: $isInputActive, formatter: self.formatter)
                                 }
                             } header: {
                                 Text("Defending")
@@ -316,34 +209,16 @@ struct SearchByFilterView: View {
                                 HStack{
                                     Text("Max")
                                     Slider(value: $searchFilter.selectedMaxPhysical, in: 1.0...99.0, step: 1.0)
-                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMaxPhysical))")
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMaxPhysical))", value: $searchFilter.selectedMaxPhysical, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMaxPhysical, isInputActive: $isInputActive, formatter: self.formatter)
                                 }
                                 HStack{
                                     Text("Min")
                                     Slider(value: $searchFilter.selectedMinPhysical, in: 1.0...99.0, step: 1.0)
-                                    //                                    Text("\(String(format:"%.0f", searchFilter.selectedMinPhysical))")
-                                    TextField("\(String(format:"%.0f", searchFilter.selectedMinPhysical))", value: $searchFilter.selectedMinPhysical, formatter: self.formatter)
-                                        .autocorrectionDisabled()
-                                        .keyboardType(.numberPad)
-                                        .padding(.horizontal, 2)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .multilineTextAlignment(.center)
-                                        .focused($isInputActive)
-                                        .frame(width: 40, height: 35)
-                                        .textFieldStyle(SearchStyle())
+                                    NumberTextField(val: $searchFilter.selectedMinPhysical, isInputActive: $isInputActive, formatter: self.formatter)
                                 }
                             } header: {
                                 Text("Physicality")
-                            }//.collap
+                            }
                             
                             
                             // MARK: Button to search
@@ -375,6 +250,7 @@ struct SearchByFilterView: View {
                                 } label: { Text("Done").foregroundStyle(Color.primary) }
                             }
                         }
+                        .navigationTitle("Filters")//.matchedGeometryEffect(id: "filter", in: nameSpace)
                         
                     }
                 }
@@ -425,16 +301,7 @@ struct SearchByFilterView: View {
     }
 }
 
-// Structure creating a custom textFieldStyle
-struct SearchStyle: TextFieldStyle {
-    func _body(configuration: TextField<Self._Label>) -> some View {
-        configuration
-            .padding(.vertical, 4)
-            .overlay(
-                RoundedRectangle(cornerRadius: 5).fill(Color.secondary).opacity(0.35).allowsHitTesting(false)
-            )
-    }
-}
+
 
 #Preview {
     SearchByFilterView(searchedPlayers: [Player]())
