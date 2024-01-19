@@ -33,6 +33,63 @@ class Filter: ObservableObject {
     private let MIN_RATING = "minrating="
     private let MAX_RATING = "maxrating="
     private let ACCELERATE = "accelerate="
+    private let MAX_BALANCE = "maxbalance="
+    private let MIN_BALANCE = "minbalance="
+    private let MAX_FK_ACC = "maxfkacc="
+    private let MIN_FK_ACC = "minfkacc="
+    private let MIN_STANDING_TACKLE = "minstandingtackle="
+    private let MAX_STANDING_TACKLE = "maxstandingtackle="
+    private let MIN_SLIDING_TACKLE = "minslidingtackle="
+    private let MAX_SLIDING_TACKLE = "maxslidingtackle="
+    private let MIN_BALL_CONTROL = "minballcontrol="
+    private let MAX_BALL_CONTROL = "maxballcontrol="
+    private let MAX_SHORT_PASS = "maxshortpass="
+    private let MIN_SHORT_PASS = "minshortpass="
+    private let MIN_VOLLEYS = "minvolleys="
+    private let MAX_VOLLEYS = "maxvolleys="
+    private let MAX_VISION = "maxvision="
+    private let MIN_VISION = "minvision="
+    private let MIN_ACCELERATION = "minacceleration="
+    private let MAX_ACCELERATION = "maxacceleration="
+    private let MIN_AGILITY = "minagility="
+    private let MAX_AGILITY = "maxagility="
+    private let MIN_COMPOSURE = "mincomposure="
+    private let MAX_COMPOSURE = "maxcomposure="
+    private let MIN_LONG_PASS = "minlongpass="
+    private let MAX_LONG_PASS = "maxlongpass="
+    private let MIN_CURVE = "mincurve="
+    private let MAX_CURVE = "maxcurve="
+    private let MIN_CROSSING = "mincrossing="
+    private let MAX_CROSSING = "maxcrossing="
+    private let MIN_AGRESSION = "minagression="
+    private let MAX_AGRESSION = "maxagression="
+    private let MAX_SPRINT = "maxsprintspeed="
+    private let MIN_SPRINT = "minsprintspeed="
+    private let MIN_MARKING = "minmarking="
+    private let MAX_MARKING = "maxmarking="
+    private let MAX_POSITION = "maxpositioning="
+    private let MIN_POSITION = "minpositioning="
+    private let MAX_FINISH = "maxfinishing="
+    private let MIN_FINISH = "minfinishing="
+    private let MAX_SHOT_POWER = "maxshotpower="
+    private let MIN_SHOT_POWER = "minshotpower="
+    private let MAX_LONG_SHOT = "maxlongshot="
+    private let MIN_LONG_SHOT = "minlongshot="
+    private let MIN_PENALTIES = "minpenalties="
+    private let MAX_PENALTIES = "maxpenalties="
+    private let MAX_REACTION = "maxreactions="
+    private let MIN_REACTION = "minreactions="
+    private let MAX_INTERCEPTION = "maxtactaware="
+    private let MIN_INTERCEPTION = "mintactaware="
+    private let MIN_HEAD_ACC = "minheadacc="
+    private let MAX_HEAD_ACC = "maxheadacc="
+    private let MAX_JUMPING = "maxjumping="
+    private let MIN_JUMPING = "minjumping="
+    private let MIN_STAMINA = "minstamina="
+    private let MAX_STAMINA = "maxstamina="
+    private let MAX_STRENGTH = "maxstrength="
+    private let MIN_STRENGTH = "minstrength="
+    
     
     private var allLeagues: [GenericKeyValue] = []
     private var allNations: [GenericKeyValue] = []
@@ -55,7 +112,6 @@ class Filter: ObservableObject {
 //    Pace Stats
     @Published public var selectedMinPace: Double = 1
     @Published public var selectedMaxPace: Double = 99
-
     @Published public var selectedMinAcceleration: Double = 1
     @Published public var selectedMaxAcceleration: Double = 99
     @Published public var selectedMinSprint: Double = 1
@@ -64,7 +120,6 @@ class Filter: ObservableObject {
 //    Shooting
     @Published public var selectedMinShooting: Double = 1
     @Published public var selectedMaxShooting: Double = 99
-
     @Published public var selectedMinPosition: Double = 1
     @Published public var selectedMaxPosition: Double = 99
     @Published public var selectedMinFinishing: Double = 1
@@ -77,6 +132,7 @@ class Filter: ObservableObject {
     @Published public var selectedMaxVolleys: Double = 99
     @Published public var selectedMinPenalties: Double = 1
     @Published public var selectedMaxPenalties: Double = 99
+    
 //    Passing
     @Published public var selectedMinPassing: Double = 1
     @Published public var selectedMaxPassing: Double = 99
@@ -84,18 +140,53 @@ class Filter: ObservableObject {
     @Published public var selectedMaxVision: Double = 99
     @Published public var selectedMinCrossing: Double = 1
     @Published public var selectedMaxCrossing: Double = 99
+    @Published public var selectedMinFkAcc: Double = 1
+    @Published public var selectedMaxFkAcc: Double = 99
+    @Published public var selectedMinShortPassing: Double = 1
+    @Published public var selectedMaxShortPassing: Double = 99
+    @Published public var selectedMinLongPassing: Double = 1
+    @Published public var selectedMaxLongPassing: Double = 99
+    @Published public var selectedMinCurve: Double = 1
+    @Published public var selectedMaxCurve: Double = 99
     
 //    Dribbling
     @Published public var selectedMinDribbling: Double = 1
     @Published public var selectedMaxDribbling: Double = 99
+    @Published public var selectedMinAgility: Double = 1
+    @Published public var selectedMaxAgility: Double = 99
+    @Published public var selectedMinBalance: Double = 1
+    @Published public var selectedMaxBalance: Double = 99
+    @Published public var selectedMinReaction: Double = 1
+    @Published public var selectedMaxReaction: Double = 99
+    @Published public var selectedMinBallControl: Double = 1
+    @Published public var selectedMaxBallControl: Double = 99
     
 //    Defending
     @Published public var selectedMinDefending: Double = 1
     @Published public var selectedMaxDefending: Double = 99
-    
+    @Published public var selectedMinInterception: Double = 1
+    @Published public var selectedMaxInterception: Double = 99
+    @Published public var selectedMinHeadAcc: Double = 1
+    @Published public var selectedMaxHeadAcc: Double = 99
+    @Published public var selectedMinMarking: Double = 1
+    @Published public var selectedMaxMarking: Double = 99
+    @Published public var selectedMinStandingTackle: Double = 1
+    @Published public var selectedMaxStandingTackle: Double = 99
+    @Published public var selectedMinSlidingTackle: Double = 1
+    @Published public var selectedMaxSlidingTackle: Double = 99
 //    Physical
     @Published public var selectedMinPhysical: Double = 1
     @Published public var selectedMaxPhysical: Double = 99
+    @Published public var selectedMinJumping: Double = 1
+    @Published public var selectedMaxJumping: Double = 99
+    @Published public var selectedMinStamina: Double = 1
+    @Published public var selectedMaxStamina: Double = 99
+    @Published public var selectedMinStrength: Double = 1
+    @Published public var selectedMaxStrength: Double = 99
+    @Published public var selectedMinAgression: Double = 1
+    @Published public var selectedMaxAgression: Double = 99
+    @Published public var selectedMinComposure: Double = 1
+    @Published public var selectedMaxComposure: Double = 99
     
     init() {
         self.allLeagues = computeAllLeagues()
@@ -214,6 +305,7 @@ class Filter: ObservableObject {
             query.append(weakFootQuery)
             query.append(self.ANPERCENT)
         }
+        //MARK: Pace
         query.append(self.MAX_PACE)
         query.append(String(format: "%.0f", self.selectedMaxPace))
         query.append(self.ANPERCENT)
@@ -222,6 +314,24 @@ class Filter: ObservableObject {
         query.append(String(format: "%.0f", self.selectedMinPace))
         query.append(self.ANPERCENT)
         
+        query.append(self.MAX_ACCELERATION)
+        query.append(String(format: "%.0f", self.selectedMaxAcceleration))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_ACCELERATION)
+        query.append(String(format: "%.0f", self.selectedMinAcceleration))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_SPRINT)
+        query.append(String(format: "%.0f", self.selectedMaxSprint))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_SPRINT)
+        query.append(String(format: "%.0f", self.selectedMinSprint))
+        query.append(self.ANPERCENT)
+        
+        
+        //MARK: Shooting
         query.append(self.MAX_SHOOTING)
         query.append(String(format: "%.0f", self.selectedMaxShooting))
         query.append(self.ANPERCENT)
@@ -230,6 +340,56 @@ class Filter: ObservableObject {
         query.append(String(format: "%.0f", self.selectedMinShooting))
         query.append(self.ANPERCENT)
         
+        query.append(self.MAX_POSITION)
+        query.append(String(format: "%.0f", self.selectedMaxPosition))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_POSITION)
+        query.append(String(format: "%.0f", self.selectedMinPosition))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_FINISH)
+        query.append(String(format: "%.0f", self.selectedMaxFinishing))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_FINISH)
+        query.append(String(format: "%.0f", self.selectedMinFinishing))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_SHOT_POWER)
+        query.append(String(format: "%.0f", self.selectedMaxShotPower))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_SHOT_POWER)
+        query.append(String(format: "%.0f", self.selectedMinShotPower))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_LONG_SHOT)
+        query.append(String(format: "%.0f", self.selectedMaxLongShot))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_LONG_SHOT)
+        query.append(String(format: "%.0f", self.selectedMinLongShot))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_VOLLEYS)
+        query.append(String(format: "%.0f", self.selectedMaxVolleys))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_VOLLEYS)
+        query.append(String(format: "%.0f", self.selectedMinVolleys))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_PENALTIES)
+        query.append(String(format: "%.0f", self.selectedMaxPenalties))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_PENALTIES)
+        query.append(String(format: "%.0f", self.selectedMinPenalties))
+        query.append(self.ANPERCENT)
+        
+        
+        //MARK: Passing
         query.append(self.MAX_PASSING)
         query.append(String(format: "%.0f", self.selectedMaxPassing))
         query.append(self.ANPERCENT)
@@ -238,6 +398,55 @@ class Filter: ObservableObject {
         query.append(String(format: "%.0f", self.selectedMinPassing))
         query.append(self.ANPERCENT)
         
+        query.append(self.MAX_VISION)
+        query.append(String(format: "%.0f", self.selectedMaxVision))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_VISION)
+        query.append(String(format: "%.0f", self.selectedMinVision))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_CROSSING)
+        query.append(String(format: "%.0f", self.selectedMaxCrossing))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_CROSSING)
+        query.append(String(format: "%.0f", self.selectedMinCrossing))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_FK_ACC)
+        query.append(String(format: "%.0f", self.selectedMaxFkAcc))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_FK_ACC)
+        query.append(String(format: "%.0f", self.selectedMinFkAcc))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_SHORT_PASS)
+        query.append(String(format: "%.0f", self.selectedMaxShortPassing))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_SHORT_PASS)
+        query.append(String(format: "%.0f", self.selectedMinShortPassing))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_LONG_PASS)
+        query.append(String(format: "%.0f", self.selectedMaxLongPassing))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_LONG_PASS)
+        query.append(String(format: "%.0f", self.selectedMinLongPassing))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_CURVE)
+        query.append(String(format: "%.0f", self.selectedMaxCurve))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_CURVE)
+        query.append(String(format: "%.0f", self.selectedMinCurve))
+        query.append(self.ANPERCENT)
+        
+        //MARK: Dribbling
         query.append(self.MAX_DRIBBLING)
         query.append(String(format: "%.0f", self.selectedMaxDribbling))
         query.append(self.ANPERCENT)
@@ -245,7 +454,40 @@ class Filter: ObservableObject {
         query.append(self.MIN_DRIBBLING)
         query.append(String(format: "%.0f", self.selectedMinDribbling))
         query.append(self.ANPERCENT)
+
+        query.append(self.MAX_AGILITY)
+        query.append(String(format: "%.0f", self.selectedMaxAgility))
+        query.append(self.ANPERCENT)
         
+        query.append(self.MIN_AGILITY)
+        query.append(String(format: "%.0f", self.selectedMinAgility))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_BALANCE)
+        query.append(String(format: "%.0f", self.selectedMaxBalance))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_BALANCE)
+        query.append(String(format: "%.0f", self.selectedMinBalance))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_REACTION)
+        query.append(String(format: "%.0f", self.selectedMaxReaction))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_REACTION)
+        query.append(String(format: "%.0f", self.selectedMinReaction))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_BALL_CONTROL)
+        query.append(String(format: "%.0f", self.selectedMaxBallControl))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_BALL_CONTROL)
+        query.append(String(format: "%.0f", self.selectedMinBallControl))
+        query.append(self.ANPERCENT)
+        
+        //MARK: Defense
         query.append(self.MAX_DEFENSE)
         query.append(String(format: "%.0f", self.selectedMaxDefending))
         query.append(self.ANPERCENT)
@@ -254,6 +496,47 @@ class Filter: ObservableObject {
         query.append(String(format: "%.0f", self.selectedMinDefending))
         query.append(self.ANPERCENT)
         
+        query.append(self.MAX_INTERCEPTION)
+        query.append(String(format: "%.0f", self.selectedMaxInterception))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_INTERCEPTION)
+        query.append(String(format: "%.0f", self.selectedMinInterception))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_HEAD_ACC)
+        query.append(String(format: "%.0f", self.selectedMaxHeadAcc))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_HEAD_ACC)
+        query.append(String(format: "%.0f", self.selectedMinHeadAcc))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_MARKING)
+        query.append(String(format: "%.0f", self.selectedMaxMarking))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_MARKING)
+        query.append(String(format: "%.0f", self.selectedMinMarking))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_STANDING_TACKLE)
+        query.append(String(format: "%.0f", self.selectedMaxStandingTackle))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_STANDING_TACKLE)
+        query.append(String(format: "%.0f", self.selectedMinStandingTackle))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MAX_SLIDING_TACKLE)
+        query.append(String(format: "%.0f", self.selectedMaxSlidingTackle))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_SLIDING_TACKLE)
+        query.append(String(format: "%.0f", self.selectedMinSlidingTackle))
+        query.append(self.ANPERCENT)
+        
+        //MARK: Physical
         query.append(self.MAX_PHYSICAL)
         query.append(String(format: "%.0f", self.selectedMaxPhysical))
         query.append(self.ANPERCENT)
@@ -261,7 +544,51 @@ class Filter: ObservableObject {
         query.append(self.MIN_PHYSICAL)
         query.append(String(format: "%.0f", self.selectedMinPhysical))
         query.append(self.ANPERCENT)
+       
+        query.append(self.MAX_JUMPING)
+        query.append(String(format: "%.0f", self.selectedMaxJumping))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_JUMPING)
+        query.append(String(format: "%.0f", self.selectedMinJumping))
+        query.append(self.ANPERCENT)
+       
+        query.append(self.MAX_STAMINA)
+        query.append(String(format: "%.0f", self.selectedMaxStamina))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_STAMINA)
+        query.append(String(format: "%.0f", self.selectedMinStamina))
+        query.append(self.ANPERCENT)
+       
+        query.append(self.MAX_STRENGTH)
+        query.append(String(format: "%.0f", self.selectedMaxStrength))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_STRENGTH)
+        query.append(String(format: "%.0f", self.selectedMinStrength))
+        query.append(self.ANPERCENT)
+       
+        query.append(self.MAX_AGRESSION)
+        query.append(String(format: "%.0f", self.selectedMaxAgression))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_AGRESSION)
+        query.append(String(format: "%.0f", self.selectedMinAgression))
+        query.append(self.ANPERCENT)
+       
+        query.append(self.MAX_COMPOSURE)
+        query.append(String(format: "%.0f", self.selectedMaxComposure))
+        query.append(self.ANPERCENT)
+        
+        query.append(self.MIN_COMPOSURE)
+        query.append(String(format: "%.0f", self.selectedMinComposure))
+        query.append(self.ANPERCENT)
+       
+        
+        
 
+        //MARK: Overall Rating
         query.append(self.MAX_RATING)
         query.append(String(format: "%.0f", self.selectedMaxRating))
         query.append(self.ANPERCENT)
