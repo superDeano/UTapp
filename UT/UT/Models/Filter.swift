@@ -17,6 +17,7 @@ class Filter: ObservableObject {
     private let POSITIONS = "positions[]="
     private let WEAK_FOOT = "weakfoot[]="
     private let SKILL_MOVES = "skills[]="
+    private let VERSIONS = "release[]="
     
     private let MIN_PACE = "minatt1="
     private let MAX_PACE = "maxatt1="
@@ -318,6 +319,11 @@ class Filter: ObservableObject {
         }
         if let weakFootQuery = getWeakFootQuery() {
             query.append(weakFootQuery)
+            query.append(self.ANPERCENT)
+        }
+        
+        if let versionsQuery = getVersionsQuery() {
+            query.append(versionsQuery)
             query.append(self.ANPERCENT)
         }
         //MARK: Pace
@@ -647,7 +653,23 @@ class Filter: ObservableObject {
             return query
         }
     }
-    
+
+    private func getVersionsQuery() -> String? {
+        let s = self.selectedVersions.count
+        if s == 0 {
+            return nil
+        } else {
+            var query = ""
+            for (index, element) in self.selectedVersions.enumerated() {
+                query.append(self.VERSIONS)
+                query.append(element.id)
+                if index + 1 != s {
+                    query.append(self.ANPERCENT)
+                }
+            }
+            return query
+        }
+    }
     
     private func getTeamsQuery() -> String? {
         let s = self.selectedTeams.count
