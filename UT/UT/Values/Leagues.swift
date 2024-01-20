@@ -22,7 +22,7 @@ struct Leagues {
         "1": "Denmark Superliga (1)",
         "14": "England Championship (2)",
         "2208": "England Division Five (5)",
-        "60": "England League Two (4)",
+        "60": "England League One (3)",
         "61": "England League Two (4)",
         "13": "England Premier League (1)",
         "322": "Finland Veikkausliiga (1)",
@@ -58,6 +58,10 @@ struct Leagues {
         "2172": "UAE FUT League",
         "332": "Ukraine Premier Liga (1)",
         "39": "USA Major League Soccer (1)",
+        "2221": "NSWL",
+        "2222":"LALIGA HYPERMOTION",
+        "2230": "Ceska Liga Ž",
+        "2216": "WSL"
     ]
     
    static let leaguesAndClubs = [
