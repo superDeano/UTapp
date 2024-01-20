@@ -74,7 +74,7 @@ class ContentService {
         task.resume()
     }
     
-    func getLowestBin(for lineId: String,finished: @escaping((LowestBin) -> Void)) -> Void {
+    func getLowestBin(for lineId: String, finished: @escaping((LowestBin) -> Void)) -> Void {
         guard let url = URL(string: "\(baseUrl)en/app/sold24/\(lineId)/console") else { return }
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request,completionHandler: {data, response, error in
@@ -89,7 +89,7 @@ class ContentService {
         task.resume()
     }
     
-    func getStatsAndLowestBin(for lineId: String,finished: @escaping((PlayerStats, LowestBin) -> Void)) -> Void {
+    func getStatsAndLowestBin(for lineId: String, finished: @escaping((PlayerStats, LowestBin) -> Void)) -> Void {
         guard let url = URL(string: "\(baseUrl)en/app/sold24/\(lineId)/console") else { return }
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request, completionHandler: {data, response, error in
@@ -145,6 +145,30 @@ class ContentService {
                 print("Obtained item info")
             }
         }
+    }
+    
+    public func getCardVersions(finished: @escaping (([GenericKeyValue]) -> Void)) -> Void {
+        guard let url = URL(string: "\(baseUrl)en/app/cardTypes24") else { return }
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) {
+            data, response, err in
+            if let data = data {
+                let decodedData = try? JSONDecoder().decode([CardType].self, from: data)
+                var cardValues = [GenericKeyValue(key: "commongold", value: "Gold"), GenericKeyValue(key: "informsilver", value: "Inform Silver"), GenericKeyValue(key: "raresilver", value: "Rare Silver"), GenericKeyValue(key: "commonsilver", value: "Common Silver"), GenericKeyValue(key: "commonbronze", value: "Common Bronze"), GenericKeyValue(key: "rarebronze", value: "Rare Bronze")]
+                for card in decodedData ?? [] {
+                    if card.rare == "0" {
+                        continue
+                    } else if card.rare == "3"{
+                        cardValues.append(GenericKeyValue(key: card.rare, value: "Inform Gold"))
+                    } else {
+                        cardValues.append(GenericKeyValue(key: card.rare, value: card.name))
+                    }
+                }
+                cardValues.sort { $0.value < $1.value }
+                finished(cardValues)
+            }
+        }
+        task.resume()
     }
     
     
