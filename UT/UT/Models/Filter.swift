@@ -96,6 +96,7 @@ class Filter: ObservableObject {
     private var allPositions: [GenericValue] = []
     private var workRates: [GenericValue] = []
     private var starRatings: [GenericValue] = []
+    private var cardVersions: [GenericKeyValue] = []
     
     @Published public var selectedLeagues: Set<GenericKeyValue> = Set()
     @Published public var selectedTeams: Set<GenericKeyValue> = Set()
@@ -105,6 +106,7 @@ class Filter: ObservableObject {
     @Published public var selectedSkills: Set<GenericValue> = Set()
     @Published public var selectedWeakFoots: Set<GenericValue> = Set()
     @Published public var selectedNations: Set<GenericKeyValue> = Set()
+    @Published public var selectedVersions: Set<GenericKeyValue> = Set()
     @Published public var selectedAccelerate: String? = nil
     
     @Published public var selectedMinRating: Double = 1
@@ -189,11 +191,24 @@ class Filter: ObservableObject {
     @Published public var selectedMaxComposure: Double = 99
     
     init() {
+        self.getCardVersionsRemotely()
         self.allLeagues = computeAllLeagues()
         self.allPositions = computeAllPositions()
         self.allNations = computeAllNations()
         self.starRatings = computeStarRatings()
         self.workRates = computeAllWorkRates()
+    }
+    
+    public func getCardVersionsRemotely() {
+        ContentService.shared.getCardVersions { cardVersions in
+            DispatchQueue.main.async {
+                self.cardVersions = cardVersions
+            }
+        }
+    }
+    
+    public func getCardVersions() -> [GenericKeyValue] {
+        return self.cardVersions
     }
     
     private func computeAllPositions() -> [GenericValue] {

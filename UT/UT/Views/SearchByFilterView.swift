@@ -50,6 +50,9 @@ struct SearchByFilterView: View {
                             }
                         }
                     }
+                }.refreshable {
+                    print("Swipe down on filter view.")
+                    self.searchFilter.getCardVersionsRemotely()
                 }
                 .sheet(isPresented: $presentFilterForm, content: {
                     
@@ -61,6 +64,12 @@ struct SearchByFilterView: View {
                     NavigationView{
                         
                         Form {
+                            
+                            Section {
+                                MultiPicker(label: Text("Version\(searchFilter.selectedVersions.count > 1 ? "s" : "")"), options: searchFilter.getCardVersions(), optionToString: { $0.value }, selected: $searchFilter.selectedVersions)
+                            } header: {
+                                Text("Card Versions")
+                            }
                             
                             // League can be multiple
                             Section {
