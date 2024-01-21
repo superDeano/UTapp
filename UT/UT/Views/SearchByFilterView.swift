@@ -730,7 +730,8 @@ struct SearchByFilterView: View {
                         presentFilterForm.toggle()
                     } label: {
                         Text("Filters")
-                    }//.matchedGeometryEffect(id: "filter", in: nameSpace)
+                        Image(systemName:"line.3.horizontal.decrease.circle.fill")
+                    }
                 }
             }
             .toolbar {
