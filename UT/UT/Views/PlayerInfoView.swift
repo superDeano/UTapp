@@ -147,6 +147,7 @@ struct PlayerInfoView: View {
                 }
             }
             Section(header: Text("Playstyles")){
+                //MARK: PlayStyles+
                 VStack{
                     if displayedPlayer.stats?.playstylesPlus != nil && !(displayedPlayer.stats!.playstylesPlus!.isEmpty) {
                         VStack {
@@ -154,14 +155,20 @@ struct PlayerInfoView: View {
                                 Text("Playstyles+").font(.title2).bold().padding(.top, 5)
                                 Spacer()
                             }
-                            HStack {
-                                Text(displayedPlayer.stats?.playstylesPlus ?? "")
-                                Spacer()
-                                Image("Playstyles/\(displayedPlayer.stats!.playstylesPlus!)-plus").resizable().scaledToFit().frame(width:40)
+                            VStack {
+                                ForEach(displayedPlayer.stats?.playstylesPlus?.split(separator: ",") ?? [], id:\.self) {
+                                    playStylePlus in
+                                    HStack{
+                                        Text(playStylePlus)
+                                        Spacer()
+                                        Image("Playstyles/\(playStylePlus)-plus").resizable().scaledToFit().frame(width:40)
+                                    }
+                                }
                             }
                         }.padding(.bottom, 15)
                     }
                     VStack {
+                        //MARK: PlayStyles
                         if displayedPlayer.stats?.playstyles != "" {
                             HStack{
                             Text("Playstyles").font(.title2).bold()
