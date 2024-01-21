@@ -13,7 +13,7 @@ struct SectionDivider: View {
         VStack{
             Divider()
             HStack {
-                Text(show ? "Hide" : "Show more").font(.subheadline).foregroundStyle(.gray).bold()
+                Text(show ? "Hide" : "Show more").font(.callout).foregroundStyle(Color.blue)
                 Spacer()
                 Button(action: { show.toggle() }, label: {
                     if show {
