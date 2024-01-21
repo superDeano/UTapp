@@ -8,7 +8,7 @@ import Combine
 import Foundation
 
 class ContentService {
-
+    
     public static let shared: ContentService = {
         let instance = ContentService()
         return instance
@@ -31,11 +31,11 @@ class ContentService {
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request, completionHandler: {data, response, error in
             if let data = data {
-
+                
                 let decodedData = try? JSONDecoder().decode([Player].self, from: data)
                 let players = decodedData ?? [Player]()
                 finished(players)
-            
+                
             } else if let error = error {
                 print("Error happened during call to get latest players. \(error)")
             }
@@ -95,12 +95,12 @@ class ContentService {
         let task = URLSession.shared.dataTask(with: request, completionHandler: {data, response, error in
             if let data = data {
                 let decodedBin = try? JSONDecoder().decode(RootTest.self, from: data)
-//                let decodedStats = try? JSONDecoder().decode(RootPlayerStats.self, from: data)
+                //                let decodedStats = try? JSONDecoder().decode(RootPlayerStats.self, from: data)
                 if decodedBin == nil {
                     print("Null data for", lineId)
                 }
-//                let rootLowestBin = decodedBin ?? RootLowestBin()
-//                let rootStats = decodedStats ?? RootPlayerStats()
+                //                let rootLowestBin = decodedBin ?? RootLowestBin()
+                //                let rootStats = decodedStats ?? RootPlayerStats()
                 finished(decodedBin?.stats ?? PlayerStats(), decodedBin?.lowBin ?? LowestBin())
             } else if let error = error {
                 print("Error happened during call to player lowest bin. \(error)")
@@ -154,11 +154,13 @@ class ContentService {
             data, response, err in
             if let data = data {
                 let decodedData = try? JSONDecoder().decode([CardType].self, from: data)
-                var cardValues = [GenericKeyValue(key: "commongold", value: "Gold"), GenericKeyValue(key: "informsilver", value: "Inform Silver"), GenericKeyValue(key: "raresilver", value: "Rare Silver"), GenericKeyValue(key: "commonsilver", value: "Common Silver"), GenericKeyValue(key: "commonbronze", value: "Common Bronze"), GenericKeyValue(key: "rarebronze", value: "Rare Bronze")]
+                var cardValues = [GenericKeyValue(key: "commongold", value: "Common Gold"), GenericKeyValue(key: "informsilver", value: "Inform Silver"), GenericKeyValue(key: "raresilver", value: "Rare Silver"), GenericKeyValue(key: "commonsilver", value: "Common Silver"), GenericKeyValue(key: "commonbronze", value: "Common Bronze"), GenericKeyValue(key: "rarebronze", value: "Rare Bronze")]
                 for card in decodedData ?? [] {
                     if card.rare == "0" {
                         continue
-                    } else if card.rare == "3"{
+                    } else if card.rare == "1" {
+                        cardValues.append(GenericKeyValue(key: card.rare, value: "Rare Gold"))
+                    } else if card.rare == "3" {
                         cardValues.append(GenericKeyValue(key: card.rare, value: "Inform Gold"))
                     } else {
                         cardValues.append(GenericKeyValue(key: card.rare, value: card.name))
