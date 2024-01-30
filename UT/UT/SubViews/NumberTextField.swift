@@ -17,10 +17,12 @@ struct NumberTextField: View {
     var body: some View {
         TextField("\(String(format:"%.0f", val))", value: $val, formatter: self.formatter)
             .autocorrectionDisabled()
+#if os(iOS)
             .keyboardType(.numberPad)
+            .multilineTextAlignment(.center)
+#endif
             .padding(.horizontal, 2)
             .fixedSize(horizontal: false, vertical: true)
-            .multilineTextAlignment(.center)
             .focused(isInputActive)
             .frame(width: frameWidth, height: frameHeight)
             .textFieldStyle(SearchStyle())

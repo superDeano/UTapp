@@ -18,9 +18,11 @@ struct LaunchScreenView: View {
     var body: some View {
         HStack{
             VStack {
+                Spacer()
                 Image(systemName: "soccerball.inverse").resizable().aspectRatio(contentMode: .fit).font(.largeTitle).padding(115).foregroundStyle(Color.white)
                 Text("Loading").fontWeight(.bold).font(.largeTitle).foregroundStyle(Color.white)
-//                Text(msg).font(.headline).foregroundStyle(Color.white)
+                Spacer()
+                Spacer()
             }.onAppear {
 //                updateStatusMessage()
                 checkOnContentService()
@@ -33,7 +35,7 @@ struct LaunchScreenView: View {
             }
         }
 
-            .frame(maxHeight: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             LinearGradient(gradient: Gradient(colors: [Color(hexStr: "09B030"),
                                                        Color(hexStr: "0B720B"),
@@ -72,7 +74,7 @@ struct LaunchScreenView: View {
 
         if !firstInstalled {
             defaults.set(true, forKey: firstInstalledKey)
-            SetConstants(with: context).setClubs()
+//            SetConstants(with: context).setClubs()
         }
         self.launchScreenState.dismiss()
     }
