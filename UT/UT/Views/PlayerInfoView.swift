@@ -11,6 +11,7 @@ struct PlayerInfoView: View {
 
     @EnvironmentObject public var obtainedPlayer: Player
     @State private var displayedPlayer = Player()
+    @State private var otherVersions: [Player] = []
     private let maxWidth: CGFloat = 100
 //    private var itemInfo: ItemInfo?
   
@@ -22,11 +23,26 @@ struct PlayerInfoView: View {
     
     var body: some View {
         List{
+            //MARK: CARD VIEW
             Section{
-                HStack{
-                    Spacer()
-                    CardView(player: displayedPlayer)
-                    Spacer()
+                VStack {
+                    HStack{
+                        Spacer()
+                        CardView(player: displayedPlayer)
+                        Spacer()
+                    }
+                    ScrollView(.horizontal){
+                        HStack {
+                            ForEach(self.otherVersions){
+                                otherVersion in
+                                Button {
+                                    self.displayedPlayer = otherVersion
+                                } label: {
+                                    MiniCardView(player: otherVersion)
+                                }
+                            }
+                        }
+                    }.frame(height: 60)
                 }
             }.listRowBackground(Color.clear)
                 
@@ -35,6 +51,7 @@ struct PlayerInfoView: View {
 //                    self.getData()
 //                }
             
+            //MARK: Price Section
             Section(header: Text("Price")){
                 VStack(){
                     HStack(){
@@ -51,6 +68,7 @@ struct PlayerInfoView: View {
                     }
                 }
             }
+            //MARK: BIO
             Section(header: Text("Biography")){
                 VStack(){
                     HStack(){
@@ -200,6 +218,7 @@ struct PlayerInfoView: View {
             .onAppear(perform: {
                 self.displayedPlayer = obtainedPlayer
                 self.getData()
+                self.getOtherVersions()
         })
             .refreshable {
                 //                self.getLowestBin()
@@ -213,13 +232,13 @@ struct PlayerInfoView: View {
 #endif
             .onAppear(perform: getPlayerStatsAndPrice)
             .onChange(of: displayedPlayer) { _, _ in
-#if os(macOS)
+//#if os(macOS)
                 getData()
-#else
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    getData()
-                }
-#endif
+//#else
+//                if UIDevice.current.userInterfaceIdiom == .pad {
+//                    getData()
+//                }
+//#endif
             }
     }
     
@@ -257,6 +276,13 @@ struct PlayerInfoView: View {
         }
     }
     
+    private func getOtherVersions() -> Void {
+        ContentService.shared.searchPlayer(for: obtainedPlayer.urlname) { otherVersions in
+            DispatchQueue.main.async {
+                self.otherVersions = otherVersions
+            }
+        }
+    }
 }
 
 #Preview {
