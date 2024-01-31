@@ -42,7 +42,7 @@ struct PlayerInfoView: View {
                                 }
                             }
                         }
-                    }.frame(height: 60)
+                    }.frame(height: 60).padding(.top, 10)
                 }
             }.listRowBackground(Color.clear)
                 
