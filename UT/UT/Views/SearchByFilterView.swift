@@ -708,7 +708,7 @@ struct SearchByFilterView: View {
                                     Spacer()
                                 }
                             }.listRowBackground(Color.clear)
-                                
+                            
                         }
                         .toolbar {
                             ToolbarItemGroup(placement: .keyboard){
@@ -716,6 +716,21 @@ struct SearchByFilterView: View {
                                 Button {
                                     isInputActive = false
                                 } label: { Text("Done").foregroundStyle(Color.primary) }
+                            }
+                            ToolbarItemGroup(placement: .destructiveAction) {
+                                
+                                Button {
+//                                    print("you pressed to delete filters")
+                                    self.searchFilter.clearFilters()
+                                } label: {
+//                                    Label("Clear Filters", systemImage: "xmark.circle.fill")
+//                                        .labelStyle(.titleAndIcon)
+                                    HStack {
+                                        Text("Clear")
+                                        Image(systemName: "xmark.circle.fill")
+                                    }.foregroundStyle(Color.red)
+//                                        .symbolEffect(.bounce.down.byLayer)
+                                }
                             }
                         }
                         .navigationTitle("Filters")//.matchedGeometryEffect(id: "filter", in: nameSpace)

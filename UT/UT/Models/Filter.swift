@@ -200,6 +200,99 @@ class Filter: ObservableObject {
         self.workRates = computeAllWorkRates()
     }
     
+    public func clearFilters(){
+        self.selectedLeagues.removeAll()
+        self.selectedTeams.removeAll()
+        self.selectedNations.removeAll()
+        self.selectedSkills.removeAll()
+        self.selectedWeakFoots.removeAll()
+        self.selectedPositions.removeAll()
+        self.selectedVersions.removeAll()
+        self.selectedAttWorkRates.removeAll()
+        self.selectedDefWorkRates.removeAll()
+        self.selectedMinRating = 1
+        self.selectedMaxRating = 99
+    //    Pace Stats
+        self.selectedMinPace = 1
+        self.selectedMaxPace = 99
+        self.selectedMinAcceleration = 1
+        self.selectedMaxAcceleration = 99
+        self.selectedMinSprint = 1
+        self.selectedMaxSprint = 99
+        
+    //    Shooting
+        self.selectedMinShooting = 1
+        self.selectedMaxShooting = 99
+        self.selectedMinPosition = 1
+        self.selectedMaxPosition = 99
+        self.selectedMinFinishing = 1
+        self.selectedMaxFinishing = 99
+        self.selectedMinShotPower = 1
+        self.selectedMaxShotPower = 99
+        self.selectedMinLongShot = 1
+        self.selectedMaxLongShot = 99
+        self.selectedMinVolleys = 1
+        self.selectedMaxVolleys = 99
+        self.selectedMinPenalties = 1
+        self.selectedMaxPenalties = 99
+        
+    //    Passing
+        self.selectedMinPassing = 1
+        self.selectedMaxPassing = 99
+        self.selectedMinVision = 1
+        self.selectedMaxVision = 99
+        self.selectedMinCrossing = 1
+        self.selectedMaxCrossing = 99
+        self.selectedMinFkAcc = 1
+        self.selectedMaxFkAcc = 99
+        self.selectedMinShortPassing = 1
+        self.selectedMaxShortPassing = 99
+        self.selectedMinLongPassing = 1
+        self.selectedMaxLongPassing = 99
+        self.selectedMinCurve = 1
+        self.selectedMaxCurve = 99
+        
+    //    Dribbling
+        self.selectedMinDribbling = 1
+        self.selectedMaxDribbling = 99
+        self.selectedMinAgility = 1
+        self.selectedMaxAgility = 99
+        self.selectedMinBalance = 1
+        self.selectedMaxBalance = 99
+        self.selectedMinReaction = 1
+        self.selectedMaxReaction = 99
+        self.selectedMinBallControl = 1
+        self.selectedMaxBallControl = 99
+        
+    //    Defending
+        self.selectedMinDefending = 1
+        self.selectedMaxDefending = 99
+        self.selectedMinInterception = 1
+        self.selectedMaxInterception = 99
+        self.selectedMinHeadAcc = 1
+        self.selectedMaxHeadAcc = 99
+        self.selectedMinMarking = 1
+        self.selectedMaxMarking = 99
+        self.selectedMinStandingTackle = 1
+        self.selectedMaxStandingTackle = 99
+        self.selectedMinSlidingTackle = 1
+        self.selectedMaxSlidingTackle = 99
+    //    Physical
+        self.selectedMinPhysical = 1
+        self.selectedMaxPhysical = 99
+        self.selectedMinJumping = 1
+        self.selectedMaxJumping = 99
+        self.selectedMinStamina = 1
+        self.selectedMaxStamina = 99
+        self.selectedMinStrength = 1
+        self.selectedMaxStrength = 99
+        self.selectedMinAgression = 1
+        self.selectedMaxAgression = 99
+        self.selectedMinComposure = 1
+        self.selectedMaxComposure = 99
+    }
+    
+    
     public func getCardVersionsRemotely() {
         ContentService.shared.getCardVersions { cardVersions in
             DispatchQueue.main.async {
