@@ -59,6 +59,7 @@ class GetItemInfo: ObservableObject {
                         .replacingOccurrences(of: "color:", with: "")
                         .replacingOccurrences(of: " ", with: "")
                         .replacingOccurrences(of: ";", with: "")
+                    item.color = item.color.lowercased().contains(try Regex("^#?f{3}\\b")) ? "FFFFFF" : item.color
                 }
             } else if line.contains("}"){
                 if item.backgroundImage != "" {
