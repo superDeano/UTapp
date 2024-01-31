@@ -13,15 +13,16 @@ struct SectionDivider: View {
         VStack{
             Divider()
             HStack {
-                Text(show ? "Hide" : "Show more").font(.callout).foregroundStyle(Color.blue)
+                Text(show ? "Hide" : "Show more").font(.callout).foregroundStyle(Color.blue).contentTransition(.interpolate)
                 Spacer()
-                Button(action: { show.toggle() }, label: {
-                    if show {
-                        Image(systemName: "chevron.up")
-                    } else {
-                        Image(systemName: "chevron.down")
+                Button(action: {
+//                    withAnimation {
+                        show.toggle()
+//                    }
+                }, label: {
+                    Image(systemName: show ? "chevron.up": "chevron.down").contentTransition(.symbolEffect(.replace))
                     }
-                })
+                )
             }.padding(.vertical, 5)
         }
     }
