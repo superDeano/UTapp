@@ -10,7 +10,7 @@ import SwiftUI
 struct PlayerInfoView: View {
 
     @EnvironmentObject public var obtainedPlayer: Player
-    @State private var displayedPlayer = Player()
+    @State private var displayedPlayer: Player = Player()
     @State private var otherVersions: [Player] = []
     private let maxWidth: CGFloat = 100
 //    private var itemInfo: ItemInfo?
@@ -31,18 +31,20 @@ struct PlayerInfoView: View {
                         CardView(player: displayedPlayer)
                         Spacer()
                     }
-                    ScrollView(.horizontal){
-                        HStack {
-                            ForEach(self.otherVersions){
-                                otherVersion in
-                                Button {
-                                    self.displayedPlayer = otherVersion
-                                } label: {
-                                    MiniCardView(player: otherVersion)
+                    if self.otherVersions.count > 1 {
+                        ScrollView(.horizontal){
+                            HStack {
+                                ForEach(self.$otherVersions){
+                                    $otherVersion in
+                                    Button {
+                                        displayedPlayer = otherVersion
+                                    } label: {
+                                        MiniCardView(player: otherVersion)
+                                    }
                                 }
                             }
-                        }
-                    }.frame(height: 60).padding(.top, 10)
+                        }.frame(height: 60).padding(.top, 10)
+                    }
                 }
             }.listRowBackground(Color.clear)
                 
@@ -159,6 +161,7 @@ struct PlayerInfoView: View {
                     }
                 }
             }
+            //MARK: All Stats
             Section(header: Text("Stats")){
                 VStack(){
                     AllStatsView(stats: $displayedPlayer.stats)
@@ -254,7 +257,7 @@ struct PlayerInfoView: View {
             DispatchQueue.main.async {
                 displayedPlayer.lowestBin = lb
             }
-            print("Price is", lb.bin!)
+//            print("Price is", lb.bin!)
         })
     }
     
@@ -267,22 +270,45 @@ struct PlayerInfoView: View {
     }
     
     private func getPlayerStatsAndPrice() -> Void {
-        
         ContentService.shared.getStatsAndLowestBin(for: displayedPlayer.lineid) { pStats, pLowBin in
             DispatchQueue.main.async {
                 displayedPlayer.stats = pStats
                 displayedPlayer.lowestBin = pLowBin
             }
         }
+        getOtherVersions()
     }
     
     private func getOtherVersions() -> Void {
-        ContentService.shared.searchPlayer(for: obtainedPlayer.urlname) { otherVersions in
+        ContentService.shared.getOtherVersions(for: obtainedPlayer.urlname, finished: { otherVersions in
             DispatchQueue.main.async {
                 self.otherVersions = otherVersions
+
+                for p in self.otherVersions {
+                    if p.lineid == self.obtainedPlayer.lineid {
+                        p.lowestBin = self.obtainedPlayer.lowestBin
+                        p.stats = self.obtainedPlayer.stats
+                        break
+                    }
+                }
+            }
+            assignStatsAndPrice()
+        })
+    }
+    
+    private func assignStatsAndPrice(){
+        if !self.otherVersions.isEmpty {
+            self.otherVersions.forEach { p in
+                ContentService.shared.getStatsAndLowestBin(for: p.lineid) { pStats, pLowBin in
+                    DispatchQueue.main.async {
+                        p.stats = pStats
+                        p.lowestBin = pLowBin
+                    }
+                }
             }
         }
     }
+    
 }
 
 #Preview {

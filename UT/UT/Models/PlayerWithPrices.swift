@@ -167,51 +167,45 @@ class PlayerStats: Decodable, Observable, ObservableObject {
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        accelerate = try values.decode(String?.self, forKey: .accelerate)
-        sex = try values.decode(String?.self, forKey: .sex)
-        playstyles = try values.decode(String?.self, forKey: .playstyles)
-        playstylesPlus = try values.decode(String?.self, forKey: .playstylesPlus)
-        att1 = try values.decode(String.self,forKey: .att1)
-        att2 = try values.decode(String.self,forKey: .att2)
-        att3 = try values.decode(String.self,forKey: .att3)
-        att4 = try values.decode(String.self,forKey: .att4)
-        att5 = try values.decode(String.self,forKey: .att5)
-        att6 = try values.decode(String.self,forKey: .att6)
-        acceleration = try values.decode(String.self,forKey: .acceleration)
-        agility = try values.decode(String.self,forKey: .agility)
-        balance = try values.decode(String.self,forKey: .balance)
-        jumping = try values.decode(String.self,forKey: .jumping)
-        reactions = try values.decode(String.self,forKey: .reactions)
-        sprintspeed = try values.decode(String.self,forKey: .sprintspeed)
-        stamina = try values.decode(String.self,forKey: .stamina)
-        strength = try values.decode(String.self,forKey: .strength)
-        aggression = try values.decode(String.self,forKey: .aggression)
-        positioning = try values.decode(String.self,forKey: .positioning)
-        tactaware = try values.decode(String.self,forKey: .tactaware)
-        vision = try values.decode(String.self,forKey: .vision)
-        ballcontrol = try values.decode(String.self,forKey: .ballcontrol)
-        crossing = try values.decode(String.self,forKey: .crossing)
-        curve = try values.decode(String.self,forKey: .curve)
-        dribbling = try values.decode(String.self,forKey: .dribbling)
-        finishing = try values.decode(String.self,forKey: .finishing)
-        fkacc = try values.decode(String.self,forKey: .fkacc)
-        headingacc = try values.decode(String.self,forKey: .headingacc)
-        longpass = try values.decode(String.self,forKey: .longpass)
-        longshot = try values.decode(String.self,forKey: .longshot)
-        marking = try values.decode(String.self,forKey: .marking)
-        penalties = try values.decode(String.self,forKey: .penalties)
-        shortpass = try values.decode(String.self,forKey: .shortpass)
-        shotpower = try values.decode(String.self,forKey: .shotpower)
-        slidetackle = try values.decode(String.self,forKey: .slidetackle)
-        standingtackle = try values.decode(String.self,forKey: .standingtackle)
-        volleys = try values.decode(String.self,forKey: .volleys)
-        composure = try values.decode(String.self, forKey: .composure)
-//        try super.init(from: decoder)
-        //        } catch {
-        //            super.init()
-        //            print(error)
-        //        }
-//                try super.init(from: superDecoder)
+        accelerate = try values.decodeIfPresent(String?.self, forKey: .accelerate) ?? ""
+        sex = try values.decodeIfPresent(String?.self, forKey: .sex) ?? ""
+        playstyles = try values.decodeIfPresent(String?.self, forKey: .playstyles) ?? ""
+        playstylesPlus = try values.decodeIfPresent(String?.self, forKey: .playstylesPlus) ?? ""
+        att1 = try values.decodeIfPresent(String.self,forKey: .att1) ?? ""
+        att2 = try values.decodeIfPresent(String.self,forKey: .att2) ?? ""
+        att3 = try values.decodeIfPresent(String.self,forKey: .att3) ?? ""
+        att4 = try values.decodeIfPresent(String.self,forKey: .att4) ?? ""
+        att5 = try values.decodeIfPresent(String.self,forKey: .att5) ?? ""
+        att6 = try values.decodeIfPresent(String.self,forKey: .att6) ?? ""
+        acceleration = try values.decodeIfPresent(String.self,forKey: .acceleration) ?? ""
+        agility = try values.decodeIfPresent(String.self,forKey: .agility) ?? ""
+        balance = try values.decodeIfPresent(String.self,forKey: .balance) ?? ""
+        jumping = try values.decodeIfPresent(String.self,forKey: .jumping) ?? ""
+        reactions = try values.decodeIfPresent(String.self,forKey: .reactions) ?? ""
+        sprintspeed = try values.decodeIfPresent(String.self,forKey: .sprintspeed) ?? ""
+        stamina = try values.decodeIfPresent(String.self,forKey: .stamina) ?? ""
+        strength = try values.decodeIfPresent(String.self,forKey: .strength) ?? ""
+        aggression = try values.decodeIfPresent(String.self,forKey: .aggression) ?? ""
+        positioning = try values.decodeIfPresent(String.self,forKey: .positioning) ?? ""
+        tactaware = try values.decodeIfPresent(String.self,forKey: .tactaware) ?? ""
+        vision = try values.decodeIfPresent(String.self,forKey: .vision) ?? ""
+        ballcontrol = try values.decodeIfPresent(String.self,forKey: .ballcontrol) ?? ""
+        crossing = try values.decodeIfPresent(String.self,forKey: .crossing) ?? ""
+        curve = try values.decodeIfPresent(String.self,forKey: .curve) ?? ""
+        dribbling = try values.decodeIfPresent(String.self,forKey: .dribbling) ?? ""
+        finishing = try values.decodeIfPresent(String.self,forKey: .finishing) ?? ""
+        fkacc = try values.decodeIfPresent(String.self,forKey: .fkacc) ?? ""
+        headingacc = try values.decodeIfPresent(String.self,forKey: .headingacc) ?? ""
+        longpass = try values.decodeIfPresent(String.self,forKey: .longpass) ?? ""
+        longshot = try values.decodeIfPresent(String.self,forKey: .longshot) ?? ""
+        marking = try values.decodeIfPresent(String.self,forKey: .marking) ?? ""
+        penalties = try values.decodeIfPresent(String.self,forKey: .penalties) ?? ""
+        shortpass = try values.decodeIfPresent(String.self,forKey: .shortpass) ?? ""
+        shotpower = try values.decodeIfPresent(String.self,forKey: .shotpower) ?? ""
+        slidetackle = try values.decodeIfPresent(String.self,forKey: .slidetackle) ?? ""
+        standingtackle = try values.decodeIfPresent(String.self,forKey: .standingtackle) ?? ""
+        volleys = try values.decodeIfPresent(String.self,forKey: .volleys) ?? ""
+        composure = try values.decodeIfPresent(String.self, forKey: .composure) ?? ""
     }
     
 }
@@ -251,8 +245,8 @@ class LowestBin: Decodable {
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        ud = try values.decode(String?.self, forKey: .ud)
-        if ud != "Never" {
+        ud = try values.decodeIfPresent(String?.self, forKey: .ud) ?? ""
+        if ud != "Never" && !ud!.isEmpty {
             bin = try values.decode(String?.self, forKey: .bin)
         } else {
             bin = "0"
