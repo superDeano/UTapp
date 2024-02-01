@@ -12,19 +12,21 @@ import SwiftUI
 
 struct ContentView: View {
     //TODO: Read launchScreenManagerState to set state to finish only when data have been downloaded
-    @State private var latestPlayers: [Player]
+    @State private var latestPlayers: [Player] = []
     @State private var searchText: String = ""
-    @State private var searchedPlayers: [Player]
-    @State private var popularPlayers: [Player]
+    @State private var searchedPlayers: [Player] = []
+    @State private var popularPlayers: [Player] = []
     @State private var presentSearch = false
+    @State private var lastSearched: Date? = nil
     @Environment (\.isSearching) private var isSearching
     @EnvironmentObject private var launchStateManager: LaunchScreenStateManager
     
-    init() {
-        self.latestPlayers = []
-        self.searchedPlayers = []
-        self.popularPlayers = []
-    }
+//    init() {
+//        latestPlayers = []
+//        searchedPlayers = []
+//        popularPlayers = []
+//        self.lastSearched = nil
+//    }
     
     
     var body: some View {
@@ -122,8 +124,14 @@ struct ContentView: View {
         .searchable(text: $searchText, prompt: "Player name").onChange(of: $searchText) {
             _, newValue in
             presentSearch = searchText.count > 0 ? true : false
-            runSearch()
-        }.onSubmit {
+            if self.lastSearched == nil {
+                runSearch()
+                self.lastSearched = Date()
+            } else if abs(self.lastSearched!.timeIntervalSinceNow) > 0.05 {
+                runSearch()
+                self.lastSearched = Date()
+            }
+        }.onSubmit(of: .search) {
             runSearch()
         }
     }
