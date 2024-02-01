@@ -13,12 +13,7 @@ struct PlayerInfoView: View {
     @State private var displayedPlayer: Player = Player()
     @State private var otherVersions: [Player] = []
     private let maxWidth: CGFloat = 100
-//    private var itemInfo: ItemInfo?
-  
-//    init(itemInfo: ItemInfo?){
-//        self.itemInfo = itemInfo
-//        self.displayedPlayer = player
-//    }
+    @State private var lastCheckedDate : Date? = nil
     
     
     var body: some View {
@@ -31,7 +26,8 @@ struct PlayerInfoView: View {
                         CardView(player: displayedPlayer)
                         Spacer()
                     }
-                    if self.otherVersions.count > 1 {
+//                    .safeAreaInset(edge: .bottom, content: {
+                        if self.otherVersions.count > 1 {
                         ScrollView(.horizontal){
                             HStack {
                                 ForEach(self.$otherVersions){
@@ -41,12 +37,17 @@ struct PlayerInfoView: View {
                                     } label: {
                                         MiniCardView(player: otherVersion)
                                     }
-                                }
-                            }
-                        }.frame(height: 60).padding(.top, 10)
+                                }.frame(maxWidth: .infinity)
+                            }.frame(height: 60).padding(.top, 10)
+                        }//.ignoresSafeArea(.all, edges: .horizontal)
+//                        .border(Color.red)
                     }
+//                    })
                 }
+                //.ignoresSafeArea(.all, edges: .horizontal)
             }.listRowBackground(Color.clear)
+                .frame(maxWidth: .infinity)
+//                .ignoresSafeArea(.all, edges: .horizontal)
                 
 //                .onChange(of: obtainedPlayer) {
 //                    self.displayedPlayer = obtainedPlayer
@@ -59,7 +60,7 @@ struct PlayerInfoView: View {
                     HStack(){
                         Text("Lowest Price").bold()
                         Spacer()
-                        Text(displayedPlayer.lowestBin?.bin ?? "n/a")
+                        Text($displayedPlayer.wrappedValue.lowestBin?.bin ?? "n/a")
                         Image("Misc/coins").resizable().scaledToFit().frame(maxWidth: 18)
                     }
                     HStack(){
@@ -234,14 +235,19 @@ struct PlayerInfoView: View {
             })
 #endif
             .onAppear(perform: getPlayerStatsAndPrice)
+            .onDisappear {
+                self.lastCheckedDate = nil
+                print("View Disappeared!", self.lastCheckedDate == nil ? "lastCheckedDate is nil" : "lastcheckeddate ISN'T nil")
+            }
             .onChange(of: displayedPlayer) { _, _ in
-//#if os(macOS)
-                getData()
-//#else
-//                if UIDevice.current.userInterfaceIdiom == .pad {
-//                    getData()
-//                }
-//#endif
+                if self.lastCheckedDate == nil {
+                    getData()
+                    lastCheckedDate = Date()
+                } else if lastCheckedDate!.timeIntervalSinceNow > 5 {
+                    getData()
+                    lastCheckedDate = Date()
+                }
+
             }
     }
     
@@ -255,7 +261,7 @@ struct PlayerInfoView: View {
     private func getLowestBin(){
         ContentService.shared.getLowestBin(for: displayedPlayer.lineid, finished: { lb in
             DispatchQueue.main.async {
-                displayedPlayer.lowestBin = lb
+                $displayedPlayer.wrappedValue.lowestBin = lb
             }
 //            print("Price is", lb.bin!)
         })
@@ -264,7 +270,7 @@ struct PlayerInfoView: View {
     private func getPlayerStats() -> Void {
         ContentService.shared.getPlayerStats(for: displayedPlayer.lineid, finished: { ps in
             DispatchQueue.main.async {
-                displayedPlayer.stats = ps
+                $displayedPlayer.wrappedValue.stats = ps
             }
         })
     }
@@ -312,5 +318,5 @@ struct PlayerInfoView: View {
 }
 
 #Preview {
-    PlayerInfoView().environment(Player())
+    PlayerInfoView().environment(Player(withId: "19615"))
 }

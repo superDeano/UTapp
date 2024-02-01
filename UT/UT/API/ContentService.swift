@@ -89,18 +89,21 @@ class ContentService {
         task.resume()
     }
     
-    func getStatsAndLowestBin(for lineId: String, finished: @escaping((PlayerStats, LowestBin) -> Void)) -> Void {
+    func getStatsAndLowestBin(for lineId: String, finished: @escaping((PlayerStats, LowestBin) -> Void), timesTried: Int = 0) -> Void {
         guard let url = URL(string: "\(baseUrl)en/app/sold24/\(lineId)/console") else { return }
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request, completionHandler: {data, response, error in
             if let data = data {
-                let decodedBin = try? JSONDecoder().decode(RootTest.self, from: data)
-                //                let decodedStats = try? JSONDecoder().decode(RootPlayerStats.self, from: data)
-                if decodedBin == nil {
-                    print("Null data for", lineId)
+                let decodedBin = try? JSONDecoder().decode(StatsAndLowestBin.self, from: data)
+                // let decodedStats = try? JSONDecoder().decode(RootPlayerStats.self, from: data)
+                
+                if decodedBin == nil && timesTried < 5 {
+                    let count = timesTried + 1
+                    print("Null data for", lineId, "retrying with recursion")
+                    self.getStatsAndLowestBin(for: lineId, finished: finished, timesTried: count)
                 }
-                //                let rootLowestBin = decodedBin ?? RootLowestBin()
-                //                let rootStats = decodedStats ?? RootPlayerStats()
+                // let rootLowestBin = decodedBin ?? RootLowestBin()
+                // let rootStats = decodedStats ?? RootPlayerStats()
                 finished(decodedBin?.stats ?? PlayerStats(), decodedBin?.lowBin ?? LowestBin())
             } else if let error = error {
                 print("Error happened during call to player lowest bin. \(error)")
@@ -118,6 +121,24 @@ class ContentService {
                 var searchedPlayers = [Player]()
                 decodedData?.forEach({ sP in
                     searchedPlayers.append(Player(for: sP))
+                })
+                finished(searchedPlayers)
+            }
+        }
+        task.resume()
+    }
+    
+    public func getOtherVersions(for name: String, finished: @escaping (([Player]) -> Void)) -> Void {
+        guard let url = URL(string: "\(baseUrl)en/searches/player24/\(name)") else { return }
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { data, response, err in
+            if let data = data {
+                let decodedData = try? JSONDecoder().decode([SearchedPlayer].self, from: data)
+                var searchedPlayers = [Player]()
+                decodedData?.forEach({ sP in
+                    if sP.urlName == name {
+                        searchedPlayers.append(Player(for: sP))
+                    }
                 })
                 finished(searchedPlayers)
             }
