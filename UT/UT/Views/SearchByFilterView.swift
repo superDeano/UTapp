@@ -717,6 +717,8 @@ struct SearchByFilterView: View {
                                     isInputActive = false
                                 } label: { Text("Done").foregroundStyle(Color.primary) }
                             }
+                            
+                            //MARK: Clear Filters Button
                             ToolbarItemGroup(placement: .destructiveAction) {
                                 
                                 Button {
@@ -726,7 +728,7 @@ struct SearchByFilterView: View {
 //                                    Label("Clear Filters", systemImage: "xmark.circle.fill")
 //                                        .labelStyle(.titleAndIcon)
                                     HStack {
-                                        Text("Clear")
+                                        Text("Reset")
                                         Image(systemName: "xmark.circle.fill")
                                     }.foregroundStyle(Color.red)
 //                                        .symbolEffect(.bounce.down.byLayer)

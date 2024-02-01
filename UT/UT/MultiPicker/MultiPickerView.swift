@@ -45,7 +45,8 @@ struct MultiPickerView<Selectable: Identifiable & Hashable>: View {
                         selected.removeAll()
                     }label: {
                         Text("Clear")
-                    }
+                        Image(systemName: "clear.fill")
+                    }.foregroundStyle(Color.red)
                 }
             }
     }
