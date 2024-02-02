@@ -20,20 +20,17 @@ struct UTApp: App {
                         .environmentObject(launchScreenState)
                 }
                 
-                if launchScreenState.state != .firstStep{
+                if launchScreenState.state != .firstStep {
                     NavigationStack{
                         TabView(){
-                            
                             ContentView()
                                 .tabItem {
-                                    Label("Home", systemImage: "house")
+                                    Label("Home", systemImage: "square.stack.fill")
                                 }.environmentObject(launchScreenState)
-                            
                             SearchByFilterView()
                                 .tabItem {
                                     Label("Search", systemImage: "text.magnifyingglass")
                                 }
-                            
                         }.opacity(launchScreenState.state != .finished ? 0 : 1)
                     }
                 }
