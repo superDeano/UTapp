@@ -7,23 +7,7 @@
 
 import Foundation
 
-//class PlayerTest: Decodable {
-//    let playerWithPrices: PlayerStats
-//
-//    enum CodingKeys: String, CodingKey {
-//        case playerWithPrices = "player"
-//    }
-//
-//    init() {
-//        self.playerWithPrices = PlayerStats()
-//    }
-//
-//    required init(from decoder: Decoder) throws {
-//        let value = try decoder.container(keyedBy: CodingKeys.self)
-//        playerWithPrices = try value.decode(PlayerStats.self, forKey: .playerWithPrices)
-//    }
-//}
-class RootTest: Decodable {
+class StatsAndLowestBin: Decodable {
     let stats: PlayerStats
     let lowBin: LowestBin
     
@@ -167,16 +151,16 @@ class PlayerStats: Decodable, Observable, ObservableObject {
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        accelerate = try values.decodeIfPresent(String?.self, forKey: .accelerate) ?? ""
+        accelerate = try values.decode(String?.self, forKey: .accelerate)
         sex = try values.decodeIfPresent(String?.self, forKey: .sex) ?? ""
         playstyles = try values.decodeIfPresent(String?.self, forKey: .playstyles) ?? ""
         playstylesPlus = try values.decodeIfPresent(String?.self, forKey: .playstylesPlus) ?? ""
-        att1 = try values.decodeIfPresent(String.self,forKey: .att1) ?? ""
-        att2 = try values.decodeIfPresent(String.self,forKey: .att2) ?? ""
-        att3 = try values.decodeIfPresent(String.self,forKey: .att3) ?? ""
-        att4 = try values.decodeIfPresent(String.self,forKey: .att4) ?? ""
-        att5 = try values.decodeIfPresent(String.self,forKey: .att5) ?? ""
-        att6 = try values.decodeIfPresent(String.self,forKey: .att6) ?? ""
+        att1 = try values.decode(String.self,forKey: .att1)
+        att2 = try values.decode(String.self,forKey: .att2)
+        att3 = try values.decode(String.self,forKey: .att3)
+        att4 = try values.decode(String.self,forKey: .att4)
+        att5 = try values.decode(String.self,forKey: .att5)
+        att6 = try values.decode(String.self,forKey: .att6)
         acceleration = try values.decodeIfPresent(String.self,forKey: .acceleration) ?? ""
         agility = try values.decodeIfPresent(String.self,forKey: .agility) ?? ""
         balance = try values.decodeIfPresent(String.self,forKey: .balance) ?? ""
@@ -246,7 +230,7 @@ class LowestBin: Decodable {
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         ud = try values.decodeIfPresent(String?.self, forKey: .ud) ?? ""
-        if ud != "Never" && !ud!.isEmpty {
+        if ud != "Never" && ud != "" {
             bin = try values.decode(String?.self, forKey: .bin)
         } else {
             bin = "0"

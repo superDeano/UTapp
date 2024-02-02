@@ -60,7 +60,7 @@ struct PlayerInfoView: View {
                     HStack(){
                         Text("Lowest Price").bold()
                         Spacer()
-                        Text($displayedPlayer.wrappedValue.lowestBin?.bin ?? "n/a")
+                        Text(displayedPlayer.lowestBin?.bin ?? "n/a")
                         Image("Misc/coins").resizable().scaledToFit().frame(maxWidth: 18)
                     }
                     HStack(){
@@ -226,7 +226,8 @@ struct PlayerInfoView: View {
         })
             .refreshable {
                 //                self.getLowestBin()
-                self.getPlayerStatsAndPrice()
+//                self.getPlayerStatsAndPrice()
+                self.getData()
                 print("Swiped down to refresh in PlayerInfoView!")
             }
 #if os(macOS)
@@ -256,12 +257,18 @@ struct PlayerInfoView: View {
         if displayedPlayer.stats == nil {
             getPlayerStats()
         }
+        DispatchQueue.main.async {
+            var temp = displayedPlayer
+            displayedPlayer = Player()
+            displayedPlayer = temp
+            
+        }
     }
     
     private func getLowestBin(){
         ContentService.shared.getLowestBin(for: displayedPlayer.lineid, finished: { lb in
             DispatchQueue.main.async {
-                $displayedPlayer.wrappedValue.lowestBin = lb
+                displayedPlayer.lowestBin = lb
             }
 //            print("Price is", lb.bin!)
         })
@@ -270,7 +277,7 @@ struct PlayerInfoView: View {
     private func getPlayerStats() -> Void {
         ContentService.shared.getPlayerStats(for: displayedPlayer.lineid, finished: { ps in
             DispatchQueue.main.async {
-                $displayedPlayer.wrappedValue.stats = ps
+                displayedPlayer.stats = ps
             }
         })
     }
