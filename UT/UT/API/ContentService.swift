@@ -59,14 +59,14 @@ class ContentService {
         task.resume()
     }
     
-    func getPlayerStats(for lineId: String, finished: @escaping((PlayerStats) -> Void)) -> Void {
+    func getPlayerStats(for lineId: String, finished: @escaping((PlayerStats?) -> Void)) -> Void {
         guard let url = URL(string: "\(baseUrl)en/app/sold24/\(lineId)/console") else { return }
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request,completionHandler: {data, response, error in
             if let data = data {
                 let decodedData = try? JSONDecoder().decode(RootPlayerStats.self, from: data)
-                let player = decodedData ?? RootPlayerStats()
-                finished(player.playerStats)
+                let player = decodedData
+                finished(player?.playerStats)
             } else if let error = error {
                 print("Error happened during call to player prices. \(error)")
             }
@@ -74,14 +74,14 @@ class ContentService {
         task.resume()
     }
     
-    func getLowestBin(for lineId: String, finished: @escaping((LowestBin) -> Void)) -> Void {
+    func getLowestBin(for lineId: String, finished: @escaping((LowestBin?) -> Void)) -> Void {
         guard let url = URL(string: "\(baseUrl)en/app/sold24/\(lineId)/console") else { return }
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request,completionHandler: {data, response, error in
             if let data = data {
                 let decodedData = try? JSONDecoder().decode(RootLowestBin.self, from: data)
-                let rootLowestBin = decodedData ?? RootLowestBin()
-                finished(rootLowestBin.lowestBin)
+                let rootLowestBin = decodedData
+                finished(rootLowestBin?.lowestBin)
             } else if let error = error {
                 print("Error happened during call to player lowest bin. \(error)")
             }
@@ -89,7 +89,7 @@ class ContentService {
         task.resume()
     }
     
-    func getStatsAndLowestBin(for lineId: String, finished: @escaping((PlayerStats, LowestBin) -> Void), timesTried: Int = 0) -> Void {
+    func getStatsAndLowestBin(for lineId: String, finished: @escaping((PlayerStats?, LowestBin?) -> Void), timesTried: Int = 0) -> Void {
         guard let url = URL(string: "\(baseUrl)en/app/sold24/\(lineId)/console") else { return }
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request, completionHandler: {data, response, error in
@@ -104,7 +104,7 @@ class ContentService {
                 }
                 // let rootLowestBin = decodedBin ?? RootLowestBin()
                 // let rootStats = decodedStats ?? RootPlayerStats()
-                finished(decodedBin?.stats ?? PlayerStats(), decodedBin?.lowBin ?? LowestBin())
+                finished(decodedBin?.stats, decodedBin?.lowBin)
             } else if let error = error {
                 print("Error happened during call to player lowest bin. \(error)")
             }

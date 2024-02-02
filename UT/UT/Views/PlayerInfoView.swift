@@ -258,7 +258,7 @@ struct PlayerInfoView: View {
             getPlayerStats()
         }
         DispatchQueue.main.async {
-            var temp = displayedPlayer
+            let temp = displayedPlayer
             displayedPlayer = Player()
             displayedPlayer = temp
             
