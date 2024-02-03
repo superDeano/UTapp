@@ -9,6 +9,7 @@ import Foundation
 
 // MARK: - Player
 
+
 class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
     nonisolated static func == (lhs: Player, rhs: Player) -> Bool {
         lhs.lineid == rhs.lineid
@@ -54,25 +55,25 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
     //MARK: Init no args
     init(){
         self.id = ""
-        self.lineid = "19464"
-        self.cardname = "superDeano"
+        self.lineid = ""
+        self.cardname = ""
         self.name = ""
         self.urlname = ""
-        self.rating = "99"
-        self.pid = "183394"
-        self.position = "CDM"
+        self.rating = ""
+        self.pid = ""
+        self.position = ""
         self.position2 = ""
         self.position3 = ""
         self.position4 = ""
-        self.nation = "70"
-        self.league = "13"
-        self.club = "9"
-        self.att1 = "99"
-        self.att2 = "99"
-        self.att3 = "99"
-        self.att4 = "99"
-        self.att5 = "99"
-        self.att6 = "99"
+        self.nation = ""
+        self.league = ""
+        self.club = ""
+        self.att1 = "0"
+        self.att2 = "0"
+        self.att3 = "0"
+        self.att4 = "0"
+        self.att5 = "0"
+        self.att6 = "0"
         self.rare = "0"
         self.fname = ""
         self.lname = ""
@@ -83,7 +84,7 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         self.minprice = ""
         self.maxprice = ""
         self.totalStats = ""
-        self.altimage = "50515042"
+        self.altimage = ""
         self.isUpgrade = ""
         self.updatedate = ""
         self.appclass = ""
@@ -98,49 +99,49 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
     }
     
     //MARK: init with just player id
-    init(for playerId: String){
+    init(withId playerId: String){
         self.id = playerId
         self.lineid = playerId
         self.cardname = "test"
-        self.name = ""
-        self.urlname = ""
+        self.name = "superDeano"
+        self.urlname = "mohamed-salah"
         self.rating = "99"
         self.pid = "183394"
         self.position = "CDM"
-        self.position2 = ""
-        self.position3 = ""
-        self.position4 = ""
+        self.position2 = "CM"
+        self.position3 = "CB"
+        self.position4 = "GK"
         self.nation = "77"
         self.league = "13"
         self.club = "19"
-        self.att1 = ""
-        self.att2 = ""
-        self.att3 = ""
-        self.att4 = ""
-        self.att5 = ""
-        self.att6 = ""
-        self.rare = ""
+        self.att1 = "99"
+        self.att2 = "99"
+        self.att3 = "99"
+        self.att4 = "99"
+        self.att5 = "99"
+        self.att6 = "99"
+        self.rare = "1"
         self.fname = ""
         self.lname = ""
-        self.dob = ""
-        self.height = ""
-        self.foot = ""
+        self.dob = "69"
+        self.height = "150"
+        self.foot = "Right"
         self.traits = ""
         self.minprice = ""
         self.maxprice = ""
         self.totalStats = ""
-        self.altimage = nil
+        self.altimage = "50515042"
         self.isUpgrade = ""
         self.updatedate = ""
         self.appclass = ""
         self.cardtype = "card-24-bronze-nr"
         self.smallpreview = ""
-        self.skillmoves = ""
-        self.weakfoot = ""
-        self.attackworkrate = ""
-        self.defenseworkrate = ""
-        self.heightft = ""
-        self.itemInfo = ItemInfo(backgroundImage: "https://cdn.futwiz.com/assets/img/fc24/items/small/gold-if.png", color: "f6db7b", names: [])
+        self.skillmoves = "5"
+        self.weakfoot = "3"
+        self.attackworkrate = "high"
+        self.defenseworkrate = "high"
+        self.heightft = "5'5\""
+        self.itemInfo = ItemInfo(backgroundImage: "https://cdn.futwiz.com/assets/img/fc24/items/small/gold-if.png", color: "ffffff", names: [])
     }
     
     //MARK: init with SearchedPlayer
@@ -192,54 +193,6 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         } else {
             self.itemInfo = ContentService.shared.itemManager.getItemInfo(for: smallpreview)
         }
-        self.funcSetAttributeLabels()
-    }
-    
-    //MARK: Init all args
-    init(lineid: String, cardname: String, name: String, urlname: String, rating: String, pid: String, position: String, position2: String?, position3: String?, position4: String?, nation: String, league: String, club: String, att1: String, att2: String, att3: String, att4: String, att5: String, att6: String, rare: String, fname: String, lname: String, dob: String, height: String, foot: String, traits: String?, minprice: String, maxprice: String, totalStats: String, altimage: String?, isUpgrade: String?, updatedate: String?, appclass: String, cardtype: String, smallpreview: String, skillmoves: String, weakfoot: String, attackworkrate: String, defenseworkrate: String, heightft: String) {
-        
-        self.id = lineid
-        self.lineid = lineid
-        self.cardname = cardname
-        self.name = name
-        self.urlname = urlname
-        self.rating = rating
-        self.pid = pid
-        self.position = position
-        self.position2 = position2
-        self.position3 = position3
-        self.position4 = position4
-        self.nation = nation
-        self.league = league
-        self.club = club
-        self.att1 = att1
-        self.att2 = att2
-        self.att3 = att3
-        self.att4 = att4
-        self.att5 = att5
-        self.att6 = att6
-        self.rare = rare
-        self.fname = fname
-        self.lname = lname
-        self.dob = dob
-        self.height = height
-        self.foot = foot
-        self.traits = traits
-        self.minprice = minprice
-        self.maxprice = maxprice
-        self.totalStats = totalStats
-        self.altimage = altimage
-        self.isUpgrade = isUpgrade
-        self.updatedate = updatedate
-        self.appclass = appclass
-        self.cardtype = cardtype
-        self.smallpreview = smallpreview
-        self.skillmoves = skillmoves
-        self.weakfoot = weakfoot
-        self.attackworkrate = attackworkrate
-        self.defenseworkrate = defenseworkrate
-        self.heightft = heightft
-        self.itemInfo = ItemInfo()
         self.funcSetAttributeLabels()
     }
     
