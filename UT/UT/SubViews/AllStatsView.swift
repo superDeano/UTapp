@@ -9,22 +9,42 @@ import SwiftUI
 
 struct AllStatsView: View {
     @Binding var stats: PlayerStats?
+    @State private var statsExpanded = false
+    private let paddingTop: CGFloat = 2
+    private let paddingBottom: CGFloat =  15
+    
     
     var body: some View {
         VStack {
             VStack {
-                //MARK: - Pace
-                VStack{
-                    HStack{
-                        Text("Pace").bold().font(.title2)
+                Button {
+                    self.statsExpanded.toggle()
+                } label: {
+                    HStack {
+                        Text(statsExpanded ? "Collapse" : "Expand").font(.body).fontWeight(.light)
                         Spacer()
-                        Text(stats?.att1 ?? "").font(.title2)
-                    }.padding(.bottom, 5)
+                        Image(systemName: statsExpanded ? "arrow.up.right.and.arrow.down.left.square.fill" : "arrow.down.backward.and.arrow.up.forward.square")
+                            .resizable()
+                            .scaledToFit()
+                            .contentTransition(.symbolEffect(.replace))
+                            .frame(width: 25)
+                    }
+                }
+            }
+            //MARK: - Pace
+            VStack{
+                HStack{
+                    Text("Pace").bold().font(statsExpanded ? .title2 : .body)
+                    Spacer()
+                    Text(stats?.att1 ?? "").font(statsExpanded ? .title2 : .body)
+                }
+                
+                if self.statsExpanded {
                     HStack{
                         Text("Acceleration")
                         Spacer()
                         Text(stats?.acceleration ?? "")
-                    }
+                    }.padding(.top, paddingTop)
                     HStack{
                         Text("Sprint Speed")
                         Spacer()
@@ -34,21 +54,24 @@ struct AllStatsView: View {
                         Text("AcceleRATE").bold()
                         Spacer()
                         Text(stats?.accelerate ?? "")
-                    }
-                }.padding(.bottom, 15)
+                    }.padding(.bottom, paddingBottom)
+                }
+            }
+            
+            //MARK: - Shooting
+            VStack{
+                HStack{
+                    Text("Shooting").bold().font(statsExpanded ? .title2 : .body)
+                    Spacer()
+                    Text(stats?.att2 ?? "").font(statsExpanded ? .title2 : .body)
+                }
                 
-                //MARK: - Shooting
-                VStack{
-                    HStack{
-                        Text("Shooting").bold().font(.title2)
-                        Spacer()
-                        Text(stats?.att2 ?? "").font(.title2)
-                    }.padding(.bottom, 5)
+                if self.statsExpanded {
                     HStack{
                         Text("Positioning")
                         Spacer()
                         Text(stats?.positioning ?? "")
-                    }
+                    }.padding(.top, paddingTop)
                     HStack{
                         Text("Finishing")
                         Spacer()
@@ -73,21 +96,24 @@ struct AllStatsView: View {
                         Text("Penalties")
                         Spacer()
                         Text(stats?.penalties ?? "")
-                    }
-                }.padding(.bottom, 15)
+                    }.padding(.bottom, paddingBottom)
+                }
+            }
+            
+            //MARK: - Passing
+            VStack{
+                HStack{
+                    Text("Passing").bold().font(statsExpanded ? .title2 : .body)
+                    Spacer()
+                    Text(stats?.att3 ?? "").font(statsExpanded ? .title2 : .body)
+                }
                 
-                //MARK: - Passing
-                VStack{
-                    HStack{
-                        Text("Passing").bold().font(.title2)
-                        Spacer()
-                        Text(stats?.att3 ?? "").font(.title2)
-                    }.padding(.bottom, 5)
+                if self.statsExpanded {
                     HStack{
                         Text("Vision")
                         Spacer()
                         Text(stats?.vision ?? "")
-                    }
+                    }.padding(.top, paddingTop)
                     HStack{
                         Text("Crossing")
                         Spacer()
@@ -112,21 +138,25 @@ struct AllStatsView: View {
                         Text("Curve").fontWeight(.semibold)
                         Spacer()
                         Text(stats?.curve ?? "")
-                    }
-                }.padding(.bottom, 15)
+                    }.padding(.bottom, paddingBottom)
+                }
+            }
+            
+            //MARK: - Dribbling
+            VStack{
+                HStack{
+                    Text("Dribbling").bold().font(statsExpanded ? .title2 : .body)
+                    Spacer()
+                    Text(stats?.att4 ?? "").font(statsExpanded ? .title2 : .body)
+                }
                 
-                //MARK: - Dribbling
-                VStack{
-                    HStack{
-                        Text("Dribbling").bold().font(.title2)
-                        Spacer()
-                        Text(stats?.att4 ?? "").font(.title2)
-                    }.padding(.bottom, 5)
+                
+                if self.statsExpanded {
                     HStack{
                         Text("Agility")
                         Spacer()
                         Text(stats?.agility ?? "")
-                    }
+                    }.padding(.top, paddingTop)
                     HStack{
                         Text("Balance")
                         Spacer()
@@ -151,21 +181,24 @@ struct AllStatsView: View {
                         Text("Composure")
                         Spacer()
                         Text(stats?.composure ?? "")
-                    }
-                }.padding(.bottom, 15)
+                    }.padding(.bottom, paddingBottom)
+                }
+            }
+            
+            //MARK: - Defending
+            VStack{
+                HStack{
+                    Text("Defending").bold().font(statsExpanded ? .title2 : .body)
+                    Spacer()
+                    Text(stats?.att5 ?? "").font(statsExpanded ? .title2 : .body)
+                }
                 
-                //MARK: - Defending
-                VStack{
-                    HStack{
-                        Text("Defending").bold().font(.title2)
-                        Spacer()
-                        Text(stats?.att5 ?? "").font(.title2)
-                    }.padding(.bottom, 5)
+                if statsExpanded {
                     HStack{
                         Text("Interception")
                         Spacer()
                         Text(stats?.tactaware ?? "")
-                    }
+                    }.padding(.top, paddingTop)
                     HStack{
                         Text("Heading Accuracy")
                         Spacer()
@@ -185,21 +218,24 @@ struct AllStatsView: View {
                         Text("Sliding Tackle")
                         Spacer()
                         Text(stats?.slidetackle ?? "")
-                    }
-                }.padding(.bottom, 15)
+                    }.padding(.bottom, paddingBottom)
+                }
+            }
+            
+            //MARK: - Physicality
+            VStack{
+                HStack{
+                    Text("Physicality").bold().font(statsExpanded ? .title2 : .body)
+                    Spacer()
+                    Text(stats?.att6 ?? "").font(statsExpanded ? .title2 : .body)
+                }
                 
-                //MARK: - Physicality
-                VStack{
-                    HStack{
-                        Text("Physicality").bold().font(.title2)
-                        Spacer()
-                        Text(stats?.att6 ?? "").font(.title2)
-                    }.padding(.bottom, 5)
+                if self.statsExpanded {
                     HStack{
                         Text("Jumbing")
                         Spacer()
                         Text(stats?.jumping ?? "")
-                    }
+                    }.padding(.top, paddingTop)
                     HStack{
                         Text("Stamina")
                         Spacer()
@@ -219,6 +255,7 @@ struct AllStatsView: View {
             }
         }
     }
+    
     
 }
 
