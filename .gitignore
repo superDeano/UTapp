@@ -93,3 +93,4 @@ fastlane/test_output
 *.txt
 *.py
 *.playground/
+UT.appmostapp
