@@ -62,6 +62,6 @@ struct MediumCardView: View {
 
 #Preview {
     Group {
-        MediumCardView().environment(Player(for: "19464"))
+        MediumCardView().environment(Player(withId: "19464"))
     }
 }
