@@ -710,6 +710,19 @@ struct Clubs {
         "115716": "FC U Craiova",
         "115820": "FC Viktoria 1889 Berlin",
         "115841": "Latium",
-        "115845": "Bergamo Calcio"
+        "115845": "Bergamo Calcio",
+        "114605": "Heroes",
+        "116300": "OL Reign",
+        "116303": "North Carolina Courage",
+        "116312": "San Diego Wave FC",
+        "116302": "Portland Thorns FC",
+        "116309": "Kansas City Current",
+        "116307": "Orlando Pride",
+        "116310": "NY/NJ Gotham FC",
+        "116311": "Angel City FC",
+        "116304": "Washington Spirit",
+        "116305": "Chicago Red Stars",
+        "116306": "Houston Dash",
+        "116308": "Racing Louisville FC",
     ]
 }
