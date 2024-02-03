@@ -12,7 +12,6 @@ struct PlayerInfoView: View {
     @EnvironmentObject public var obtainedPlayer: Player
     @State private var displayedPlayer: Player = Player()
     @State private var otherVersions: [Player] = []
-    private let maxWidth: CGFloat = 100
     @State private var lastCheckedDate : Date? = nil
     
     
@@ -73,98 +72,11 @@ struct PlayerInfoView: View {
             }
             //MARK: BIO
             Section(header: Text("Biography")){
-                VStack(){
-                    HStack(){
-                        Text("Name").bold()
-                            .frame(maxWidth: self.maxWidth, alignment: .leading)
-                        Text(displayedPlayer.name)
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
-                    HStack(){
-                        Text("Age").bold()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text(displayedPlayer.dob)
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
-                    HStack(){
-                        Text("Height").bold()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("\(displayedPlayer.height) cm / \(displayedPlayer.heightft)")
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
-                    //                    HStack(){
-                    //                        Text("Weight").bold()
-                    //                            .frame(maxWidth: .infinity, alignment: .leading)
-                    //                        Text(player.)
-                    //                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    //                    }
-                    HStack(){
-                        Text("Club").bold()
-                        Spacer()
-                        Text(Clubs.teams[self.displayedPlayer.club] ?? "")
-                    }
-                    HStack(){
-                        Text("League").bold()
-                        Spacer()
-                        Text(Leagues.leagues[self.displayedPlayer.league] ?? "")
-                    }
-                    HStack(){
-                        Text("Nationality").bold()
-                            .frame(maxWidth: self.maxWidth, alignment: .leading)
-                        Text(Nations.nations[self.displayedPlayer.nation] ?? "")
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
-                    HStack(){
-                        Text("Skill Moves").bold()
-                            Spacer()
-                        HStack(){
-                            Text(displayedPlayer.skillmoves)
-                            Label("", systemImage: "star")
-                                .labelStyle(.iconOnly)
-                                .symbolVariant(.fill)
-                                .foregroundColor(.gray)
-                                .font(.caption2)
-                        }
-                    }
-                    HStack(){
-                        Text("Weak Foot").bold()
-                            Spacer()
-                        HStack(){
-                            Text(displayedPlayer.weakfoot)
-                            Label("", systemImage: "star")
-                                .labelStyle(.iconOnly)
-                                .symbolVariant(.fill)
-                                .foregroundColor(.gray)
-                                .font(.caption2)
-                        }
-                    }
-                    HStack(){
-                        Text("Preferred Foot").bold()
-                            Spacer()
-                        Text(displayedPlayer.foot)
-                    }
-                    HStack(){
-                        Text("Attacking Workrate").bold()
-                        Spacer()
-                           Text(displayedPlayer.attackworkrate)
-                           
-                    }
-                    HStack(){
-                        Text("Defending Workrate").bold()
-                            Spacer()
-                        Text(displayedPlayer.defenseworkrate)
-                           
-                    }
-                    HStack(){
-                        Text("Alt Positions").bold()
-                        Spacer()
-                        Text(displayedPlayer.getAltPositions())
-                    }
-                }
+                PlayerBioView(player: $displayedPlayer)
             }
             //MARK: All Stats
             Section(header: Text("Stats")){
-                VStack(){
+                VStack{
                     AllStatsView(stats: $displayedPlayer.stats)
                 }
             }
@@ -230,11 +142,21 @@ struct PlayerInfoView: View {
                 self.getData()
                 print("Swiped down to refresh in PlayerInfoView!")
             }
+
+            .toolbar {
 #if os(macOS)
-            .toolbar(content: {
                 Button("Refresh", action: getLowestBin).keyboardShortcut("R", modifiers: .command)
-            })
 #endif
+                ToolbarItem(placement: .automatic){
+                    Button {
+                        print("You'll be able to compare soon")
+                    } label: {
+                        Text("Compare")
+                        Image(systemName: "arrow.left.arrow.right.circle.fill")
+                    }
+                }
+            }
+
             .onAppear(perform: getPlayerStatsAndPrice)
             .onDisappear {
                 self.lastCheckedDate = nil
