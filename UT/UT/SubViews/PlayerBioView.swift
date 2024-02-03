@@ -10,62 +10,78 @@ import SwiftUI
 struct PlayerBioView: View {
     @Binding var player: Player
     private let maxWidth: CGFloat = 100
-    private let maxImageWidth: CGFloat = 30
+    private let maxImageWidth: CGFloat = 20
+    private let dividerHeight: CGFloat = 20
     
     var body: some View {
         VStack(){
             HStack(){
-                Text("Name").bold()
-//                    .frame(maxWidth: self.maxWidth, alignment: .leading)
+                Text(player.name).font(.title2).bold().fontWidth(.condensed)
                 Spacer()
-                Text(player.name)
-//                    .frame(maxWidth: .infinity, alignment: .trailing)
+                Text(player.getAltPositions()).font(.subheadline)
             }
             HStack(){
-                Text("Age").bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text(player.dob)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-            }
-            HStack(){
-                Text("Height").bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text("\(player.height) cm / \(player.heightft)")
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-            }
-            HStack(){
-                Text("Preferred Foot").bold()
-                    Spacer()
-                Text(player.foot.uppercased())
-                Image(systemName: "shoeprints.fill")
+                Image(systemName: "app.gift")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: self.maxImageWidth - 10)
+                    .frame(maxWidth: self.maxImageWidth + 3)
                     .foregroundColor(.gray)
-            }
+                Text("\(player.dob) years")
+                
+                Spacer()
+                Divider().frame(height: dividerHeight)
+                Spacer()
+                
+                Image(systemName: "figure.dress.line.vertical.figure")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: self.maxImageWidth + 9)
+                    .foregroundColor(.gray)
+                Text("\(player.height) cm / \(player.heightft)")
+                
+                Spacer()
+                Divider().frame(height: dividerHeight)
+                Spacer()
+                
+                HStack(){
+                    
+                    Image(systemName: "shoeprints.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: self.maxImageWidth)
+                        .foregroundColor(.gray)
+                    Text(player.foot.uppercased())
+                }
+            }.font(.footnote).fontWeight(.light)
+                .offset(x: 0, y: -10)
+            
+            Divider()
             
             HStack(){
-                Text("Club").bold()
-                Spacer()
-                Text(Clubs.teams[self.player.club] ?? "")
-                Image("Clubs/\(player.club)").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: self.maxImageWidth)
-            }.padding(.top, 5)
-            HStack(){
-                Text("League").bold()
-                Spacer()
-                Text(Leagues.leagues[self.player.league] ?? "")
-                Image("Leagues/\(player.league)").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: self.maxImageWidth)
-            }
-            HStack(){
-                Text("Nationality").bold()
+                Text("Nationality").bold().foregroundStyle(Color.gray)
                     .frame(maxWidth: self.maxWidth, alignment: .leading)
                 Text(Nations.nations[self.player.nation] ?? "")
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 Image("Nations/\(player.nation)").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: self.maxImageWidth)
-            }
+            }.padding(.top, 5)
             
             HStack(){
-                Text("Skill Moves").bold()
+                Text("Club").bold().foregroundStyle(Color.gray)
+                Spacer()
+                Text(Clubs.teams[self.player.club] ?? "")
+                Image("Clubs/\(player.club)").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: self.maxImageWidth)
+            }
+            HStack(){
+                Text("League").bold().foregroundStyle(Color.gray)
+                Spacer()
+                Text(Leagues.leagues[self.player.league] ?? "")
+                Image("Leagues/\(player.league)").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: self.maxImageWidth)
+            }
+            
+            Divider()
+            
+            HStack(){
+                Text("Skill Moves").bold().foregroundStyle(Color.gray)
                     Spacer()
                 HStack(){
                     Text(player.skillmoves)
@@ -77,7 +93,7 @@ struct PlayerBioView: View {
                 }
             }.padding(.top, 5)
             HStack(){
-                Text("Weak Foot").bold()
+                Text("Weak Foot").bold().foregroundStyle(Color.gray)
                     Spacer()
                 HStack(){
                     Text(player.weakfoot)
@@ -88,24 +104,21 @@ struct PlayerBioView: View {
                 }
             }
             
+            Divider()
+            
             HStack(){
-                Text("Attacking Workrate").bold()
+                Text("Attacking Workrate").bold().foregroundStyle(Color.gray)
                 Spacer()
                 Text(player.attackworkrate.uppercased())
                    
             }.padding(.top, 5)
             HStack(){
-                Text("Defending Workrate").bold()
+                Text("Defending Workrate").bold().foregroundStyle(Color.gray)
                     Spacer()
                 Text(player.defenseworkrate.uppercased())
                    
-            }
-            HStack(){
-                Text("Alt Positions").bold()
-                Spacer()
-                Text(player.getAltPositions())
-            }.padding(.top, 5)
-        }
+            }.padding(.bottom, 5)
+        }.padding(.top, 5)
     }
 }
 
