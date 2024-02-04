@@ -68,7 +68,9 @@ struct CompareView: View {
 
                     
                 }.padding(.horizontal, 15)
-            }.sheet(isPresented: $presentSearch, content: {
+            }
+            //MARK: Dialog to Search Player
+            .sheet(isPresented: $presentSearch, content: {
                 NavigationView {
                     List {
                         if downloading {
@@ -120,7 +122,7 @@ struct CompareView: View {
                     }
                 }
                 
-                //MARK: Adding
+                //MARK: Adding button
                 if self.comparedPlayers.count < 3 {
                     ToolbarItem(placement: .primaryAction){
                         Button {
@@ -145,17 +147,13 @@ struct CompareView: View {
             downloading = true
             ContentService.shared.searchPlayer(for: searchedName) { players in
                 players.forEach { p in
-                    DispatchQueue.main.async {
-                        players.forEach { p in
-                                ContentService.shared.getPlayerStats(for: p.lineid) { stats in
-                                    DispatchQueue.main.async {
-                                        p.stats = stats
-                                    }
-                                }
-                        }
-                        searchResults = players
-                        downloading = false
+                    ContentService.shared.getPlayerStats(for: p.lineid) { stats in
+                        p.stats = stats
                     }
+                }
+                DispatchQueue.main.async {
+                    searchResults = players
+                    downloading = false
                 }
             }
         }
