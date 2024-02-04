@@ -59,14 +59,17 @@ class ContentService {
         task.resume()
     }
     
-    func getPlayerStats(for lineId: String, finished: @escaping((PlayerStats?) -> Void)) -> Void {
+    func getPlayerStats(for lineId: String, finished: @escaping((PlayerStats?) -> Void), timesTried: Int = 0) -> Void {
         guard let url = URL(string: "\(baseUrl)en/app/sold24/\(lineId)/console") else { return }
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request,completionHandler: {data, response, error in
             if let data = data {
                 let decodedData = try? JSONDecoder().decode(RootPlayerStats.self, from: data)
-                let player = decodedData
-                finished(player?.playerStats)
+                if decodedData == nil && timesTried < 5 {
+                    self.getPlayerStats(for: lineId, finished: finished, timesTried: timesTried + 1)
+                } else {
+                    finished(decodedData?.playerStats)
+                }
             } else if let error = error {
                 print("Error happened during call to player prices. \(error)")
             }
@@ -101,10 +104,9 @@ class ContentService {
                     let count = timesTried + 1
                     print("Null data for", lineId, "retrying with recursion")
                     self.getStatsAndLowestBin(for: lineId, finished: finished, timesTried: count)
+                } else {
+                    finished(decodedBin?.stats, decodedBin?.lowBin)
                 }
-                // let rootLowestBin = decodedBin ?? RootLowestBin()
-                // let rootStats = decodedStats ?? RootPlayerStats()
-                finished(decodedBin?.stats, decodedBin?.lowBin)
             } else if let error = error {
                 print("Error happened during call to player lowest bin. \(error)")
             }
