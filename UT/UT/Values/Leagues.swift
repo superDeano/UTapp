@@ -63,7 +63,8 @@ struct Leagues {
         "2230": "Ceska Liga Ž",
         "2216": "Women's Super League",
         "2218": "D1 Arkema",
-        "9992": "Google Pixel Frauen-Bundesliga"
+        "9992": "Google Pixel Frauen-Bundesliga",
+        "2236": "Calcio A Femminile"
     ]
     
    static let leaguesAndClubs = [
