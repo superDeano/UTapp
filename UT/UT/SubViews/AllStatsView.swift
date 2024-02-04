@@ -34,24 +34,24 @@ struct AllStatsView: View {
             //MARK: - Pace
             VStack{
                 HStack{
-                    Text("Pace").bold().font(statsExpanded ? .title2 : .body)
+                    Text("Pace").bold().font(statsExpanded ? .title2 : .body).foregroundStyle(Color.secondary)
                     Spacer()
                     Text(stats?.att1 ?? "").font(statsExpanded ? .title2 : .body)
                 }
                 
                 if self.statsExpanded {
                     HStack{
-                        Text("Acceleration")
+                        Text("Acceleration").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.acceleration ?? "")
                     }.padding(.top, paddingTop)
                     HStack{
-                        Text("Sprint Speed")
+                        Text("Sprint Speed").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.sprintspeed ?? "")
                     }
                     HStack{
-                        Text("AcceleRATE").bold()
+                        Text("AcceleRATE").bold().foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.accelerate ?? "")
                     }.padding(.bottom, paddingBottom)
@@ -61,39 +61,39 @@ struct AllStatsView: View {
             //MARK: - Shooting
             VStack{
                 HStack{
-                    Text("Shooting").bold().font(statsExpanded ? .title2 : .body)
+                    Text("Shooting").bold().font(statsExpanded ? .title2 : .body).foregroundStyle(Color.secondary)
                     Spacer()
                     Text(stats?.att2 ?? "").font(statsExpanded ? .title2 : .body)
                 }
                 
                 if self.statsExpanded {
                     HStack{
-                        Text("Positioning")
+                        Text("Positioning").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.positioning ?? "")
                     }.padding(.top, paddingTop)
                     HStack{
-                        Text("Finishing")
+                        Text("Finishing").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.finishing ?? "")
                     }
                     HStack{
-                        Text("Shot Power")
+                        Text("Shot Power").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.shotpower ?? "")
                     }
                     HStack{
-                        Text("Long Shots")
+                        Text("Long Shots").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.longshot ?? "")
                     }
                     HStack{
-                        Text("Volleys")
+                        Text("Volleys").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.volleys ?? "")
                     }
                     HStack{
-                        Text("Penalties")
+                        Text("Penalties").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.penalties ?? "")
                     }.padding(.bottom, paddingBottom)
@@ -103,39 +103,39 @@ struct AllStatsView: View {
             //MARK: - Passing
             VStack{
                 HStack{
-                    Text("Passing").bold().font(statsExpanded ? .title2 : .body)
+                    Text("Passing").bold().font(statsExpanded ? .title2 : .body).foregroundStyle(Color.secondary)
                     Spacer()
                     Text(stats?.att3 ?? "").font(statsExpanded ? .title2 : .body)
                 }
                 
                 if self.statsExpanded {
                     HStack{
-                        Text("Vision")
+                        Text("Vision").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.vision ?? "")
                     }.padding(.top, paddingTop)
                     HStack{
-                        Text("Crossing")
+                        Text("Crossing").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.crossing ?? "")
                     }
                     HStack{
-                        Text("FK Accuracy")
+                        Text("FK Accuracy").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.fkacc ?? "")
                     }
                     HStack{
-                        Text("Short Passing")
+                        Text("Short Passing").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.shortpass ?? "")
                     }
                     HStack{
-                        Text("Long Passing")
+                        Text("Long Passing").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.longpass ?? "")
                     }
                     HStack{
-                        Text("Curve").fontWeight(.semibold)
+                        Text("Curve").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.curve ?? "")
                     }.padding(.bottom, paddingBottom)
@@ -145,7 +145,7 @@ struct AllStatsView: View {
             //MARK: - Dribbling
             VStack{
                 HStack{
-                    Text("Dribbling").bold().font(statsExpanded ? .title2 : .body)
+                    Text("Dribbling").bold().font(statsExpanded ? .title2 : .body).foregroundStyle(Color.secondary)
                     Spacer()
                     Text(stats?.att4 ?? "").font(statsExpanded ? .title2 : .body)
                 }
@@ -153,32 +153,32 @@ struct AllStatsView: View {
                 
                 if self.statsExpanded {
                     HStack{
-                        Text("Agility")
+                        Text("Agility").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.agility ?? "")
                     }.padding(.top, paddingTop)
                     HStack{
-                        Text("Balance")
+                        Text("Balance").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.balance ?? "")
                     }
                     HStack{
-                        Text("Reactions")
+                        Text("Reactions").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.reactions ?? "")
                     }
                     HStack{
-                        Text("Ball Control")
+                        Text("Ball Control").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.ballcontrol ?? "")
                     }
                     HStack{
-                        Text("Dribbling")
+                        Text("Dribbling").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.dribbling ?? "")
                     }
                     HStack{
-                        Text("Composure")
+                        Text("Composure").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.composure ?? "")
                     }.padding(.bottom, paddingBottom)
@@ -188,34 +188,34 @@ struct AllStatsView: View {
             //MARK: - Defending
             VStack{
                 HStack{
-                    Text("Defending").bold().font(statsExpanded ? .title2 : .body)
+                    Text("Defending").bold().font(statsExpanded ? .title2 : .body).foregroundStyle(Color.secondary)
                     Spacer()
                     Text(stats?.att5 ?? "").font(statsExpanded ? .title2 : .body)
                 }
                 
                 if statsExpanded {
                     HStack{
-                        Text("Interception")
+                        Text("Interception").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.tactaware ?? "")
                     }.padding(.top, paddingTop)
                     HStack{
-                        Text("Heading Accuracy")
+                        Text("Heading Accuracy").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.headingacc ?? "")
                     }
                     HStack{
-                        Text("Defensive Awareness")
+                        Text("Defensive Awareness").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.marking ?? "")
                     }
                     HStack{
-                        Text("Standing Tackle")
+                        Text("Standing Tackle").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.standingtackle ?? "")
                     }
                     HStack{
-                        Text("Sliding Tackle")
+                        Text("Sliding Tackle").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.slidetackle ?? "")
                     }.padding(.bottom, paddingBottom)
@@ -225,29 +225,29 @@ struct AllStatsView: View {
             //MARK: - Physicality
             VStack{
                 HStack{
-                    Text("Physicality").bold().font(statsExpanded ? .title2 : .body)
+                    Text("Physicality").bold().font(statsExpanded ? .title2 : .body).foregroundStyle(Color.secondary)
                     Spacer()
                     Text(stats?.att6 ?? "").font(statsExpanded ? .title2 : .body)
                 }
                 
                 if self.statsExpanded {
                     HStack{
-                        Text("Jumbing")
+                        Text("Jumbing").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.jumping ?? "")
                     }.padding(.top, paddingTop)
                     HStack{
-                        Text("Stamina")
+                        Text("Stamina").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.stamina ?? "")
                     }
                     HStack{
-                        Text("Strength")
+                        Text("Strength").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.strength ?? "")
                     }
                     HStack{
-                        Text("Agression")
+                        Text("Agression").foregroundStyle(Color.secondary)
                         Spacer()
                         Text(stats?.aggression ?? "")
                     }
