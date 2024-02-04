@@ -20,7 +20,7 @@ struct PlaystylesView: View {
                         Spacer()
                     }
                     VStack {
-                        ForEach(playerStats?.playstylesPlus?.split(separator: ",") ?? [], id:\.self) {
+                        ForEach(playerStats?.playstylesPlus?.split(separator: ",").sorted() ?? [], id:\.self) {
                             playStylePlus in
                             HStack{
                                 Text(playStylePlus.capitalized)
@@ -40,7 +40,7 @@ struct PlaystylesView: View {
                     }
                     HStack {
                         ScrollView {
-                            ForEach(playerStats?.playstyles?.split(separator: ",") ?? [], id: \.self) { playStyle in
+                            ForEach(playerStats?.playstyles?.split(separator: ",").sorted() ?? [], id: \.self) { playStyle in
                                 VStack{
                                     HStack {
                                         Text(playStyle.capitalized)
