@@ -29,6 +29,8 @@ struct CompareView: View {
                             Divider()
                             AllStatsView(stats: $basePlayer.stats)
                                 .padding(.trailing, 5)
+                            Divider()
+                            PlaystylesView(playerStats: $basePlayer.stats)
                         }
                         .padding(.bottom, 5)
                         .padding(.horizontal, 5)
@@ -55,6 +57,8 @@ struct CompareView: View {
                                             .padding(.bottom, 5)
                                         Divider()
                                         AllStatsView(stats: .constant(self.comparedPlayers[comparedPlayer].stats))
+                                        Divider()
+                                        PlaystylesView(playerStats: .constant(self.comparedPlayers[comparedPlayer].stats))
                                     }.padding(.bottom, 5)
                                 }
                             }
