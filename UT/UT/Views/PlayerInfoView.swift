@@ -134,11 +134,11 @@ struct PlayerInfoView: View {
                 self.getData()
                 print("Swiped down to refresh in PlayerInfoView!")
             }
+#if os(iOS)
             .sheet(isPresented: $showCompare, content: {
                 CompareView(basePlayer: $displayedPlayer)
-            }
-            )
-        
+            })
+#endif
             .toolbar {
 #if os(macOS)
                 Button("Refresh", action: getLowestBin).keyboardShortcut("R", modifiers: .command)
@@ -156,7 +156,6 @@ struct PlayerInfoView: View {
             .onAppear(perform: getPlayerStatsAndPrice)
             .onDisappear {
                 self.lastCheckedDate = nil
-                print("View Disappeared!", self.lastCheckedDate == nil ? "lastCheckedDate is nil" : "lastcheckeddate ISN'T nil")
             }
             .onChange(of: displayedPlayer) { _, _ in
                 if self.lastCheckedDate == nil {
@@ -188,7 +187,6 @@ struct PlayerInfoView: View {
             DispatchQueue.main.async {
                 displayedPlayer.lowestBin = lb
             }
-            //            print("Price is", lb.bin!)
         })
     }
     
@@ -212,33 +210,25 @@ struct PlayerInfoView: View {
     
     private func getOtherVersions() -> Void {
         ContentService.shared.getOtherVersions(for: obtainedPlayer.urlname, finished: { otherVersions in
-            DispatchQueue.main.async {
-                self.otherVersions = otherVersions
-                
-                for p in self.otherVersions {
-                    if p.lineid == self.obtainedPlayer.lineid {
-                        p.lowestBin = self.obtainedPlayer.lowestBin
-                        p.stats = self.obtainedPlayer.stats
-                        break
+            
+            for p in otherVersions {
+                if p.lineid == self.obtainedPlayer.lineid {
+                    p.lowestBin = self.obtainedPlayer.lowestBin
+                    p.stats = self.obtainedPlayer.stats
+                } else {
+                    ContentService.shared.getStatsAndLowestBin(for: p.lineid) { pStats, pLowBin in
+                            p.stats = pStats
+                            p.lowestBin = pLowBin
                     }
                 }
             }
-            assignStatsAndPrice()
+            DispatchQueue.main.async {
+                self.otherVersions = otherVersions
+            }
         })
     }
     
-    private func assignStatsAndPrice(){
-        if !self.otherVersions.isEmpty {
-            self.otherVersions.forEach { p in
-                ContentService.shared.getStatsAndLowestBin(for: p.lineid) { pStats, pLowBin in
-                    DispatchQueue.main.async {
-                        p.stats = pStats
-                        p.lowestBin = pLowBin
-                    }
-                }
-            }
-        }
-    }
+
     
 }
 
