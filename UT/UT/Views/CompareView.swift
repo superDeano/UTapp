@@ -40,8 +40,9 @@ struct CompareView: View {
                                         Button {
                                             self.comparedPlayers.remove(at: comparedPlayer)
                                         } label: {
-                                            Image(systemName: "xmark.circle").resizable().scaledToFit()
-                                                .frame(width: 50)
+                                            Image(systemName: "x.square.fill").resizable().scaledToFit()
+                                                .frame(width: 30)
+                                                .foregroundStyle(Color.red)
                                         }.position(x: 325, y: 35)
                                     }
                                     VStack{
@@ -61,7 +62,7 @@ struct CompareView: View {
                     }.frame(alignment: .top)
 
                     
-                }
+                }.padding(.horizontal, 15)
             }
             .defaultScrollAnchor(.topLeading)
             .scrollClipDisabled()
@@ -71,7 +72,7 @@ struct CompareView: View {
                         self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         HStack {
-                            Text("Cancel")
+                            Text("Cancel").foregroundStyle(Color.red)
                         }
                     }
                 }
