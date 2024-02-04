@@ -32,7 +32,7 @@ struct CompareView: View {
                             Divider()
                             PlaystylesView(playerStats: $basePlayer.stats)
                         }
-                        .padding(.bottom, 5)
+                        .padding(.bottom, 10)
                         .padding(.horizontal, 5)
                         .background(.quaternary)
                         .frame(width: 350)
@@ -59,7 +59,7 @@ struct CompareView: View {
                                         AllStatsView(stats: .constant(self.comparedPlayers[comparedPlayer].stats))
                                         Divider()
                                         PlaystylesView(playerStats: .constant(self.comparedPlayers[comparedPlayer].stats))
-                                    }.padding(.bottom, 5)
+                                    }.padding(.bottom, 10)
                                 }
                             }
                             .frame(width: 350)
