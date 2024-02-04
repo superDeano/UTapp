@@ -73,54 +73,7 @@ struct PlayerInfoView: View {
                 }
             }
             Section(header: Text("Playstyles")){
-                //MARK: PlayStyles+
-                VStack{
-                    if displayedPlayer.stats?.playstylesPlus != nil && !(displayedPlayer.stats!.playstylesPlus!.isEmpty) {
-                        VStack {
-                            HStack{
-                                Text("Playstyles+").font(.title2).bold().padding(.top, 5)
-                                Spacer()
-                            }
-                            VStack {
-                                ForEach(displayedPlayer.stats?.playstylesPlus?.split(separator: ",") ?? [], id:\.self) {
-                                    playStylePlus in
-                                    HStack{
-                                        Text(playStylePlus)
-                                        Spacer()
-                                        Image("Playstyles/\(playStylePlus)-plus").resizable().scaledToFit().frame(width:40)
-                                    }
-                                }
-                            }
-                        }.padding(.bottom, 15)
-                    }
-                    VStack {
-                        //MARK: PlayStyles
-                        if displayedPlayer.stats?.playstyles != "" {
-                            HStack{
-                                Text("Playstyles").font(.title2).bold()
-                                Spacer()
-                            }
-                            HStack {
-                                ScrollView {
-                                    ForEach(displayedPlayer.stats?.playstyles?.split(separator: ",") ?? [], id: \.self) { playStyle in
-                                        VStack{
-                                            HStack {
-                                                Text(playStyle)
-                                                Spacer()
-                                                Image("Playstyles/\(playStyle)").resizable().scaledToFit().frame(width: 35)
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        } else if displayedPlayer.stats?.playstylesPlus == nil || (displayedPlayer.stats!.playstylesPlus!.isEmpty){
-                            HStack {
-                                Text("Player has no playstyles")
-                                Spacer()
-                            }
-                        }
-                    }
-                }
+                PlaystylesView(playerStats: $displayedPlayer.stats)
             }
         }.navigationTitle("\(displayedPlayer.cardname)")
             .onAppear(perform: {
@@ -129,8 +82,6 @@ struct PlayerInfoView: View {
                 self.getOtherVersions()
             })
             .refreshable {
-                //                self.getLowestBin()
-                //                self.getPlayerStatsAndPrice()
                 self.getData()
                 print("Swiped down to refresh in PlayerInfoView!")
             }
