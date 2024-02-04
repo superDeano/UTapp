@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct PlayerInfoView: View {
-
+    
     @EnvironmentObject public var obtainedPlayer: Player
     @State private var displayedPlayer: Player = Player()
     @State private var otherVersions: [Player] = []
     @State private var lastCheckedDate : Date? = nil
-    
+    @State private var showCompare = false
     
     var body: some View {
         List{
@@ -25,8 +25,7 @@ struct PlayerInfoView: View {
                         CardView(player: displayedPlayer)
                         Spacer()
                     }
-//                    .safeAreaInset(edge: .bottom, content: {
-                        if self.otherVersions.count > 1 {
+                    if self.otherVersions.count > 1 {
                         ScrollView(.horizontal){
                             HStack {
                                 ForEach(self.$otherVersions){
@@ -38,20 +37,13 @@ struct PlayerInfoView: View {
                                     }
                                 }.frame(maxWidth: .infinity)
                             }.frame(height: 60).padding(.top, 10)
-                        }//.ignoresSafeArea(.all, edges: .horizontal)
-//                        .border(Color.red)
+                        }.scrollClipDisabled()
                     }
-//                    })
+                    
                 }
-                //.ignoresSafeArea(.all, edges: .horizontal)
+                
             }.listRowBackground(Color.clear)
                 .frame(maxWidth: .infinity)
-//                .ignoresSafeArea(.all, edges: .horizontal)
-                
-//                .onChange(of: obtainedPlayer) {
-//                    self.displayedPlayer = obtainedPlayer
-//                    self.getData()
-//                }
             
             //MARK: Price Section
             Section(header: Text("Price")){
@@ -105,22 +97,22 @@ struct PlayerInfoView: View {
                         //MARK: PlayStyles
                         if displayedPlayer.stats?.playstyles != "" {
                             HStack{
-                            Text("Playstyles").font(.title2).bold()
-                            Spacer()
-                        }
-                        HStack {
-                            ScrollView {
-                                ForEach(displayedPlayer.stats?.playstyles?.split(separator: ",") ?? [], id: \.self) { playStyle in
-                                    VStack{
-                                        HStack {
-                                            Text(playStyle)
-                                            Spacer()
-                                            Image("Playstyles/\(playStyle)").resizable().scaledToFit().frame(width: 35)
+                                Text("Playstyles").font(.title2).bold()
+                                Spacer()
+                            }
+                            HStack {
+                                ScrollView {
+                                    ForEach(displayedPlayer.stats?.playstyles?.split(separator: ",") ?? [], id: \.self) { playStyle in
+                                        VStack{
+                                            HStack {
+                                                Text(playStyle)
+                                                Spacer()
+                                                Image("Playstyles/\(playStyle)").resizable().scaledToFit().frame(width: 35)
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
                         } else if displayedPlayer.stats?.playstylesPlus == nil || (displayedPlayer.stats!.playstylesPlus!.isEmpty){
                             HStack {
                                 Text("Player has no playstyles")
@@ -135,28 +127,32 @@ struct PlayerInfoView: View {
                 self.displayedPlayer = obtainedPlayer
                 self.getData()
                 self.getOtherVersions()
-        })
+            })
             .refreshable {
                 //                self.getLowestBin()
-//                self.getPlayerStatsAndPrice()
+                //                self.getPlayerStatsAndPrice()
                 self.getData()
                 print("Swiped down to refresh in PlayerInfoView!")
             }
-
+            .sheet(isPresented: $showCompare, content: {
+                CompareView(basePlayer: $displayedPlayer)
+            }
+            )
+        
             .toolbar {
 #if os(macOS)
                 Button("Refresh", action: getLowestBin).keyboardShortcut("R", modifiers: .command)
 #endif
                 ToolbarItem(placement: .automatic){
                     Button {
-                        print("You'll be able to compare soon")
+                        self.showCompare = true
                     } label: {
                         Text("Compare")
                         Image(systemName: "arrow.left.arrow.right.circle.fill")
                     }
                 }
             }
-
+        
             .onAppear(perform: getPlayerStatsAndPrice)
             .onDisappear {
                 self.lastCheckedDate = nil
@@ -170,7 +166,7 @@ struct PlayerInfoView: View {
                     getData()
                     lastCheckedDate = Date()
                 }
-
+                
             }
     }
     
@@ -192,7 +188,7 @@ struct PlayerInfoView: View {
             DispatchQueue.main.async {
                 displayedPlayer.lowestBin = lb
             }
-//            print("Price is", lb.bin!)
+            //            print("Price is", lb.bin!)
         })
     }
     
@@ -218,7 +214,7 @@ struct PlayerInfoView: View {
         ContentService.shared.getOtherVersions(for: obtainedPlayer.urlname, finished: { otherVersions in
             DispatchQueue.main.async {
                 self.otherVersions = otherVersions
-
+                
                 for p in self.otherVersions {
                     if p.lineid == self.obtainedPlayer.lineid {
                         p.lowestBin = self.obtainedPlayer.lowestBin
