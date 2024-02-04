@@ -8,8 +8,6 @@
 import Foundation
 
 // MARK: - Player
-
-
 class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
     nonisolated static func == (lhs: Player, rhs: Player) -> Bool {
         lhs.lineid == rhs.lineid
@@ -249,6 +247,8 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         funcSetAttributeLabels()
     }
     
+    
+    //MARK: Attribute Label Func
     private func funcSetAttributeLabels() {
         if self.position == "GK" {
             self.att1Label = "DIV"
@@ -267,6 +267,7 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         }
     }
     
+    //MARK: Card Name Func
     public func getCardName() -> String {
         let cardRarity = Int(self.rare)!
         var cardName = ""
@@ -297,6 +298,7 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         return self
     }
     
+    //MARK: Alt Positions Func
     public func getAltPositions() -> String {
         var positions = ""
         if self.position2 != nil && self.position2 != "" {
@@ -310,10 +312,11 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
             positions.append(", ")
             positions.append(self.position4!)
         }
-        return positions == "" ? "N/A" : positions
+        return positions //== "" ? "N/A" : positions
     }
 }
 
+//MARK: Extension 
 extension Player {
     //    func encode(from decoder: Decoder) throws {
     //        let values = try decoder.container(keyedBy: CodingKeys.self)
