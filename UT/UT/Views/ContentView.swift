@@ -48,7 +48,7 @@ struct ContentView: View {
                                 }
                             }
                         }.frame(height: 250)
-                    }
+                    }.scrollClipDisabled()
                 }.listRowBackground(Color.clear).listRowSeparator(.hidden).opacity(presentSearch ? 0 : 1)
                 
                 //MARK: List of Popular players
@@ -66,7 +66,7 @@ struct ContentView: View {
                                 }
                             }
                         }.frame(height: 250)
-                    }
+                    }.scrollClipDisabled()
                 }.listRowBackground(Color.clear).listRowSeparator(.hidden).opacity(presentSearch ? 0 : 1)
             }
             // MARK: Search List View
