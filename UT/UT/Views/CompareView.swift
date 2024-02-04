@@ -10,7 +10,12 @@ import SwiftUI
 struct CompareView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var basePlayer: Player
+    @State private var presentSearch = false
     @State var comparedPlayers: [Player] = []
+    @State private var searchedName: String = ""
+    @State private var searchResults: [Player] = []
+    @State private var downloading = false
+    
     var body: some View {
         NavigationView {
             ScrollView([.horizontal, .vertical]){
@@ -28,7 +33,7 @@ struct CompareView: View {
                         }
                         .padding(.bottom, 5)
                         .padding(.horizontal, 5)
-                        .border(Color.secondary)
+                        .background(.quaternary)
                         .frame(width: 350)
                         
                         //MARK: Compared Players
@@ -40,7 +45,7 @@ struct CompareView: View {
                                         Button {
                                             self.comparedPlayers.remove(at: comparedPlayer)
                                         } label: {
-                                            Image(systemName: "x.square.fill").resizable().scaledToFit()
+                                            Image(systemName: "clear.fill").resizable().scaledToFit()
                                                 .frame(width: 30)
                                                 .foregroundStyle(Color.red)
                                         }.position(x: 325, y: 35)
@@ -56,14 +61,43 @@ struct CompareView: View {
                             }
                             .frame(width: 350)
                             .padding(.horizontal, 10)
-                            .border(Color.secondary)
+                            .background(.quinary)
                         }
                         
                     }.frame(alignment: .top)
 
                     
                 }.padding(.horizontal, 15)
-            }
+            }.sheet(isPresented: $presentSearch, content: {
+                NavigationView {
+                    List {
+                        if downloading {
+                            HStack {
+                                Spacer()
+                                ProgressView(label: {
+                                    Text("Downloading")
+                                })
+                                Spacer()
+                            }
+                        } else {
+                            ForEach(searchResults) {
+                                p in
+                                Button {
+                                    self.comparedPlayers.append(p)
+                                    self.presentSearch.toggle()
+                                    self.searchedName.removeAll()
+                                } label: {
+                                    SearchedPlayerCellView(player: p)
+                                }
+                            }
+                        }
+                    }.searchable(text: $searchedName, prompt: "Player name")
+                        .onSubmit(of: .search) {
+                            runSearch()
+                        }
+                    .navigationTitle("Search by Name")
+                }
+            })
             .defaultScrollAnchor(.topLeading)
             .scrollClipDisabled()
             .toolbar {
@@ -82,7 +116,8 @@ struct CompareView: View {
                     ToolbarItem(placement: .primaryAction){
                         Button {
                             // TODO: Search and Add Player to compare
-                            self.comparedPlayers.append(self.basePlayer)
+//                            self.comparedPlayers.append(self.basePlayer)
+                            self.presentSearch = true
                         } label: {
                             HStack {
                                 Text("Add")
@@ -97,6 +132,28 @@ struct CompareView: View {
             .navigationTitle("Comparing \(basePlayer.cardname)")
         }
     }
+    
+    private func runSearch(){
+        if (!searchedName.isEmpty && searchedName.count > 3){
+            downloading = true
+            ContentService.shared.searchPlayer(for: searchedName) { players in
+                players.forEach { p in
+                    DispatchQueue.main.async {
+                        players.forEach { p in
+                                ContentService.shared.getPlayerStats(for: p.lineid) { stats in
+                                    DispatchQueue.main.async {
+                                        p.stats = stats
+                                    }
+                                }
+                        }
+                        searchResults = players
+                        downloading = false
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 #Preview {
