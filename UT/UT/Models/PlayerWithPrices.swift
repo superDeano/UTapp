@@ -110,8 +110,8 @@ class PlayerStats: Decodable, Observable, ObservableObject {
     init() {
         self.accelerate = ""
         self.sex = ""
-        self.playstyles = ""
-        self.playstylesPlus = ""
+        self.playstyles = "whippedpass,whippedcrosser,technical,rushout,longthrow,jockey,deadball"
+        self.playstylesPlus = "flair,finesseshot,footwork,farthrow"
         self.att1 = ""
         self.att2 = ""
         self.att3 = ""

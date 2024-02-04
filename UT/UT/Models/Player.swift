@@ -136,6 +136,7 @@ class Player: Decodable, Identifiable, Equatable, ObservableObject, Observable {
         self.smallpreview = ""
         self.skillmoves = "5"
         self.weakfoot = "3"
+        self.stats = PlayerStats()
         self.attackworkrate = "high"
         self.defenseworkrate = "high"
         self.heightft = "5'5\""
