@@ -10,7 +10,8 @@ import SwiftUI
 struct PlayerBioView: View {
     @Binding var player: Player
     private let maxWidth: CGFloat = 100
-    private let maxImageWidth: CGFloat = 20
+    private let maxImageWidth: CGFloat = 23
+    private let maxImageHeight: CGFloat = 23
     private let dividerHeight: CGFloat = 20
     
     var body: some View {
@@ -62,20 +63,20 @@ struct PlayerBioView: View {
                     .frame(maxWidth: self.maxWidth, alignment: .leading)
                 Text(Nations.nations[self.player.nation] ?? "")
                     .frame(maxWidth: .infinity, alignment: .trailing)
-                Image("Nations/\(player.nation)").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: self.maxImageWidth)
+                Image("Nations/\(player.nation)").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: self.maxImageWidth, maxHeight: self.maxImageHeight)
             }.padding(.top, 5)
             
             HStack(){
                 Text("Club").bold().foregroundStyle(Color.gray)
                 Spacer()
                 Text(Clubs.teams[self.player.club] ?? "")
-                Image("Clubs/\(player.club)").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: self.maxImageWidth)
+                Image("Clubs/\(player.club)").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: self.maxImageWidth, maxHeight: self.maxImageHeight)
             }
             HStack(){
                 Text("League").bold().foregroundStyle(Color.gray)
                 Spacer()
                 Text(Leagues.leagues[self.player.league] ?? "")
-                Image("Leagues/\(player.league)").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: self.maxImageWidth)
+                Image("Leagues/\(player.league)").resizable().aspectRatio(contentMode: .fit).frame(maxWidth: self.maxImageWidth, maxHeight: self.maxImageHeight)
             }
             
             Divider()
