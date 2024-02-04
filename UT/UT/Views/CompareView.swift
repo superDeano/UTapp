@@ -87,11 +87,20 @@ struct CompareView: View {
                                     self.presentSearch.toggle()
                                     self.searchedName.removeAll()
                                 } label: {
-                                    SearchedPlayerCellView(player: p)
+                                    SearchedPlayerCellView(player: p).foregroundStyle(Color.secondary)
                                 }
                             }
                         }
-                    }.searchable(text: $searchedName, prompt: "Player name")
+                    }.toolbar{
+                        ToolbarItem(placement: .primaryAction, content: {
+                            Button {
+                                self.presentSearch.toggle()
+                            } label: {
+                                Text("Done")
+                            }
+                        })
+                    }
+                    .searchable(text: $searchedName, prompt: "Player name")
                         .onSubmit(of: .search) {
                             runSearch()
                         }
@@ -115,8 +124,6 @@ struct CompareView: View {
                 if self.comparedPlayers.count < 3 {
                     ToolbarItem(placement: .primaryAction){
                         Button {
-                            // TODO: Search and Add Player to compare
-//                            self.comparedPlayers.append(self.basePlayer)
                             self.presentSearch = true
                         } label: {
                             HStack {
