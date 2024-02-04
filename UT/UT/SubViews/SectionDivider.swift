@@ -13,12 +13,11 @@ struct SectionDivider: View {
         VStack{
             Divider()
             HStack {
-                Text(show ? "Hide" : "Show more").font(.callout).foregroundStyle(Color.blue).contentTransition(.interpolate)
+                Text(show ? "Hide" : "Show more").font(.callout).foregroundStyle(Color.blue)
+                    .transition(.opacity)
                 Spacer()
                 Button(action: {
-//                    withAnimation {
                         show.toggle()
-//                    }
                 }, label: {
                     Image(systemName: show ? "chevron.up": "chevron.down").contentTransition(.symbolEffect(.replace))
                     }

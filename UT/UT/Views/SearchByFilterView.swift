@@ -722,21 +722,17 @@ struct SearchByFilterView: View {
                             ToolbarItemGroup(placement: .destructiveAction) {
                                 
                                 Button {
-//                                    print("you pressed to delete filters")
                                     self.searchFilter.clearFilters()
                                 } label: {
-//                                    Label("Clear Filters", systemImage: "xmark.circle.fill")
-//                                        .labelStyle(.titleAndIcon)
                                     HStack {
                                         Text("Reset")
                                         Image(systemName: "xmark.circle.fill")
                                     }.foregroundStyle(Color.red)
-//                                        .symbolEffect(.bounce.down.byLayer)
+
                                 }
                             }
                         }
-                        .navigationTitle("Filters")//.matchedGeometryEffect(id: "filter", in: nameSpace)
-                        
+                        .navigationTitle("Filters")
                     }
                 }
                 )

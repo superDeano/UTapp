@@ -29,7 +29,6 @@ struct CompareView: View {
                             Divider()
                             AllStatsView(stats: $basePlayer.stats)
                                 .padding(.trailing, 5)
-//                                .border(Color.blue)
                         }
                         .padding(.bottom, 5)
                         .padding(.horizontal, 5)

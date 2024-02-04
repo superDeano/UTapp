@@ -138,7 +138,6 @@ struct ContentView: View {
     
     
     private func runSearch(){
-//        searchText.publisher.debounce(for: .seconds(1), scheduler: RunLoop.main)
         if (!searchText.isEmpty && searchText.count > 3){
             print("Searching for \(searchText)")
             ContentService.shared.searchPlayer(for: searchText) { players in
