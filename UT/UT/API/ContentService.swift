@@ -160,6 +160,20 @@ class ContentService {
         task.resume()
     }
     
+    
+    public func getSbcs(onlyNew: Bool = false, finished: @escaping(([SBC]) -> Void)) -> Void {
+        guard let sbcsURL = URL(string: "\(baseUrl)en/app/sbcsets24") else { return }
+        let request = URLRequest(url: sbcsURL)
+        let task = URLSession.shared.dataTask(with: request) { data, response, err in
+            if let data = data {
+                let decodedData = try? JSONDecoder().decode([SBC].self, from: data)
+                finished((onlyNew ? decodedData?.filter({$0.new}) : decodedData) ?? [])
+            }
+        }
+        task.resume()
+    }
+    
+    
     public func testConnection() -> Void {
         searchPlayer(for: "emir-tintis") { p in
             if p.first?.itemInfo == nil {
@@ -211,5 +225,8 @@ class ContentService {
     }
     public static func getClubLogosUrl() -> String {
         return baseContentUrl + "badges/"
+    }
+    public static func getSbcLogosUrl() -> String {
+        return "\(baseContentUrl)sbc/"
     }
 }
