@@ -166,8 +166,14 @@ class ContentService {
         let request = URLRequest(url: sbcsURL)
         let task = URLSession.shared.dataTask(with: request) { data, response, err in
             if let data = data {
-                let decodedData = try? JSONDecoder().decode([SBC].self, from: data)
-                finished((onlyNew ? decodedData?.filter({$0.new}) : decodedData) ?? [])
+                let decodedData = try? JSONDecoder().decode([String: SBC].self, from: data)
+                var sbcs: [SBC] = []
+                if onlyNew {
+                    sbcs = decodedData?.values.filter({$0.new}) ?? []
+                } else {
+                    sbcs = Array(decodedData!.values)
+                }
+                finished(sbcs)
             }
         }
         task.resume()
