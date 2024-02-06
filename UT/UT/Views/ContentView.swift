@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var searchText: String = ""
     @State private var searchedPlayers: [Player] = []
     @State private var popularPlayers: [Player] = []
+    @State private var newestSbs: [SBC] = []
     @State private var presentSearch = false
     @State private var lastSearched: Date? = nil
     @Environment (\.isSearching) private var isSearching
@@ -68,6 +69,19 @@ struct ContentView: View {
                         }.frame(height: 250)
                     }.scrollClipDisabled()
                 }.listRowBackground(Color.clear).listRowSeparator(.hidden).opacity(presentSearch ? 0 : 1)
+                
+                
+                //MARK: Newest SBCs
+                Section(header: Text("Newest SBCs").bold().font(.title3)) {
+                    ScrollView(.horizontal){
+                        HStack {
+                            ForEach(newestSbs, id: \.id) { sbc in
+                                MediumSbcView(sbc: sbc)
+                            }
+                        }.frame(height: 250)
+                    }.scrollClipDisabled()
+                }.listRowBackground(Color.clear).listRowSeparator(.hidden).opacity(presentSearch ? 0 : 1)
+                
             }
             // MARK: Search List View
             .overlay(content: {
@@ -96,6 +110,9 @@ struct ContentView: View {
                 if self.popularPlayers.count == 0 {
                     self.getPopularPlayers()
                     
+                }
+                if self.newestSbs.count == 0 {
+                    self.getNewestSbcs()
                 }
             }
             )
@@ -153,6 +170,7 @@ struct ContentView: View {
     private func getLatestAndPopularPlayers(){
         getLatestPlayers()
         getPopularPlayers()
+        getNewestSbcs()
     }
     
     func getLatestPlayers() -> Void {
@@ -175,12 +193,19 @@ struct ContentView: View {
         })
     }
     
+    func getNewestSbcs() -> Void {
+        print("Getting newest SBCs")
+        ContentService.shared.getSbcs(onlyNew: true) { sbcs in
+            DispatchQueue.main.async {
+                self.newestSbs = sbcs
+            }
+        }
+    }
     
 }
 
 #Preview {
-    ContentView()//.environmentObject(GetItemInfo())
-    //        .modelContainer(for: Item.self, inMemory: true)
+    ContentView()
 }
 
 extension Binding<String>: Equatable {
